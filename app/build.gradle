@@ -1,0 +1,24 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdk 29
+    defaultConfig {
+        applicationId "com.symbol.kepzetclient"
+        minSdkVersion 29
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 29
+        versionCode 12
+        versionName "7.3.1"
+    }
+    buildTypes {F
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //namespace 'com.symbol.kepzetclient'
+    namespace 'com.symbol.kepzetclient'
+}
+dependencies {
+    compileOnly 'com.symbol:emdk:+'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+}
