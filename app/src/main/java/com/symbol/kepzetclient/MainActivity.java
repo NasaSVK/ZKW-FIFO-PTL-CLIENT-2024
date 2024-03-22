@@ -66,6 +66,8 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
 
     private List<ScannerInfo> deviceList = null;
 
+    private ScannerInfo My2DBarCodeImager = null;
+
     private int scannerIndex = 0; // Keep the selected scanner
     private int defaultIndex = 0; // Keep the default scanner
     private int dataLength = 0;
@@ -76,11 +78,14 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     private boolean bExtScannerDisconnected = false;
     private final Object lock = new Object();
 
+    public com.symbol.emdk.barcode.ScannerInfo SI = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         deviceList = new ArrayList<ScannerInfo>();
+
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setDefaultOrientation();
@@ -260,13 +265,27 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             updateStatus(status);
         }
     }
-
+    //################################################################
+    //INICIALIZACIA SKENERA PRI SPUSTENI, AKO AJ PRI VRATENI SA NA AKTIVITU
+    //################################################################
     private void initScanner() {
         if (scanner == null) {
+            //#####################################################################################
             if ((deviceList != null) && (deviceList.size() != 0)) {
-                if (barcodeManager != null)
+                if (barcodeManager != null){
+                    //inicializacia klucovej premmennej aplikacie
+                    //barcodeManager.getDevice - prijima scannerInfo object
+                    //barcodeManager.getDevice - vracia Scanner objekt
+                    //#############################################################################
+
+
+
+
                     scanner = barcodeManager.getDevice(deviceList.get(scannerIndex));
+                }
+                //#############################################################################
             }
+            //#####################################################################################
             else {
                 updateStatus("Failed to get the specified scanner device! Please close and restart the application.");
                 return;
@@ -311,7 +330,10 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     }
 
     private void initBarcodeManager(){
+        //nacitanie vsetky podporovanych TYPOV citaciek
+        //################################################################################
         barcodeManager = (BarcodeManager) emdkManager.getInstance(FEATURE_TYPE.BARCODE);
+        //################################################################################
         // Add connection listener
         if (barcodeManager != null) {
             barcodeManager.addConnectionListener(this);
@@ -324,6 +346,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         }
     }
 
+    //listener na zmenu typu scenera zo spineru
     private void addSpinnerScannerDevicesListener() {
         spinnerScannerDevices.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
@@ -344,25 +367,35 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
 
     private void enumerateScannerDevices() {
         if (barcodeManager != null) {
+            //friendlyNameList - zoznam ktory sa zobrazi v Spineri
             List<String> friendlyNameList = new ArrayList<String>();
             int spinnerIndex = 0;
+            //######################################################################################
+            //naplnenie zoznamu podporovanych typov scannerov
+            //mne staci "2D Barcode Imager" pod indexom 1
             deviceList = barcodeManager.getSupportedDevicesInfo();
+            My2DBarCodeImager =  deviceList.get(1);
+
+            //######################################################################################
             if ((deviceList != null) && (deviceList.size() != 0)) {
-                Iterator<ScannerInfo> it = deviceList.iterator();
-                while(it.hasNext()) {
-                    ScannerInfo scnInfo = it.next();
-                    friendlyNameList.add(scnInfo.getFriendlyName());
-                    if(scnInfo.isDefaultScanner()) {
-                        defaultIndex = spinnerIndex;
-                    }
-                    ++spinnerIndex;
-                }
+                //Iterator<ScannerInfo> it = deviceList.iterator();
+                //while(it.hasNext()) {
+                //ScannerInfo scnInfo = it.next();
+                //friendlyNameList.add(scnInfo.getFriendlyName());
+                friendlyNameList.add(My2DBarCodeImager.getFriendlyName());
+                //if(scnInfo.isDefaultScanner()) {
+                //    defaultIndex = spinnerIndex;
+                // }
+                // ++spinnerIndex;
+                //}
             }
             else {
                 updateStatus("Failed to get the list of supported scanner devices! Please close and restart the application.");
             }
+            //adapter na vypis zoznamu od spinera
             ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, friendlyNameList);
             spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            //naplnenie spiera zoznamom moznych typov scanerov
             spinnerScannerDevices.setAdapter(spinnerAdapter);
         }
     }

@@ -4,7 +4,7 @@
             "outputFile": "com.symbol.kepzetclient.app-merged_res-5:/values-w820dp-v13_values-w820dp-v13.arsc.flat",
             "map": [
                 {
-                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\BarcodeSample1\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "4",
@@ -45,24 +45,7 @@
                     }
                 },
                 {
-                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\BarcodeSample1\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "4,1,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "121,16,68",
-                        "endColumns": "52,50,52",
-                        "endOffsets": "169,62,116"
-                    },
-                    "to": {
-                        "startLines": "129,130,131",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "5900,5953,6004",
-                        "endColumns": "52,50,52",
-                        "endOffsets": "5948,5999,6052"
-                    }
-                },
-                {
-                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\BarcodeSample1\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",
@@ -81,7 +64,7 @@
                     }
                 },
                 {
-                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\BarcodeSample1\\app\\src\\main\\res\\values\\dimens.xml",
+                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\src\\main\\res\\values\\dimens.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -95,6 +78,23 @@
                         "startOffsets": "5786,5844",
                         "endColumns": "57,55",
                         "endOffsets": "5839,5895"
+                    }
+                },
+                {
+                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "4,1,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "121,16,68",
+                        "endColumns": "52,50,52",
+                        "endOffsets": "169,62,116"
+                    },
+                    "to": {
+                        "startLines": "129,130,131",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "5900,5953,6004",
+                        "endColumns": "52,50,52",
+                        "endOffsets": "5948,5999,6052"
                     }
                 }
             ]

@@ -4,7 +4,7 @@
             "outputFile": "com.symbol.kepzetclient.app-mergeDebugResources-3:/values-w820dp-v13/values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\BarcodeSample1\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "4",

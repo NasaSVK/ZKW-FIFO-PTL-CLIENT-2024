@@ -1,66 +1,66 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:2:1-28:12
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-28:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:2:1-11:12
 	package
-		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml
+		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml
+		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml
+		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#com.symbol.emdk.permission.EMDK
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:4:5-70
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:4:5-70
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:4:22-68
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:4:22-68
 application
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:6:5-26:19
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:6:5-26:19
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:6:5-26:19
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:6:5-26:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:9:5-20
 	android:extractNativeLibs
-		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml
+		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 	android:label
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:9:9-41
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:9:9-41
 	android:icon
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:8:9-43
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:8:9-43
 	android:allowBackup
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:7:9-35
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:7:9-35
 	android:theme
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:10:9-40
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:10:9-40
 uses-library#com.symbol.emdk
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:13:9-55
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:13:9-55
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:13:23-53
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:13:23-53
 activity#com.symbol.kepzetclient.MainActivity
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:16:9-25:20
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:16:9-25:20
 	android:label
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:19:13-45
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:19:13-45
 	android:configChanges
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:18:13-74
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:18:13-74
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:17:13-41
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:17:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:20:13-24:29
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:20:13-24:29
 action#android.intent.action.MAIN
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:21:17-69
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:21:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:23:17-77
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:23:17-77
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml:23:27-74
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:23:27-74
 uses-sdk
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:5:5-7:41
 	android:targetSdkVersion
-		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml
+		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\BarcodeSample1\app\src\main\AndroidManifest.xml
+		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
