@@ -352,7 +352,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             @Override
             public void onItemSelected(AdapterView<?> parent, View arg1, int position, long arg3) {
                 if ((scannerIndex != position) || (scanner==null)) {
-                    scannerIndex = position;
+                    scannerIndex = position+1;
                     bSoftTriggerSelected = false;
                     bExtScannerDisconnected = false;
                     deInitScanner();
