@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.symbol.kepzetclient.app-merged_res-5:/values-w820dp-v13_values-w820dp-v13.arsc.flat",
+            "outputFile": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-5:\\values-w820dp-v13_values-w820dp-v13.arsc.flat",
             "map": [
                 {
                     "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
@@ -23,7 +23,7 @@
             ]
         },
         {
-            "outputFile": "com.symbol.kepzetclient.app-merged_res-5:/values_values.arsc.flat",
+            "outputFile": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-5:\\values_values.arsc.flat",
             "map": [
                 {
                     "source": "C:\\Users\\duracer\\.gradle\\caches\\transforms-3\\2c4f0181772097545150400f5e749d30\\transformed\\constraint-layout-1.1.3\\res\\values\\values.xml",

@@ -62,10 +62,6 @@ int id barrier 0x7f030001
 int id bottom 0x7f030002
 int id buttonScan 0x7f030003
 int id chains 0x7f030004
-int id checkBoxCode128 0x7f030005
-int id checkBoxCode39 0x7f030006
-int id checkBoxEAN13 0x7f030007
-int id checkBoxEAN8 0x7f030008
 int id dimensions 0x7f030009
 int id direct 0x7f03000a
 int id end 0x7f03000b
@@ -87,13 +83,11 @@ int id start 0x7f03001a
 int id textViewD 0x7f03001b
 int id textViewData 0x7f03001c
 int id textViewS 0x7f03001d
-int id textViewSD 0x7f03001e
 int id textViewSS 0x7f03001f
 int id textViewStatus 0x7f030020
 int id top 0x7f030021
 int id wrap 0x7f030022
 int layout activity_main 0x7f040000
-int layout activity_main_landscape 0x7f040001
 int menu main 0x7f050000
 int mipmap ic_launcher 0x7f060000
 int string action_settings 0x7f070000

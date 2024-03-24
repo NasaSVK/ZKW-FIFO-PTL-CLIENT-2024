@@ -57,10 +57,10 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     private TextView textViewData = null;
     private TextView textViewStatus = null;
 
-    private CheckBox checkBoxEAN8 = null;
-    private CheckBox checkBoxEAN13 = null;
-    private CheckBox checkBoxCode39 = null;
-    private CheckBox checkBoxCode128 = null;
+    //private CheckBox checkBoxEAN8 = null;
+    //private CheckBox checkBoxEAN13 = null;
+    //private CheckBox checkBoxCode39 = null;
+    //private CheckBox checkBoxCode128 = null;
 
     private Spinner spinnerScannerDevices = null;
 
@@ -74,7 +74,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     private String statusString = "";
 
     private boolean bSoftTriggerSelected = false;
-    private boolean bDecoderSettingsChanged = false;
+    private boolean bDecoderSettingsChanged = true;
     private boolean bExtScannerDisconnected = false;
     private final Object lock = new Object();
 
@@ -92,10 +92,10 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
 
         textViewData = (TextView)findViewById(R.id.textViewData);
         textViewStatus = (TextView)findViewById(R.id.textViewStatus);
-        checkBoxEAN8 = (CheckBox)findViewById(R.id.checkBoxEAN8);
-        checkBoxEAN13 = (CheckBox)findViewById(R.id.checkBoxEAN13);
-        checkBoxCode39 = (CheckBox)findViewById(R.id.checkBoxCode39);
-        checkBoxCode128 = (CheckBox)findViewById(R.id.checkBoxCode128);
+        //checkBoxEAN8 = (CheckBox)findViewById(R.id.checkBoxEAN8);
+        //checkBoxEAN13 = (CheckBox)findViewById(R.id.checkBoxEAN13);
+        //checkBoxCode39 = (CheckBox)findViewById(R.id.checkBoxCode39);
+        //checkBoxCode128 = (CheckBox)findViewById(R.id.checkBoxCode128);
         spinnerScannerDevices = (Spinner)findViewById(R.id.spinnerScannerDevices);
 
         EMDKResults results = EMDKManager.getEMDKManager(getApplicationContext(), this);
@@ -104,10 +104,10 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             return;
         }
 
-        checkBoxEAN8.setOnCheckedChangeListener(this);
-        checkBoxEAN13.setOnCheckedChangeListener(this);
-        checkBoxCode39.setOnCheckedChangeListener(this);
-        checkBoxCode128.setOnCheckedChangeListener(this);
+        //checkBoxEAN8.setOnCheckedChangeListener(this);
+        //checkBoxEAN13.setOnCheckedChangeListener(this);
+        //checkBoxCode39.setOnCheckedChangeListener(this);
+        //checkBoxCode128.setOnCheckedChangeListener(this);
 
         addSpinnerScannerDevicesListener();
 
@@ -182,6 +182,9 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         }
     }
 
+    //########################################################################################################
+    //vola sa automaticky pri zmene statusu skenera
+    //########################################################################################################
     @Override
     public void onStatus(StatusData statusData) {
         ScannerStates state = statusData.getState();
@@ -197,10 +200,13 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
                     scanner.triggerType = TriggerType.HARD;
                 }
                 // set decoders
+                //kontrola ci sa po zmene statusu zmenilo aj nastavenie scenera
                 if(bDecoderSettingsChanged) {
+                    //offDecoders();
                     setDecoders();
                     bDecoderSettingsChanged = false;
                 }
+
                 // submit read
                 if(!scanner.isReadPending() && !bExtScannerDisconnected) {
                     try {
@@ -230,6 +236,8 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
                 break;
         }
     }
+    //########################################################################################################
+    //########################################################################################################
 
     @Override
     public void onConnectionChange(ScannerInfo scannerInfo, ConnectionState connectionState) {
@@ -278,10 +286,8 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
                     //barcodeManager.getDevice - vracia Scanner objekt
                     //#############################################################################
 
-
-
-
                     scanner = barcodeManager.getDevice(deviceList.get(scannerIndex));
+                    //this.offDecoders();
                 }
                 //#############################################################################
             }
@@ -352,7 +358,11 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             @Override
             public void onItemSelected(AdapterView<?> parent, View arg1, int position, long arg3) {
                 if ((scannerIndex != position) || (scanner==null)) {
+                    //########################################################################################
+                    //########################################################################################
                     scannerIndex = position+1;
+                    //########################################################################################
+                    //########################################################################################
                     bSoftTriggerSelected = false;
                     bExtScannerDisconnected = false;
                     deInitScanner();
@@ -405,19 +415,43 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             try {
                 ScannerConfig config = scanner.getConfig();
                 // Set EAN8
-                config.decoderParams.ean8.enabled = checkBoxEAN8.isChecked();
+                //config.decoderParams.ean8.enabled = checkBoxEAN8.isChecked();
+                config.decoderParams.ean8.enabled = false;
                 // Set EAN13
-                config.decoderParams.ean13.enabled = checkBoxEAN13.isChecked();
+                //config.decoderParams.ean13.enabled = checkBoxEAN13.isChecked();
+                config.decoderParams.ean13.enabled = false;
                 // Set Code39
-                config.decoderParams.code39.enabled= checkBoxCode39.isChecked();
+                //config.decoderParams.code39.enabled= checkBoxCode39.isChecked();
+                config.decoderParams.code39.enabled= false;
                 //Set Code128
-                config.decoderParams.code128.enabled = checkBoxCode128.isChecked();
+                //config.decoderParams.code128.enabled = checkBoxCode128.isChecked();
+                config.decoderParams.code128.enabled = false;
                 scanner.setConfig(config);
             } catch (ScannerException e) {
                 updateStatus(e.getMessage());
             }
         }
     }
+
+    private void offDecoders() {
+        if (scanner != null) {
+            try {
+                ScannerConfig config = scanner.getConfig();
+                // Set EAN8
+                config.decoderParams.ean8.enabled = false;
+                // Set EAN13
+                config.decoderParams.ean13.enabled = false;
+                // Set Code39
+                config.decoderParams.code39.enabled= false;
+                //Set Code128
+                config.decoderParams.code128.enabled = false;
+                scanner.setConfig(config);
+            } catch (ScannerException e) {
+                updateStatus(e.getMessage());
+            }
+        }
+    }
+
 
     public void softScan(View view) {
         bSoftTriggerSelected = true;
@@ -475,11 +509,11 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        if(width > height){
-            setContentView(R.layout.activity_main_landscape);
-        } else {
+        //if(width > height){
+        //    setContentView(R.layout.activity_main_landscape);
+        //} else {
             setContentView(R.layout.activity_main);
-        }
+        //}
     }
 
     @Override

@@ -63,10 +63,6 @@ id barrier
 id bottom
 id buttonScan
 id chains
-id checkBoxCode128
-id checkBoxCode39
-id checkBoxEAN13
-id checkBoxEAN8
 id dimensions
 id direct
 id end
@@ -88,13 +84,11 @@ id start
 id textViewD
 id textViewData
 id textViewS
-id textViewSD
 id textViewSS
 id textViewStatus
 id top
 id wrap
 layout activity_main
-layout activity_main_landscape
 menu main
 mipmap ic_launcher
 string action_settings
