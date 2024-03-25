@@ -62,7 +62,10 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     //private CheckBox checkBoxCode39 = null;
     //private CheckBox checkBoxCode128 = null;
 
-    private Spinner spinnerScannerDevices = null;
+    //##################################################################################################
+    //Spiner po novom TextView
+    private TextView spinnerScannerDevices = null;
+    //##################################################################################################
 
     private List<ScannerInfo> deviceList = null;
 
@@ -96,7 +99,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         //checkBoxEAN13 = (CheckBox)findViewById(R.id.checkBoxEAN13);
         //checkBoxCode39 = (CheckBox)findViewById(R.id.checkBoxCode39);
         //checkBoxCode128 = (CheckBox)findViewById(R.id.checkBoxCode128);
-        spinnerScannerDevices = (Spinner)findViewById(R.id.spinnerScannerDevices);
+        spinnerScannerDevices = (TextView)findViewById(R.id.spinnerScannerDevices);
 
         EMDKResults results = EMDKManager.getEMDKManager(getApplicationContext(), this);
         if (results.statusCode != EMDKResults.STATUS_CODE.SUCCESS) {
@@ -109,6 +112,8 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         //checkBoxCode39.setOnCheckedChangeListener(this);
         //checkBoxCode128.setOnCheckedChangeListener(this);
 
+        //nutne volat ZA az po vytvoreni deviceList-u (enumerateScannerSevice)), inak sa scener neinicializuje
+        //deviceList sa vytvara v enumerateScannerDevices();
         addSpinnerScannerDevicesListener();
 
         textViewData.setSelected(true);
@@ -123,8 +128,12 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         initBarcodeManager();
         // Enumerate scanner devices
         enumerateScannerDevices();
+
+        addSpinnerScannerDevicesListener();
+
         // Set default scanner
-        spinnerScannerDevices.setSelection(defaultIndex);
+        spinnerScannerDevices.setText(My2DBarCodeImager.getFriendlyName());
+        //spinnerScannerDevices.setSelection(defaultIndex);
     }
 
     @Override
@@ -137,7 +146,8 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             // Enumerate scanner devices
             enumerateScannerDevices();
             // Set selected scanner
-            spinnerScannerDevices.setSelection(scannerIndex);
+            spinnerScannerDevices.setText(My2DBarCodeImager.getFriendlyName());
+            //spinnerScannerDevices.setSelection(scannerIndex);
             // Initialize scanner
             initScanner();
         }
@@ -274,7 +284,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         }
     }
     //################################################################
-    //INICIALIZACIA SKENERA PRI SPUSTENI, AKO AJ PRI VRATENI SA NA AKTIVITU
+    //KLUCVA METODA PROJEKTU => INICIALIZACIA SKENERA PRI SPUSTENI, AKO AJ PRI VRATENI SA NA AKTIVITU
     //################################################################
     private void initScanner() {
         if (scanner == null) {
@@ -289,7 +299,6 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
                     scanner = barcodeManager.getDevice(deviceList.get(scannerIndex));
                     //this.offDecoders();
                 }
-                //#############################################################################
             }
             //#####################################################################################
             else {
@@ -310,6 +319,8 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             }
         }
     }
+    //#####################################################################################################################
+    //#####################################################################################################################
 
     private void deInitScanner() {
         if (scanner != null) {
@@ -354,6 +365,18 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
 
     //listener na zmenu typu scenera zo spineru
     private void addSpinnerScannerDevicesListener() {
+        if (scanner==null) {
+            //########################################################################################
+            //########################################################################################
+            scannerIndex = 1;
+            //########################################################################################
+            //########################################################################################
+            bSoftTriggerSelected = false;
+            bExtScannerDisconnected = false;
+            deInitScanner();
+            initScanner();
+        }
+        /*
         spinnerScannerDevices.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View arg1, int position, long arg3) {
@@ -372,7 +395,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
             }
-        });
+        });*/
     }
 
     private void enumerateScannerDevices() {
@@ -403,10 +426,10 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
                 updateStatus("Failed to get the list of supported scanner devices! Please close and restart the application.");
             }
             //adapter na vypis zoznamu od spinera
-            ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, friendlyNameList);
-            spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            //ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, friendlyNameList);
+            //spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             //naplnenie spiera zoznamom moznych typov scanerov
-            spinnerScannerDevices.setAdapter(spinnerAdapter);
+            //spinnerScannerDevices.setAdapter(spinnerAdapter);
         }
     }
 

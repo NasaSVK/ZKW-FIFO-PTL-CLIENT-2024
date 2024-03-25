@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">KEPZET CLIENT</string>
-
+    <string name="app_name">KEPZET<sup><small>®</small></sup> client v0.24.03</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>

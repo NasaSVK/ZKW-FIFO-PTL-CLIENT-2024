@@ -8,10 +8,6 @@
         "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-7:\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-5:\\layout_activity_main_landscape.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-7:\\layout\\activity_main_landscape.xml"
-    },
-    {
         "merged": "com.symbol.kepzetclient.app-merged_res-5:/layout_activity_main.xml.flat",
         "source": "com.symbol.kepzetclient.app-main-7:/layout/activity_main.xml"
     },
