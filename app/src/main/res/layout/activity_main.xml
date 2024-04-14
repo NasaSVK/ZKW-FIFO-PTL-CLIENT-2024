@@ -35,7 +35,6 @@
         </LinearLayout>
 
 
-
         <!--
         <TableLayout
             android:layout_width="match_parent"
@@ -110,126 +109,220 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:stretchColumns="1"
-            android:textSize="18dp"
-            >
+            android:textSize="18dp">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp"
-                >
+                android:textSize="18dp">
+
                 <TextView
                     android:id="@+id/tvBarcodeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Barcode:"
                     android:paddingEnd="2dp"
-                    android:textSize="18sp"
-                    />
+                    android:text="Barcode:"
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/tvBarcode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
-                    />
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp"
-                >
+                android:textSize="18dp">
+
                 <TextView
                     android:id="@+id/tvFirstPalletText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="First Pallet:"
                     android:paddingEnd="2dp"
-                    android:textSize="18sp"
-                    />
+                    android:text="First Pallet:"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tvFirstPallet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
-                    android:textStyle="bold"
                     android:textSize="18sp"
-                    />
+                    android:textStyle="bold" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp"
-                >
+                android:textSize="18dp">
+
                 <TextView
                     android:id="@+id/tvPartNumberText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Part Num.:"
                     android:paddingEnd="2dp"
-                    android:textSize="18sp"
-                    />
+                    android:text="Part Num.:"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tvPartNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
-                    android:textStyle="bold"
                     android:textSize="18sp"
-                    />
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp"
-                >
+                android:textSize="18dp">
+
                 <TextView
                     android:id="@+id/tvPositionText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Position:"
                     android:paddingEnd="2dp"
-                    android:textSize="18sp"
-                    />
+                    android:text="Position:"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tvPositon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
-                    android:textStyle="bold"
                     android:textSize="18sp"
-                    />
+                    android:textStyle="bold" />
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp"
-                >
+                android:textSize="18dp">
+
                 <TextView
                     android:id="@+id/tvMultiPackText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Multi Pack:"
                     android:paddingEnd="2dp"
-                    android:textSize="18sp"
-                    />
+                    android:text="Multi Pack:"
+                    android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/tvMultiPack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="N/A"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    />
+                <TableLayout>
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvMultiPack1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 01"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tvMultiPack2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 02"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tvMultiPack3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 03"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tvMultiPack4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 04"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvMultiPack5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 05"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="6sp"
+                            />
+                        <TextView
+                            android:id="@+id/tvMultiPack6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 06"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="6sp"/>
+                        <TextView
+                            android:id="@+id/tvMultiPack7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 07"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="6sp"
+                            />
+                        <TextView
+                            android:id="@+id/tvMultiPack8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 08"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="6sp"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvMultiPack9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 09"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="4sp"
+                            />
+                        <TextView
+                            android:id="@+id/tvMultiPack10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 10"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="4sp"/>
+                        <TextView
+                            android:id="@+id/tvMultiPack11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 11"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="4sp"
+                            />
+                        <TextView
+                            android:id="@+id/tvMultiPack12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 12"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="4sp"
+                            />
+                    </TableRow>
+                </TableLayout>
             </TableRow>
 
 
@@ -239,73 +332,72 @@
             android:id="@+id/tvStatusNOK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="2sp"
-            android:background="@android:color/holo_red_light"
-            android:text="NOK"
             android:layout_centerInParent="true"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:textStyle="bold"
             android:layout_marginTop="4sp"
             android:layout_marginBottom="4sp"
-            />
+            android:background="@android:color/holo_red_light"
+            android:gravity="center"
+            android:padding="2sp"
+            android:text="NOK"
+            android:textSize="50sp"
+            android:textStyle="bold" />
 
-            <TableLayout
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="0">
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:stretchColumns="0">
+                android:layout_height="match_parent">
 
-                <TableRow
+                <CheckBox
+                    android:id="@+id/checkBoxLead"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="lead" />
 
-                    <CheckBox
-                        android:id="@+id/checkBoxLead"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="lead" />
-
-                    <Button
-                        android:id="@+id/buttonAccept"
-                        android:layout_width="match_parent"
-                        android:layout_height="40sp"
-                        android:width="100dp"
-                        android:text="Accept"
-                        android:textSize="16sp" />
-                </TableRow>
-
-                <TableRow
+                <Button
+                    android:id="@+id/buttonAccept"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="40sp"
+                    android:width="100dp"
+                    android:text="Accept"
+                    android:textSize="16sp" />
+            </TableRow>
 
-                    <CheckBox
-                        android:id="@+id/checkBoxClear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_span="1"
-                        android:checked="true"
-                        android:text="clear" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                    <Button
-                        android:id="@+id/btnSetup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40sp"
-                        android:width="100dp"
-                        android:text="Setup"
-                        android:textSize="16sp" />
+                <CheckBox
+                    android:id="@+id/checkBoxClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="1"
+                    android:checked="true"
+                    android:text="clear" />
 
-                </TableRow>
+                <Button
+                    android:id="@+id/btnSetup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40sp"
+                    android:width="100dp"
+                    android:text="Setup"
+                    android:textSize="16sp" />
 
-            </TableLayout>
+            </TableRow>
+
+        </TableLayout>
+
         <TextView
             android:id="@+id/textViewD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="History:"
-            android:textSize="14sp"
             android:padding="2dp"
-            />
+            android:text="History:"
+            android:textSize="14sp" />
 
         <ScrollView
             android:id="@+id/scrollViewData"
@@ -315,14 +407,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layoutDirection="locale"
+                >
 
                 <TextView
                     android:id="@+id/textViewData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="normal" />
             </LinearLayout>
         </ScrollView>
 
@@ -336,18 +430,17 @@
         android:layout_marginBottom="8dp"
         android:text="warehousePBL v1.6e"
         android:textColor="@android:color/secondary_text_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:visibility="gone"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:id="@+id/buttonScan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="softScan"
-        app:layout_constraintBottom_toTopOf="@+id/llBottom"
-        android:text="Scan" />
+        android:text="Scan"
+        app:layout_constraintBottom_toTopOf="@+id/llBottom" />
 
 
     <LinearLayout
@@ -356,8 +449,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        >
+        app:layout_constraintLeft_toLeftOf="parent">
 
         <TextView
             android:id="@+id/textViewS"

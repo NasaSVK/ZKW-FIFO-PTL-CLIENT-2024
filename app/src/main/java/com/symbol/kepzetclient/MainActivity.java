@@ -4,6 +4,8 @@
  */
 package com.symbol.kepzetclient;
 
+import static com.symbol.kepzetclient.Helpers.getCurrentDateTime;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -76,11 +78,13 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     private int dataLength = 0;
     private String statusString = "";
 
+    private TextView tvBarcode = null;
+
     private boolean bSoftTriggerSelected = false;
     private boolean bDecoderSettingsChanged = true;
     private boolean bExtScannerDisconnected = false;
     private final Object lock = new Object();
-
+    private String history = "";
     public com.symbol.emdk.barcode.ScannerInfo SI = null;
 
     @Override
@@ -94,6 +98,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         setDefaultOrientation();
 
         textViewData = (TextView)findViewById(R.id.textViewData);
+        tvBarcode = (TextView)findViewById(R.id.tvBarcode);
         textViewStatus = (TextView)findViewById(R.id.textViewStatus);
         //checkBoxEAN8 = (CheckBox)findViewById(R.id.checkBoxEAN8);
         //checkBoxEAN13 = (CheckBox)findViewById(R.id.checkBoxEAN13);
@@ -187,7 +192,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         if ((scanDataCollection != null) && (scanDataCollection.getResult() == ScannerResults.SUCCESS)) {
             ArrayList <ScanData> scanData = scanDataCollection.getScanData();
             for(ScanData data : scanData) {
-                updateData("<font color='gray'>" + data.getLabelType() + "</font> : " + data.getData());
+                updateData("<font color='silver'>" +  Helpers.getCurrentDateTime() + "</font>" +"  "+ "<font color='gray'>" +  data.getLabelType() + "</font> : <b>" + data.getData() +"</b>");
             }
         }
     }
@@ -507,21 +512,32 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             @Override
             public void run() {
                 if (result != null) {
+
+                    String CurrentDateTime = getCurrentDateTime();
+                    String CurrentCode = Helpers.parsujKod(Html.fromHtml(result, 0).toString());
+                    tvBarcode.setText(CurrentCode);
+
+                    //textViewData.setText( Html.fromHtml(CurrentDateTime + " <b>" + CurrentCode+"</b>\n" + history));
+
                     if(dataLength ++ > 100) { //Clear the cache after 100 scans
                         textViewData.setText("");
                         dataLength = 0;
-                        textViewData.append(Html.fromHtml(result));
-                    } else {
-                        textViewData.append(Html.fromHtml(result));
-                    }
-                    textViewData.append("\n");
+                        history = "";
+                        //textViewData.append(Html.fromHtml(result,0));
+                    } //else {
+                       // textViewData.append(Html.fromHtml(result,0));
+                    //}
+                    //textViewData.append("\n");
+                    textViewData.setText(Html.fromHtml(result + "<br>" + history,0));
+                    history  = result + "<br>" + history;
+                    /*
                     ((View) findViewById(R.id.scrollViewData)).post(new Runnable()
                     {
                         public void run()
                         {
                             ((ScrollView) findViewById(R.id.scrollViewData)).fullScroll(View.FOCUS_DOWN);
                         }
-                    });
+                    });*/
                 }
             }
         });
