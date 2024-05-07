@@ -6,49 +6,44 @@ package com.symbol.kepzetclient;
 
 import static com.symbol.kepzetclient.Helpers.getCurrentDateTime;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-//import com.symbol.barcodesample1.R;
-import com.symbol.emdk.EMDKManager;
-import com.symbol.emdk.EMDKResults;
-import com.symbol.emdk.EMDKManager.EMDKListener;
-import com.symbol.emdk.EMDKManager.FEATURE_TYPE;
-import com.symbol.emdk.barcode.BarcodeManager;
-import com.symbol.emdk.barcode.BarcodeManager.ConnectionState;
-import com.symbol.emdk.barcode.BarcodeManager.ScannerConnectionListener;
-import com.symbol.emdk.barcode.ScanDataCollection;
-import com.symbol.emdk.barcode.Scanner;
-import com.symbol.emdk.barcode.ScannerConfig;
-import com.symbol.emdk.barcode.ScannerException;
-import com.symbol.emdk.barcode.ScannerInfo;
-import com.symbol.emdk.barcode.ScannerResults;
-import com.symbol.emdk.barcode.ScanDataCollection.ScanData;
-import com.symbol.emdk.barcode.Scanner.DataListener;
-import com.symbol.emdk.barcode.Scanner.StatusListener;
-import com.symbol.emdk.barcode.Scanner.TriggerType;
-import com.symbol.emdk.barcode.StatusData.ScannerStates;
-import com.symbol.emdk.barcode.StatusData;
-
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.content.pm.ActivityInfo;
+
+
+import com.symbol.emdk.EMDKManager;
+import com.symbol.emdk.EMDKManager.EMDKListener;
+import com.symbol.emdk.EMDKManager.FEATURE_TYPE;
+import com.symbol.emdk.EMDKResults;
+import com.symbol.emdk.barcode.BarcodeManager;
+import com.symbol.emdk.barcode.BarcodeManager.ConnectionState;
+import com.symbol.emdk.barcode.BarcodeManager.ScannerConnectionListener;
+import com.symbol.emdk.barcode.ScanDataCollection;
+import com.symbol.emdk.barcode.ScanDataCollection.ScanData;
+import com.symbol.emdk.barcode.Scanner;
+import com.symbol.emdk.barcode.Scanner.DataListener;
+import com.symbol.emdk.barcode.Scanner.StatusListener;
+import com.symbol.emdk.barcode.Scanner.TriggerType;
+import com.symbol.emdk.barcode.ScannerConfig;
+import com.symbol.emdk.barcode.ScannerException;
+import com.symbol.emdk.barcode.ScannerInfo;
+import com.symbol.emdk.barcode.ScannerResults;
+import com.symbol.emdk.barcode.StatusData;
+import com.symbol.emdk.barcode.StatusData.ScannerStates;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Activity implements EMDKListener, DataListener, StatusListener, ScannerConnectionListener, OnCheckedChangeListener {
 
@@ -86,6 +81,15 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     private final Object lock = new Object();
     private String history = "";
     public com.symbol.emdk.barcode.ScannerInfo SI = null;
+
+
+    TabLayout tabLayout;
+
+
+
+    public void OtvorSettingsScreen() {
+        startActivity(new Intent(MainActivity.this,Preferences.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -573,10 +577,42 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+
+            case R.id.action_settings: this.OtvorSettingsScreen();  return true;
+//            case R.id.action_about:
+//                AboutBox.Show(MainActivity2.this);return true;
+//
+//            case (R.id.searchDeviceMenu):
+//                Intent intent = new Intent(MainActivity2.this, SearchActivity.class);
+//                startActivity(intent);
+//                return true;
+//            //AUXX.redToast(MainActivity2.this,"Vyhľadávanie bude dorobené!!!"); return true;
+//            case R.id.addDevice:
+//                showNoticeDialog();
+//                //InsertDialog.Show(MainActivity2.this);return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+
+
+//        return super.onOptionsItemSelected(item);
+    }
+
+    public void clkAccept(View view) {
+        Intent dbActivity = new Intent(this, DbActivity.class);
+        startActivity(dbActivity);
+    }
+
+    public void clkSetup(View view) {
+        Intent preferencesIntent = new Intent(this, Preferences.class);
+        startActivity(preferencesIntent);
     }
 }

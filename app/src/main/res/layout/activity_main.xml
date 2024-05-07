@@ -364,7 +364,9 @@
                     android:layout_height="40sp"
                     android:width="100dp"
                     android:text="Accept"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:onClick="clkAccept"
+                    />
             </TableRow>
 
             <TableRow
@@ -385,7 +387,8 @@
                     android:layout_height="40sp"
                     android:width="100dp"
                     android:text="Setup"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:onClick="clkSetup"/>
 
             </TableRow>
 

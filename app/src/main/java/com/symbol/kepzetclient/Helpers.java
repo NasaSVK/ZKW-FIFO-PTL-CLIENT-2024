@@ -1,7 +1,12 @@
 package com.symbol.kepzetclient;
 
+import android.content.Context;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
+import android.support.v4.content.ContextCompat;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -20,4 +25,24 @@ public class Helpers {
         //System.out.println(dateFormat.format(date));
 
     }
+
+    //https://www.youtube.com/watch?v=L-1lwnjZFGg
+    //https://stackoverflow.com/questions/6687666/android-how-to-set-the-colour-of-a-toasts-text
+    public static void redToast(Context pContext, String pText){
+
+        Toast toast = Toast.makeText(pContext, pText, Toast.LENGTH_LONG);
+        View view = toast.getView();
+        view.setBackgroundResource(R.drawable.red_toast_style);
+        TextView v = (TextView)view.findViewById(android.R.id.message);
+        v.setTextColor(ContextCompat.getColor(pContext, R.color.green)); //https://stackoverflow.com/questions/5271387/get-color-int-from-color-resource
+        //view.setBackgroundColor(Color.BLACK);
+        //TextView text = (TextView) view.findViewById(android.R.id.message);
+        /*Here you can do anything with above textview like text.setTextColor(Color.parseColor("#000000"));*/
+        toast.show();
+    }
+
+    public static String  OrezString(String pStr){
+        return pStr.trim();
+    }
+
 }

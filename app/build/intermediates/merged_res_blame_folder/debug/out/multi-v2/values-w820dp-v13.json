@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.symbol.kepzetclient.app-mergeDebugResources-3:/values-w820dp-v13/values-w820dp-v13.xml",
+            "outputFile": "com.symbol.kepzetclient.app-mergeDebugResources-10:/values-w820dp-v13/values-w820dp-v13.xml",
             "map": [
                 {
                     "source": "D:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\src\\main\\res\\values-w820dp\\dimens.xml",

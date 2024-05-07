@@ -1,8 +1,42 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <!--        parent="android:Theme.Holo.Light.DarkActionBar">-->
+        <!-- android:Theme.Material.Light.DarkActionBar => Tmavy ActionBar bez IKONY-->
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Widget.AppTheme.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Widget.AppTheme.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <!--https://stackoverflow.com/questions/27240712/checkbox-radiobutton-doesnt-appear-properly-on-jellybean-devices-when-using-app -->
+    <style name="MyActivityTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:colorControlNormal">@color/green</item>
+        <item name="colorAccent">@color/green</item>
+        <item name = "android:windowActionBar">false</item>
+        <item name = "android:windowNoTitle">true</item>
+        <!--https://stackoverflow.com/questions/26266221/difference-between-androidwindowbackground-and-androidcolorbackground-->
+        <item name="android:windowBackground">@color/back</item>
+    </style>
+
+    <style name="Widget.Theme.KEPZETANDROIDCLIENT.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Widget.Theme.KEPZETANDROIDCLIENT.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
 
 </resources>
