@@ -1,16 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tabPosition">
+    tools:context=".tabPosition"
+    android:padding="8dp"
+    >
+
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/position_fragment"
-        android:textSize="30sp"
+        android:id="@+id/tvRtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/npR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/npR"
+        tools:layout_conversion_absoluteHeight="24dp"
+        tools:layout_conversion_absoluteWidth="15dp" />
+
+    <com.symbol.kepzetclient.HorizontalNumberPicker
+        android:id="@+id/npR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toEndOf="@id/tvRtext"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="117dp" />
+
+    <TextView
+        android:id="@+id/tvStext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="S:"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvRtext"
+        app:layout_constraintStart_toEndOf="@+id/npR"
+        tools:layout_conversion_absoluteHeight="24dp"
+        tools:layout_conversion_absoluteWidth="15dp"
         />
 
-</FrameLayout>
+    <com.symbol.kepzetclient.HorizontalNumberPicker
+        android:id="@+id/hnpS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tvStext"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="117dp" />
+
+    <Button
+        android:id="@+id/btnShowDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvPartNrText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/strPartNumberText"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etPartNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etPartNumber" />
+
+
+    <TextView
+        android:id="@+id/tvChannelText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/strChannelText"
+
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etChannel"
+        app:layout_constraintStart_toEndOf="@+id/etPartNumber"
+        app:layout_constraintTop_toTopOf="@+id/etChannel" />
+
+
+    <EditText
+        android:id="@+id/etPartNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="796.04.000.001234"
+        app:layout_constraintStart_toEndOf="@+id/tvPartNrText"
+        app:layout_constraintTop_toBottomOf="@+id/hnpS" />
+
+
+    <EditText
+        android:id="@+id/etChannel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:ems="2"
+        app:layout_constraintStart_toEndOf="@+id/tvChannelText"
+        app:layout_constraintTop_toBottomOf="@+id/btnShowDB" />
+
+    <TextView
+        android:id="@+id/tvPackPos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pack:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etPackPos"
+        app:layout_constraintStart_toStartOf="@+id/tvPartNrText"
+        app:layout_constraintTop_toTopOf="@+id/etPackPos" />
+
+    <EditText
+        android:id="@+id/etPackPos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="2"
+        android:inputType="text"
+        android:text="00"
+        app:layout_constraintStart_toEndOf="@+id/tvPackPos"
+        app:layout_constraintTop_toBottomOf="@+id/etPartNumber" />
+
+    <TextView
+        android:id="@+id/tvCountPos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="count"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etCountPos"
+        app:layout_constraintStart_toEndOf="@+id/etPackPos"
+        app:layout_constraintTop_toTopOf="@+id/etCountPos" />
+
+    <EditText
+        android:id="@+id/etCountPos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="2"
+        android:inputType="number"
+        android:text="00"
+        app:layout_constraintStart_toEndOf="@+id/tvCountPos"
+        app:layout_constraintTop_toBottomOf="@+id/etPartNumber" />
+
+    <Button
+        android:id="@+id/btnSavePos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="@+id/btnClose"
+        app:layout_constraintEnd_toStartOf="@+id/btnClose"
+        app:layout_constraintTop_toTopOf="@+id/btnClose" />
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".custom_components.SetupActivity"
+    android:padding="8dp"
+    >
+
+    <TextView
+        android:id="@+id/tvServerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Server"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+
+    <TextView
+        android:id="@+id/tvServerIpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="IP:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etServerIP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etServerIP" />
+
+    <EditText
+        android:id="@+id/etServerIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="10.0.0.123"
+        app:layout_constraintStart_toEndOf="@+id/tvServerIpText"
+        app:layout_constraintTop_toBottomOf="@+id/tvServerText" />
+
+    <TextView
+        android:id="@+id/tvServerPortText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Port:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/evServerPort"
+        app:layout_constraintStart_toEndOf="@+id/etServerIP"
+        app:layout_constraintTop_toTopOf="@+id/evServerPort" />
+
+    <EditText
+        android:id="@+id/evServerPort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="3"
+        android:inputType="text"
+                android:text="1234"
+        app:layout_constraintStart_toEndOf="@+id/tvServerPortText"
+        app:layout_constraintTop_toBottomOf="@+id/tvServerText" />
+
+    <TextView
+        android:id="@+id/tvClientText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Client"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etServerIP" />
+
+    <TextView
+        android:id="@+id/tvClientIPText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="IP:"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/etClientIp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etClientIp" />
+
+    <EditText
+        android:id="@+id/etClientIp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+
+        android:ems="10"
+        android:inputType="text"
+        android:text="10.0.0.321"
+        app:layout_constraintStart_toEndOf="@+id/tvClientIPText"
+        app:layout_constraintTop_toBottomOf="@+id/tvClientText" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Port:"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/etClientPort"
+        app:layout_constraintStart_toEndOf="@+id/etClientIp"
+        app:layout_constraintTop_toTopOf="@+id/etClientPort" />
+
+    <EditText
+        android:id="@+id/etClientPort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="3"
+        android:inputType="text"
+        android:text="4321"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="@+id/etClientIp" />
+
+    <TextView
+        android:id="@+id/tvResultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Result"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etClientIp" />
+
+    <TextView
+        android:id="@+id/tvTimText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Tim"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etTim"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etTim" />
+
+    <EditText
+        android:id="@+id/etTim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="4"
+        android:inputType="text"
+        android:text="1234567"
+        app:layout_constraintStart_toEndOf="@+id/tvTimText"
+        app:layout_constraintTop_toBottomOf="@+id/tvResultText" />
+
+    />
+
+    <com.symbol.kepzetclient.HorizontalNumberPicker
+        android:id="@+id/hnpVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/etTim"
+        app:layout_constraintStart_toEndOf="@+id/tvVolumeText"
+        app:layout_constraintTop_toTopOf="@+id/etTim" />
+
+    <TextView
+        android:id="@+id/tvVolumeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Volume"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/hnpVolume"
+        app:layout_constraintStart_toEndOf="@+id/etTim"
+        app:layout_constraintTop_toTopOf="@+id/hnpVolume" />
+
+    <TextView
+        android:id="@+id/tvChangePsdText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Change password"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTim" />
+
+    <TextView
+        android:id="@+id/tvPssPhraseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="passphrase not ide"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvChangePsdText"
+        app:layout_constraintStart_toEndOf="@+id/tvChangePsdText"
+        app:layout_constraintTop_toTopOf="@+id/tvChangePsdText" />
+
+    <TextView
+        android:id="@+id/tvPswdText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="NEW"
+        app:layout_constraintBottom_toBottomOf="@+id/etPswd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etPswd" />
+
+    <TextView
+        android:id="@+id/tvPswdText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEW"
+        app:layout_constraintBottom_toBottomOf="@+id/etPswd2"
+        app:layout_constraintStart_toEndOf="@+id/etPswd"
+        app:layout_constraintTop_toTopOf="@+id/etPswd2" />
+
+    <EditText
+        android:id="@+id/etPswd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="4"
+        android:inputType="text"
+        android:text="********"
+        app:layout_constraintStart_toEndOf="@+id/tvPswdText"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangePsdText" />
+
+    <EditText
+        android:id="@+id/etPswd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="4"
+        android:inputType="text"
+        android:text="********"
+
+        app:layout_constraintBottom_toBottomOf="@+id/etPswd"
+        app:layout_constraintStart_toEndOf="@+id/tvPswdText2"
+        app:layout_constraintTop_toTopOf="@+id/etPswd" />
+
+    <CheckBox
+        android:id="@+id/cbManualAcceptText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Alloe Manual Accept"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPswd" />
+
+    <TextView
+        android:id="@+id/tvIgnoreListText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Add to ignore list"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbManualAcceptText" />
+
+    <TextView
+        android:id="@+id/tvNoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="No"
+        app:layout_constraintBottom_toBottomOf="@+id/etNo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etNo" />
+
+    <EditText
+        android:id="@+id/etNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="6"
+        android:inputType="text"
+        android:text="123456"
+        app:layout_constraintStart_toEndOf="@+id/tvNoText"
+        app:layout_constraintTop_toBottomOf="@+id/tvIgnoreListText" />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Send"
+        app:layout_constraintBottom_toBottomOf="@+id/etNo"
+        app:layout_constraintStart_toEndOf="@+id/etNo"
+        app:layout_constraintTop_toTopOf="@+id/etNo" />
+
+    <TextView
+        android:id="@+id/tvRestartAppText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Restart app for changes to take effect"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNo" />
+
+    <Button
+        android:id="@+id/btnQuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="quit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRestartAppText" />
+
+    <Button
+        android:id="@+id/btnDbAccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dbAccess"
+        app:layout_constraintBottom_toBottomOf="@+id/btnQuit"
+        app:layout_constraintEnd_toEndOf="@+id/btnSend"
+        app:layout_constraintStart_toStartOf="@+id/btnSend"
+        app:layout_constraintTop_toTopOf="@+id/btnQuit" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancle"
+        app:layout_constraintStart_toStartOf="@+id/btnQuit"
+        app:layout_constraintTop_toBottomOf="@+id/btnQuit" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCancel"
+        app:layout_constraintEnd_toEndOf="@+id/btnDbAccess"
+        app:layout_constraintStart_toStartOf="@+id/btnDbAccess"
+        app:layout_constraintTop_toTopOf="@+id/btnCancel" />
+    />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,24 +10,25 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.widget.EditText;
 
-
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Preferences extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+
     //https://developer.android.com/guide/topics/ui/settings.html
     //http://www.cs.dartmouth.edu/~campbell/cs65/lecture12/lecture12.html
+    //NEW https://developer.android.com/develop/ui/views/components/settings#java
 
     public static final String KEY_PREF_SYNC_CONN = "pref_syncConnectionType";
     private static final String READ_ERROR = "Nepodarilo sa prečítať hodnotu!";
     public static PrefsFragment mPrefsFragment;
-    public static SharedPreferences sharedPref ;
+    public static SharedPreferences sharedPref;
     private AlertDialog.Builder etpDialog = null;
 
-
+    //PrefsFragment fragment definovany v ramci aktivity, ktora ho hostuje
     public static class PrefsFragment extends PreferenceFragment {
 
         @Override
@@ -51,13 +52,13 @@ public class Preferences extends AppCompatActivity implements SharedPreferences.
         //setTheme(android.R.style.Theme_Light);
         //setTheme(android.R.style.Theme_DeviceDefault_Light);//zelene detaily
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
         //####################################################
         //getSupportActionBar().setIcon(R.mipmap.slon_round);
         //####################################################
 
         // add back arrow to toolbar
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
@@ -83,7 +84,7 @@ public class Preferences extends AppCompatActivity implements SharedPreferences.
 
     //dialogove okno pre zadanie hesla
     //pText - predvolene heslo
-    void inicializujEtpDialog(String pText){
+    void inicializujEtpDialog(String pText) {
         etpDialog.setTitle("Vaše heslo");
         etpDialog.setMessage("\n do podnikového systému NASA/STOPLUP");
 
@@ -172,9 +173,9 @@ public class Preferences extends AppCompatActivity implements SharedPreferences.
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         String string = null;
         Preference connectionPref = mPrefsFragment.findPreference(key);
-        switch (key){
+        switch (key) {
             case "db_server":
-                string  = sharedPreferences.getString(key, READ_ERROR);
+                string = sharedPreferences.getString(key, READ_ERROR);
                 //GetData.AktualizujConnection();
                 break;
             case "max_time_before_syn":
@@ -183,11 +184,13 @@ public class Preferences extends AppCompatActivity implements SharedPreferences.
                 break;
             case "syn_after_start":
                 Boolean bool = sharedPref.getBoolean("syn_after_start", false);
-                if (bool) string = "ÁNO"; else string = "NIE";
+                if (bool) string = "ÁNO";
+                else string = "NIE";
                 break;
             case "syn_after_multi":
                 bool = sharedPref.getBoolean("syn_after_multi", false);
-                if (bool) string = "ÁNO"; else string = "NIE";
+                if (bool) string = "ÁNO";
+                else string = "NIE";
                 break;
             case "user_login":
                 string = sharedPref.getString("user_login", READ_ERROR);
@@ -199,17 +202,18 @@ public class Preferences extends AppCompatActivity implements SharedPreferences.
                 //int pos = screen.findPreference("user_login").getOrder();
 
                 //otvorenie textview-u s posswordom pri zmene prihlasovacieho mena
-                screen.onItemClick( null, null, 7, 0 );
+                screen.onItemClick(null, null, 7, 0);
                 break;
             case "user_pass":
                 string = sharedPref.getString("user_pass", "");
                 //ak da uzivatel pred heslo alebo za heslo medzeru alebo enter treba ich odstranit
-                if (!string.equals(Helpers.OrezString(string))){
+                if (!string.equals(Helpers.OrezString(string))) {
                     savePref("user_pass", string.trim());
                     break;
                 }
 
-                if (string.contentEquals(""))  string = "NEZADANÉ"; else string = dajHviezdicky(string);
+                if (string.contentEquals("")) string = "NEZADANÉ";
+                else string = dajHviezdicky(string);
                 //new Prihlasenie().execute(sharedPref.getString("user_login", READ_ERROR),sharedPref.getString("user_pass", READ_ERROR));
                 //((MainActivity2)MainActivity2.getContextOfApplication()).synchronizujsDB();
                 //((MainActivity2)getApplicationContext()).synchronizujsDB();
@@ -218,22 +222,22 @@ public class Preferences extends AppCompatActivity implements SharedPreferences.
         connectionPref.setSummary(string);
     }
 
-    private PreferenceScreen findPreferenceScreenForPreference( String key, PreferenceScreen screen ) {
-        if( screen == null ) {
+    private PreferenceScreen findPreferenceScreenForPreference(String key, PreferenceScreen screen) {
+        if (screen == null) {
             screen = mPrefsFragment.getPreferenceScreen();
         }
 
         PreferenceScreen result = null;
 
         android.widget.Adapter ada = screen.getRootAdapter();
-        for( int i = 0; i < ada.getCount(); i++ ) {
-            String prefKey = ((Preference)ada.getItem(i)).getKey();
-            if( prefKey != null && prefKey.equals( key ) ) {
+        for (int i = 0; i < ada.getCount(); i++) {
+            String prefKey = ((Preference) ada.getItem(i)).getKey();
+            if (prefKey != null && prefKey.equals(key)) {
                 return screen;
             }
-            if( ada.getItem(i).getClass().equals(android.preference.PreferenceScreen.class) ) {
-                result = findPreferenceScreenForPreference( key, (PreferenceScreen) ada.getItem(i) );
-                if( result != null ) {
+            if (ada.getItem(i).getClass().equals(android.preference.PreferenceScreen.class)) {
+                result = findPreferenceScreenForPreference(key, (PreferenceScreen) ada.getItem(i));
+                if (result != null) {
                     return result;
                 }
             }
@@ -242,18 +246,16 @@ public class Preferences extends AppCompatActivity implements SharedPreferences.
     }
 
 
-
-
-    private String dajHviezdicky(String pString){
+    private String dajHviezdicky(String pString) {
 
         StringBuffer SB = new StringBuffer(pString.length());
-        for (int i = 0; i<pString.length(); i++) {
+        for (int i = 0; i < pString.length(); i++) {
             SB.append('*');
         }
         return SB.toString();
     }
 
-    private void setSumary(Preference pPref, String pString){
+    private void setSumary(Preference pPref, String pString) {
         pPref.setSummary(pString);
 
         //Ma sharedPref.getAll()

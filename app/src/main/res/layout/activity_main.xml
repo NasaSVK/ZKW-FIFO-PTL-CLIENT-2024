@@ -7,7 +7,6 @@
     tools:context="com.symbol.kepzetclient.MainActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -21,7 +20,6 @@
             android:visibility="gone">
 
             <TextView
-                android:id="@+id/textViewSS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Scanner Type: " />
@@ -117,7 +115,6 @@
                 android:textSize="18dp">
 
                 <TextView
-                    android:id="@+id/tvBarcodeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
@@ -140,7 +137,6 @@
                 android:textSize="18dp">
 
                 <TextView
-                    android:id="@+id/tvFirstPalletText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
@@ -148,7 +144,6 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tvFirstPallet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
@@ -163,7 +158,6 @@
                 android:textSize="18dp">
 
                 <TextView
-                    android:id="@+id/tvPartNumberText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
@@ -171,7 +165,6 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tvPartNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
@@ -185,7 +178,6 @@
                 android:textSize="18dp">
 
                 <TextView
-                    android:id="@+id/tvPositionText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
@@ -193,7 +185,6 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tvPositon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
@@ -207,7 +198,6 @@
                 android:textSize="18dp">
 
                 <TextView
-                    android:id="@+id/tvMultiPackText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
@@ -218,28 +208,24 @@
 
                     <TableRow>
                         <TextView
-                            android:id="@+id/tvMultiPack1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 01"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
-                            android:id="@+id/tvMultiPack2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 02"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
-                            android:id="@+id/tvMultiPack3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 03"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
-                            android:id="@+id/tvMultiPack4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 04"
@@ -250,7 +236,6 @@
 
                     <TableRow>
                         <TextView
-                            android:id="@+id/tvMultiPack5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 05"
@@ -259,7 +244,6 @@
                             android:layout_marginRight="6sp"
                             />
                         <TextView
-                            android:id="@+id/tvMultiPack6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 06"
@@ -267,7 +251,6 @@
                             android:textStyle="bold"
                             android:layout_marginRight="6sp"/>
                         <TextView
-                            android:id="@+id/tvMultiPack7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 07"
@@ -276,7 +259,6 @@
                             android:layout_marginRight="6sp"
                             />
                         <TextView
-                            android:id="@+id/tvMultiPack8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 08"
@@ -287,7 +269,6 @@
                     </TableRow>
                     <TableRow>
                         <TextView
-                            android:id="@+id/tvMultiPack9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 09"
@@ -296,7 +277,6 @@
                             android:layout_marginRight="4sp"
                             />
                         <TextView
-                            android:id="@+id/tvMultiPack10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 10"
@@ -304,7 +284,6 @@
                             android:textStyle="bold"
                             android:layout_marginRight="4sp"/>
                         <TextView
-                            android:id="@+id/tvMultiPack11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 11"
@@ -313,7 +292,6 @@
                             android:layout_marginRight="4sp"
                             />
                         <TextView
-                            android:id="@+id/tvMultiPack12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 12"
@@ -329,7 +307,6 @@
         </TableLayout>
 
         <TextView
-            android:id="@+id/tvStatusNOK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -352,14 +329,12 @@
                 android:layout_height="match_parent">
 
                 <CheckBox
-                    android:id="@+id/checkBoxLead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="lead" />
 
                 <Button
-                    android:id="@+id/buttonAccept"
                     android:layout_width="match_parent"
                     android:layout_height="40sp"
                     android:width="100dp"
@@ -374,7 +349,6 @@
                 android:layout_height="match_parent">
 
                 <CheckBox
-                    android:id="@+id/checkBoxClear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="1"
@@ -382,20 +356,20 @@
                     android:text="clear" />
 
                 <Button
-                    android:id="@+id/btnSetup"
                     android:layout_width="wrap_content"
                     android:layout_height="40sp"
                     android:width="100dp"
                     android:text="Setup"
                     android:textSize="16sp"
-                    android:onClick="clkSetup"/>
+
+                    android:onClick="clkSetup"
+                    />
 
             </TableRow>
 
         </TableLayout>
 
         <TextView
-            android:id="@+id/textViewD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
@@ -403,7 +377,6 @@
             android:textSize="14sp" />
 
         <ScrollView
-            android:id="@+id/scrollViewData"
             android:layout_width="match_parent"
             android:layout_height="100sp">
 
@@ -426,7 +399,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/twWarehouse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -438,7 +410,6 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/buttonScan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="softScan"
@@ -455,7 +426,6 @@
         app:layout_constraintLeft_toLeftOf="parent">
 
         <TextView
-            android:id="@+id/textViewS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Status: " />

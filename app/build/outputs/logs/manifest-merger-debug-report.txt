@@ -1,41 +1,56 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-38:12
-MERGED from [com.android.databinding:viewbinding:8.2.2] C:\Users\duracer\.gradle\caches\transforms-3\4d6df18fcc38fe333d8abd9e1b914739\transformed\viewbinding-8.2.2\AndroidManifest.xml:2:1-7:12
-MERGED from [com.android.support:design:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ce0d25526a5684441d3a81287eb78106\transformed\design-28.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\f69927cff9061e3ccfb0a95081e8c011\transformed\appcompat-v7-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\95700a47c16cbc91c192fcebfc58d507\transformed\support-fragment-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\a75e7649da0d4f23a7f76c49485add41\transformed\animated-vector-drawable-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\9148573b3d008edc9173267a1dc52457\transformed\recyclerview-v7-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\d1635c9eae6ec6e189c45d1639dd1ae7\transformed\support-core-ui-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\cfeea4e4a21113c847770dbed1a1cba3\transformed\support-core-utils-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:loader:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\aea28ae9231967041ac4334bc3992e47\transformed\loader-28.0.0\AndroidManifest.xml:17:1-22:12
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:1-39:12
+MERGED from [androidx.databinding:viewbinding:8.2.2] C:\Users\duracer\.gradle\caches\transforms-3\3d1d85e86a412f309cd716f5f34731cf\transformed\viewbinding-8.2.2\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\duracer\.gradle\caches\transforms-3\c519f8a2a01621c4a4ba79b664880c39\transformed\material-1.3.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\882b4d6e8ecea429da5fee5c5c9c2885\transformed\viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\111650b7113cb479148091af7f0d3083\transformed\livedata-1.1.1\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\35ebe3ca9432b3482126140a27d65c05\transformed\viewmodel-1.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\duracer\.gradle\caches\transforms-3\1f371f754bd6786f9a76f8e2fd18482b\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\duracer\.gradle\caches\transforms-3\dd8395924473b069ee7a6f1edc69d57d\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\duracer\.gradle\caches\transforms-3\60f9bab79c5ba5b4c82ae8c6a17130c1\transformed\appcompat-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.8.0] C:\Users\duracer\.gradle\caches\transforms-3\084187a330d55983d88b2ae2a921cae5\transformed\fragment-1.8.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ab620463462e0f419f905989207689fa\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\46f0d30776f6c01a97124eeedf1d5fb3\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\a2a50d69ebc015920ec035e0bbafd794\transformed\transition-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\e6a92957c41119f7d421c0119c2e6f34\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\ef4b43cde6ffa80bb85b5556796e260f\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\e3eef4b78bf0d50dbb2eee57d07da5bb\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\b6ccaaa51a50af81f5e8f08253475fc5\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.8.1] C:\Users\duracer\.gradle\caches\transforms-3\05552b78e0a4643e7408bb9ea29cc67f\transformed\activity-1.8.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\6223ac4d51f7090ffd0876482500d5d4\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\00aa9a3069e0cde8b054557f0ce2818e\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ecc01097548ca6b1d9bda4d78f8f9e78\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ef4f5dd96aab1e7c6b5c5a20a0e2e8f9\transformed\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\a0783a4aad1423c640df7fa1ce730c6c\transformed\emoji2-views-helper-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\59381a2ffc2e39e4a7ece10200fa7b0b\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\duracer\.gradle\caches\transforms-3\e5f02973c17037b0afe8170a4ee09dd5\transformed\savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\b35b3f521b6f7bffe90d51f136acd082\transformed\lifecycle-livedata-2.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\b43bb4729ad46bf9ba31544a5f3cc09a\transformed\lifecycle-viewmodel-2.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\529959e7f38ccab955672ebfd50753ce\transformed\lifecycle-livedata-core-2.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\606b96858f3f003d578580e8e1bc2146\transformed\lifecycle-runtime-2.6.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\89d1325dd3a29aef9763e951f9daf11a\transformed\lifecycle-viewmodel-savedstate-2.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\74a90bc978a3a5072315d6846eab8a67\transformed\core-ktx-1.9.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\ec2eb3840be362e74ab25570b26da47c\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\cc5864e7246f1915b286166ab44dd839\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\duracer\.gradle\caches\transforms-3\2dc81d4b15c8e076c83c13b022c1ba02\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\cc2fd32867bc89441d11193b7ce32ccb\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\8424447ca8cab46658edeeaf48126906\transformed\tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\225b7cf18fe920e654bd761ce8f186d2\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\2e49548e557ad3d981e0f53424b0c757\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\26cba1aa8eac156f95f722a31a02fb2f\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\04b9300f1b6b6f317cfdfa2969044fa2\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\d11dda0cfbbb1f8e9966198653d417a6\transformed\support-vector-drawable-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:transition:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\3cdd5cd937c7c25a014f4b0863ef82d5\transformed\transition-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:viewpager:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\c42e514fe3b7532bf25d69cd6bf6e763\transformed\viewpager-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\d82348bb04d2dda6768ae361070cb391\transformed\coordinatorlayout-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\3a171db1dbcdd0dff5eeeb7612058e2a\transformed\drawerlayout-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\01426c16bee1c5af87ccc6ffbbae3aaa\transformed\slidingpanelayout-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:customview:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\8dd016f9ec7859380474d31ee929ebcd\transformed\customview-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\644c00921591f3275994cf5fb3c14bb2\transformed\swiperefreshlayout-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ff5d4a49408e21e964f95a37de1b683e\transformed\asynclayoutinflater-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\f4c338b9de01ec0e868a49eb0cd6e827\transformed\support-compat-28.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\edf373637b0bb84c0083a3fd9b5d8fbe\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:17:1-25:12
-MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\a11a025fc1c8bfbd7de2b6a810d00957\transformed\cursoradapter-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\82168f2b9cfdf1688f6d54915d05a096\transformed\cardview-v7-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\duracer\.gradle\caches\transforms-3\dff582b37db6d400c31ea4e3033b5841\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\899e2e9e4edabed1bcc89fa9c5134514\transformed\livedata-core-1.1.1\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\46d1096e3146b2d2727d4aeb1b56c8df\transformed\runtime-1.1.1\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\03dc770feedf1b549026e5ea2253a12d\transformed\runtime-1.1.1\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:documentfile:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ab3cb2b9722638c160c8e5986515eca1\transformed\documentfile-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\a15cc399ddde63742fc17939ec2289a5\transformed\localbroadcastmanager-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:print:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\922d678dcd3e01959eb5fa88a4bc328b\transformed\print-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\bd61ea31f51a0645666268970ce528f6\transformed\interpolator-28.0.0\AndroidManifest.xml:17:1-22:12
 	package
 		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -47,143 +62,281 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\duracer\.gradle\c
 	xmlns:android
 		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#com.symbol.emdk.permission.EMDK
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:4:5-71
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:5:5-71
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:4:22-68
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:5:22-68
 application
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:5:5-36:19
-INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:5:5-36:19
-MERGED from [com.android.support:design:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ce0d25526a5684441d3a81287eb78106\transformed\design-28.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:design:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ce0d25526a5684441d3a81287eb78106\transformed\design-28.0.0\AndroidManifest.xml:22:5-20
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:7:5-37:19
+INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:7:5-37:19
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\duracer\.gradle\caches\transforms-3\c519f8a2a01621c4a4ba79b664880c39\transformed\material-1.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\duracer\.gradle\caches\transforms-3\c519f8a2a01621c4a4ba79b664880c39\transformed\material-1.3.0\AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\duracer\.gradle\caches\transforms-3\1f371f754bd6786f9a76f8e2fd18482b\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\duracer\.gradle\caches\transforms-3\1f371f754bd6786f9a76f8e2fd18482b\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\ec2eb3840be362e74ab25570b26da47c\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\ec2eb3840be362e74ab25570b26da47c\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\cc2fd32867bc89441d11193b7ce32ccb\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\cc2fd32867bc89441d11193b7ce32ccb\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\f4c338b9de01ec0e868a49eb0cd6e827\transformed\support-compat-28.0.0\AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\f4c338b9de01ec0e868a49eb0cd6e827\transformed\support-compat-28.0.0\AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\edf373637b0bb84c0083a3fd9b5d8fbe\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\edf373637b0bb84c0083a3fd9b5d8fbe\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:22:5-23:19
 	android:extractNativeLibs
 		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
-		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\f4c338b9de01ec0e868a49eb0cd6e827\transformed\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+		ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 	android:label
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:8:9-41
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:10:9-41
 	android:icon
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:7:9-43
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:9:9-43
 	android:allowBackup
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:8:9-35
+activity#com.symbol.kepzetclient.custom_components.SetupActivity
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:11:9-15:15
+	android:exported
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:13:13-37
+	android:theme
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:14:13-51
+	android:name
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:12:13-60
 activity#com.symbol.kepzetclient.DbActivity
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:10:9-14:15
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:16:9-19:54
 	android:exported
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:12:13-37
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:18:13-37
 	android:theme
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:13:13-51
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:19:13-51
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:11:13-39
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:17:13-39
 activity#com.symbol.kepzetclient.MainActivity
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:16:9-25:20
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:20:9-28:20
 	android:label
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:18:13-46
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:22:13-46
 	android:theme
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:19:13-44
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:23:13-44
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:17:13-41
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:21:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:20:13-24:29
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:24:13-27:29
 action#android.intent.action.MAIN
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:23:17-77
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:23:27-74
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:26:27-74
 activity#com.symbol.kepzetclient.Preferences
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:27:9-33:54
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:29:9-35:54
 	android:screenOrientation
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:32:13-49
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:34:13-49
 	android:label
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:31:13-63
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:33:13-63
 	android:exported
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:30:13-37
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:32:13-37
 	android:configChanges
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:29:13-74
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:31:13-74
 	android:theme
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:33:13-51
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:35:13-51
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:28:13-40
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:30:13-40
 uses-library#com.symbol.emdk
-ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:35:9-56
+ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:36:9-56
 	android:name
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:35:23-53
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:36:23-53
 uses-sdk
 INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
-MERGED from [com.android.databinding:viewbinding:8.2.2] C:\Users\duracer\.gradle\caches\transforms-3\4d6df18fcc38fe333d8abd9e1b914739\transformed\viewbinding-8.2.2\AndroidManifest.xml:5:5-44
-MERGED from [com.android.databinding:viewbinding:8.2.2] C:\Users\duracer\.gradle\caches\transforms-3\4d6df18fcc38fe333d8abd9e1b914739\transformed\viewbinding-8.2.2\AndroidManifest.xml:5:5-44
-MERGED from [com.android.support:design:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ce0d25526a5684441d3a81287eb78106\transformed\design-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:design:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ce0d25526a5684441d3a81287eb78106\transformed\design-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\f69927cff9061e3ccfb0a95081e8c011\transformed\appcompat-v7-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\f69927cff9061e3ccfb0a95081e8c011\transformed\appcompat-v7-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\95700a47c16cbc91c192fcebfc58d507\transformed\support-fragment-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\95700a47c16cbc91c192fcebfc58d507\transformed\support-fragment-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\a75e7649da0d4f23a7f76c49485add41\transformed\animated-vector-drawable-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\a75e7649da0d4f23a7f76c49485add41\transformed\animated-vector-drawable-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\9148573b3d008edc9173267a1dc52457\transformed\recyclerview-v7-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\9148573b3d008edc9173267a1dc52457\transformed\recyclerview-v7-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\d1635c9eae6ec6e189c45d1639dd1ae7\transformed\support-core-ui-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\d1635c9eae6ec6e189c45d1639dd1ae7\transformed\support-core-ui-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\cfeea4e4a21113c847770dbed1a1cba3\transformed\support-core-utils-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\cfeea4e4a21113c847770dbed1a1cba3\transformed\support-core-utils-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:loader:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\aea28ae9231967041ac4334bc3992e47\transformed\loader-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:loader:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\aea28ae9231967041ac4334bc3992e47\transformed\loader-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.databinding:viewbinding:8.2.2] C:\Users\duracer\.gradle\caches\transforms-3\3d1d85e86a412f309cd716f5f34731cf\transformed\viewbinding-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.2.2] C:\Users\duracer\.gradle\caches\transforms-3\3d1d85e86a412f309cd716f5f34731cf\transformed\viewbinding-8.2.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\duracer\.gradle\caches\transforms-3\c519f8a2a01621c4a4ba79b664880c39\transformed\material-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\duracer\.gradle\caches\transforms-3\c519f8a2a01621c4a4ba79b664880c39\transformed\material-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\882b4d6e8ecea429da5fee5c5c9c2885\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\882b4d6e8ecea429da5fee5c5c9c2885\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\111650b7113cb479148091af7f0d3083\transformed\livedata-1.1.1\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\111650b7113cb479148091af7f0d3083\transformed\livedata-1.1.1\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\35ebe3ca9432b3482126140a27d65c05\transformed\viewmodel-1.1.1\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\35ebe3ca9432b3482126140a27d65c05\transformed\viewmodel-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\duracer\.gradle\caches\transforms-3\1f371f754bd6786f9a76f8e2fd18482b\transformed\constraintlayout-2.1.4\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\duracer\.gradle\caches\transforms-3\1f371f754bd6786f9a76f8e2fd18482b\transformed\constraintlayout-2.1.4\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\duracer\.gradle\caches\transforms-3\dd8395924473b069ee7a6f1edc69d57d\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\duracer\.gradle\caches\transforms-3\dd8395924473b069ee7a6f1edc69d57d\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\duracer\.gradle\caches\transforms-3\60f9bab79c5ba5b4c82ae8c6a17130c1\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\duracer\.gradle\caches\transforms-3\60f9bab79c5ba5b4c82ae8c6a17130c1\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.8.0] C:\Users\duracer\.gradle\caches\transforms-3\084187a330d55983d88b2ae2a921cae5\transformed\fragment-1.8.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.fragment:fragment:1.8.0] C:\Users\duracer\.gradle\caches\transforms-3\084187a330d55983d88b2ae2a921cae5\transformed\fragment-1.8.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ab620463462e0f419f905989207689fa\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ab620463462e0f419f905989207689fa\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\46f0d30776f6c01a97124eeedf1d5fb3\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\46f0d30776f6c01a97124eeedf1d5fb3\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\a2a50d69ebc015920ec035e0bbafd794\transformed\transition-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\a2a50d69ebc015920ec035e0bbafd794\transformed\transition-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\e6a92957c41119f7d421c0119c2e6f34\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\e6a92957c41119f7d421c0119c2e6f34\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\ef4b43cde6ffa80bb85b5556796e260f\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\ef4b43cde6ffa80bb85b5556796e260f\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\e3eef4b78bf0d50dbb2eee57d07da5bb\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\duracer\.gradle\caches\transforms-3\e3eef4b78bf0d50dbb2eee57d07da5bb\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\b6ccaaa51a50af81f5e8f08253475fc5\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\b6ccaaa51a50af81f5e8f08253475fc5\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.1] C:\Users\duracer\.gradle\caches\transforms-3\05552b78e0a4643e7408bb9ea29cc67f\transformed\activity-1.8.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.1] C:\Users\duracer\.gradle\caches\transforms-3\05552b78e0a4643e7408bb9ea29cc67f\transformed\activity-1.8.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\6223ac4d51f7090ffd0876482500d5d4\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\6223ac4d51f7090ffd0876482500d5d4\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\00aa9a3069e0cde8b054557f0ce2818e\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\00aa9a3069e0cde8b054557f0ce2818e\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ecc01097548ca6b1d9bda4d78f8f9e78\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ecc01097548ca6b1d9bda4d78f8f9e78\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ef4f5dd96aab1e7c6b5c5a20a0e2e8f9\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ef4f5dd96aab1e7c6b5c5a20a0e2e8f9\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\a0783a4aad1423c640df7fa1ce730c6c\transformed\emoji2-views-helper-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\a0783a4aad1423c640df7fa1ce730c6c\transformed\emoji2-views-helper-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\59381a2ffc2e39e4a7ece10200fa7b0b\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\59381a2ffc2e39e4a7ece10200fa7b0b\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\duracer\.gradle\caches\transforms-3\e5f02973c17037b0afe8170a4ee09dd5\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\duracer\.gradle\caches\transforms-3\e5f02973c17037b0afe8170a4ee09dd5\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\b35b3f521b6f7bffe90d51f136acd082\transformed\lifecycle-livedata-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\b35b3f521b6f7bffe90d51f136acd082\transformed\lifecycle-livedata-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\b43bb4729ad46bf9ba31544a5f3cc09a\transformed\lifecycle-viewmodel-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\b43bb4729ad46bf9ba31544a5f3cc09a\transformed\lifecycle-viewmodel-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\529959e7f38ccab955672ebfd50753ce\transformed\lifecycle-livedata-core-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\529959e7f38ccab955672ebfd50753ce\transformed\lifecycle-livedata-core-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\606b96858f3f003d578580e8e1bc2146\transformed\lifecycle-runtime-2.6.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\606b96858f3f003d578580e8e1bc2146\transformed\lifecycle-runtime-2.6.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\89d1325dd3a29aef9763e951f9daf11a\transformed\lifecycle-viewmodel-savedstate-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\89d1325dd3a29aef9763e951f9daf11a\transformed\lifecycle-viewmodel-savedstate-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\74a90bc978a3a5072315d6846eab8a67\transformed\core-ktx-1.9.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\74a90bc978a3a5072315d6846eab8a67\transformed\core-ktx-1.9.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\ec2eb3840be362e74ab25570b26da47c\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\ec2eb3840be362e74ab25570b26da47c\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\cc5864e7246f1915b286166ab44dd839\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\cc5864e7246f1915b286166ab44dd839\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\duracer\.gradle\caches\transforms-3\2dc81d4b15c8e076c83c13b022c1ba02\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\duracer\.gradle\caches\transforms-3\2dc81d4b15c8e076c83c13b022c1ba02\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\cc2fd32867bc89441d11193b7ce32ccb\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\cc2fd32867bc89441d11193b7ce32ccb\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\8424447ca8cab46658edeeaf48126906\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\8424447ca8cab46658edeeaf48126906\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\225b7cf18fe920e654bd761ce8f186d2\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\225b7cf18fe920e654bd761ce8f186d2\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\2e49548e557ad3d981e0f53424b0c757\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\2e49548e557ad3d981e0f53424b0c757\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\26cba1aa8eac156f95f722a31a02fb2f\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\26cba1aa8eac156f95f722a31a02fb2f\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\04b9300f1b6b6f317cfdfa2969044fa2\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\duracer\.gradle\caches\transforms-3\04b9300f1b6b6f317cfdfa2969044fa2\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\duracer\.gradle\caches\transforms-3\2c4f0181772097545150400f5e749d30\transformed\constraint-layout-1.1.3\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\d11dda0cfbbb1f8e9966198653d417a6\transformed\support-vector-drawable-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\d11dda0cfbbb1f8e9966198653d417a6\transformed\support-vector-drawable-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\3cdd5cd937c7c25a014f4b0863ef82d5\transformed\transition-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\3cdd5cd937c7c25a014f4b0863ef82d5\transformed\transition-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:viewpager:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\c42e514fe3b7532bf25d69cd6bf6e763\transformed\viewpager-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:viewpager:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\c42e514fe3b7532bf25d69cd6bf6e763\transformed\viewpager-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\d82348bb04d2dda6768ae361070cb391\transformed\coordinatorlayout-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\d82348bb04d2dda6768ae361070cb391\transformed\coordinatorlayout-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\3a171db1dbcdd0dff5eeeb7612058e2a\transformed\drawerlayout-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\3a171db1dbcdd0dff5eeeb7612058e2a\transformed\drawerlayout-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\01426c16bee1c5af87ccc6ffbbae3aaa\transformed\slidingpanelayout-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\01426c16bee1c5af87ccc6ffbbae3aaa\transformed\slidingpanelayout-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customview:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\8dd016f9ec7859380474d31ee929ebcd\transformed\customview-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customview:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\8dd016f9ec7859380474d31ee929ebcd\transformed\customview-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\644c00921591f3275994cf5fb3c14bb2\transformed\swiperefreshlayout-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\644c00921591f3275994cf5fb3c14bb2\transformed\swiperefreshlayout-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ff5d4a49408e21e964f95a37de1b683e\transformed\asynclayoutinflater-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ff5d4a49408e21e964f95a37de1b683e\transformed\asynclayoutinflater-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\f4c338b9de01ec0e868a49eb0cd6e827\transformed\support-compat-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\f4c338b9de01ec0e868a49eb0cd6e827\transformed\support-compat-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\edf373637b0bb84c0083a3fd9b5d8fbe\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\edf373637b0bb84c0083a3fd9b5d8fbe\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\a11a025fc1c8bfbd7de2b6a810d00957\transformed\cursoradapter-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\a11a025fc1c8bfbd7de2b6a810d00957\transformed\cursoradapter-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\82168f2b9cfdf1688f6d54915d05a096\transformed\cardview-v7-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\82168f2b9cfdf1688f6d54915d05a096\transformed\cardview-v7-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\duracer\.gradle\caches\transforms-3\dff582b37db6d400c31ea4e3033b5841\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\duracer\.gradle\caches\transforms-3\dff582b37db6d400c31ea4e3033b5841\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\899e2e9e4edabed1bcc89fa9c5134514\transformed\livedata-core-1.1.1\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\899e2e9e4edabed1bcc89fa9c5134514\transformed\livedata-core-1.1.1\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\46d1096e3146b2d2727d4aeb1b56c8df\transformed\runtime-1.1.1\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\46d1096e3146b2d2727d4aeb1b56c8df\transformed\runtime-1.1.1\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\03dc770feedf1b549026e5ea2253a12d\transformed\runtime-1.1.1\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\03dc770feedf1b549026e5ea2253a12d\transformed\runtime-1.1.1\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:documentfile:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ab3cb2b9722638c160c8e5986515eca1\transformed\documentfile-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:documentfile:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\ab3cb2b9722638c160c8e5986515eca1\transformed\documentfile-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\a15cc399ddde63742fc17939ec2289a5\transformed\localbroadcastmanager-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\a15cc399ddde63742fc17939ec2289a5\transformed\localbroadcastmanager-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:print:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\922d678dcd3e01959eb5fa88a4bc328b\transformed\print-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:print:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\922d678dcd3e01959eb5fa88a4bc328b\transformed\print-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\bd61ea31f51a0645666268970ce528f6\transformed\interpolator-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\duracer\.gradle\caches\transforms-3\bd61ea31f51a0645666268970ce528f6\transformed\interpolator-28.0.0\AndroidManifest.xml:20:5-44
 	android:targetSdkVersion
 		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\cc2fd32867bc89441d11193b7ce32ccb\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\duracer\.gradle\caches\transforms-3\cc2fd32867bc89441d11193b7ce32ccb\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\duracer\.gradle\caches\transforms-3\8c09915ed6a0dc01715a9483156714de\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+permission#com.symbol.kepzetclient.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+uses-permission#com.symbol.kepzetclient.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.9.0] C:\Users\duracer\.gradle\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92

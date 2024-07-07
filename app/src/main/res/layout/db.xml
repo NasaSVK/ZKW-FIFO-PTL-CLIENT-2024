@@ -9,52 +9,72 @@
              tools:context=".DbActivity">
 <!--                  <com.google.android.material.tabs.TabLayout>-->
 <!--                  </com.google.android.material.tabs.TabLayout>-->
+<!--                <android.support.design.widget.TabLayout-->
 <!--                    https://www.youtube.com/watch?v=LXl7D57fgOQ&t=42s          -->
-                    <android.support.design.widget.TabLayout
-                              android:id="@+id/tabLayout"
+                    <com.google.android.material.tabs.TabLayout
                               android:layout_width="match_parent"
                               android:layout_height="wrap_content"
-                          >
+                              android:id = "@+id/tabLayout">
 
-                              <android.support.design.widget.TabItem
+                              <com.google.android.material.tabs.TabItem
                                   android:layout_width="wrap_content"
                                   android:layout_height="wrap_content"
                                   android:text="@string/search">
 
-                                  <Button
-                                      android:id="@+id/buttonScan"
-                                      android:layout_width="match_parent"
-                                      android:layout_height="wrap_content"
-                                      android:text="TEST"
-                                       />
-                              </android.support.design.widget.TabItem>
+<!--                                  <androidx.fragment.app.FragmentContainerView-->
+<!--                                      xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--                                      android:id="@+id/fragment_container_view_search"-->
+<!--                                      android:layout_width="match_parent"-->
+<!--                                      android:layout_height="match_parent"-->
+<!--                                      android:name="com.symbol.kepzetclient.tabSearch" />-->
+                              </com.google.android.material.tabs.TabItem>
 <!--                          android:icon="@drawable/ic_favorite_24db"-->
 
-                              <android.support.design.widget.TabItem
+                        <com.google.android.material.tabs.TabItem
                                   android:layout_width="wrap_content"
                                   android:layout_height="wrap_content"
-                                  android:text="@string/dbAccess"
-                                  />
+                                  android:text="@string/dbAccess">
+<!--                                <androidx.fragment.app.FragmentContainerView-->
+<!--                                    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--                                    android:id="@+id/fragment_container_view_dbaccess"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:name="com.symbol.kepzetclient.tabDbAccess" />-->
+                        </com.google.android.material.tabs.TabItem>
+
 <!--                          android:icon="@drawable/baseline_search_24"-->
 
-                              <android.support.design.widget.TabItem
+                              <com.google.android.material.tabs.TabItem
                                   android:layout_width="wrap_content"
                                   android:layout_height="wrap_content"
-                                  android:text="@string/position"
-                                  />
+                                  android:text="@string/position">
+<!--                                  <androidx.fragment.app.FragmentContainerView-->
+<!--                                      xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--                                      android:id="@+id/fragment_container_view_position"-->
+<!--                                      android:layout_width="match_parent"-->
+<!--                                      android:layout_height="match_parent"-->
+<!--                                      android:name="com.symbol.kepzetclient.tabPosition" />-->
+
+                              </com.google.android.material.tabs.TabItem>
 <!--                          android:icon="@drawable/my_star_24"-->
 
-                              <android.support.design.widget.TabItem
+                              <com.google.android.material.tabs.TabItem
                                   android:layout_width="wrap_content"
                                   android:layout_height="wrap_content"
-                                  android:text="@string/age"
-                                  />
+                                  android:text="@string/age">
+<!--                                  <androidx.fragment.app.FragmentContainerView-->
+<!--                                      xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--                                      android:id="@+id/fragment_container_view_age"-->
+<!--                                      android:layout_width="match_parent"-->
+<!--                                      android:layout_height="match_parent"-->
+<!--                                      android:name="com.symbol.kepzetclient.tabAge" />-->
+                              </com.google.android.material.tabs.TabItem>
 
-                  </android.support.design.widget.TabLayout>
+                  </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
 </LinearLayout>

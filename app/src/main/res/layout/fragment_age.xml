@@ -1,16 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AgeFragment">
+    android:padding="8dp"
+    tools:context=".tabAge">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/age_fragment"
-        android:textSize="30sp"
-        />
+        android:id="@+id/tvPartNrText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PartNr:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextText" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:inputType="text"
+        android:text="796.04.000.001234"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvPartNrText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnRefreshAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="refresh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+    <TextView
+        android:id="@+id/tvAgeCheckAgeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age Check:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbEnabled"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cbEnabled" />
+
+    <CheckBox
+        android:id="@+id/cbEnabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="enabled"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/brVerticalAge"
+        app:layout_constraintTop_toBottomOf="@+id/btnRefreshAge" />
+
+    <EditText
+        android:id="@+id/etMinAgeAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/brVerticalAge"
+        app:layout_constraintTop_toBottomOf="@+id/cbEnabled" />
+
+    <EditText
+        android:id="@+id/editTextText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/brVerticalAge"
+        app:layout_constraintTop_toBottomOf="@+id/etMinAgeAge" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/brVerticalAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="tvMinAgeAgeText,tvBypassTimeAgeText,tvAgeBypasAgeText" />
+
+    <TextView
+        android:id="@+id/tvMinAgeAgeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minimal Age:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etMinAgeAge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etMinAgeAge" />
+
+    <TextView
+        android:id="@+id/tvBypassTimeAgeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bypass Time:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextText3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextText3" />
+
+    <TextView
+        android:id="@+id/tvAgeBypasAgeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age Bypass:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStartAge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnStartAge" />
+
+    <Button
+        android:id="@+id/btnStartAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="start"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStopAge"
+        app:layout_constraintStart_toEndOf="@id/brVerticalAge"
+        app:layout_constraintTop_toTopOf="@+id/btnStopAge" />
+
+    <Button
+        android:id="@+id/btnStopAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="stop"
+        app:layout_constraintEnd_toEndOf="@+id/btnSaveAge"
+        app:layout_constraintStart_toEndOf="@+id/btnStartAge"
+        tools:layout_editor_absoluteY="325dp" />
+
+    <Button
+        android:id="@+id/btnCheckAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHECK"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSaveAge"
+        app:layout_constraintStart_toStartOf="@+id/btnStartAge"
+        app:layout_constraintTop_toTopOf="@+id/btnSaveAge" />
+
+    <Button
+        android:id="@+id/btnSaveAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="38dp"
+        android:text="save"
+        app:layout_constraintStart_toEndOf="@+id/btnCheckAge"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

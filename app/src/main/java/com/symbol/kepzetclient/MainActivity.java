@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
@@ -21,7 +20,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
-
+import com.google.android.material.tabs.TabLayout;
 import com.symbol.emdk.EMDKManager;
 import com.symbol.emdk.EMDKManager.EMDKListener;
 import com.symbol.emdk.EMDKManager.FEATURE_TYPE;
@@ -41,6 +40,7 @@ import com.symbol.emdk.barcode.ScannerInfo;
 import com.symbol.emdk.barcode.ScannerResults;
 import com.symbol.emdk.barcode.StatusData;
 import com.symbol.emdk.barcode.StatusData.ScannerStates;
+import com.symbol.kepzetclient.custom_components.SetupActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +96,6 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         super.onCreate(savedInstanceState);
 
         deviceList = new ArrayList<ScannerInfo>();
-
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setDefaultOrientation();
@@ -612,7 +611,15 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     }
 
     public void clkSetup(View view) {
-        Intent preferencesIntent = new Intent(this, Preferences.class);
-        startActivity(preferencesIntent);
+        //Intent preferencesIntent = new Intent(this, Preferences.class);
+        //startActivity(preferencesIntent);
+
+        //this.OtvorSettingsScreen();
+
+        Intent SetupActivity = new Intent(this, SetupActivity.class);
+        startActivity(SetupActivity);
+
+
     }
+
 }

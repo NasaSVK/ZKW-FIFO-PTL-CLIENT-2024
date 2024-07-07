@@ -28,7 +28,6 @@
 
     <!--https://stackoverflow.com/questions/5330677/android-preferences-onclick-event?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa-->
     <EditTextPreference
-        android:id = "@+id/etpPassword"
         android:title="Heslo"
         android:key="password"
         android:inputType="textPassword"

@@ -1,27 +1,4 @@
 <resources>
 
 
-    <style name="ThemeOverlay.KEPZETANDROIDCLIENT.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
-        <item name="fullscreenTextColor">@color/light_blue_A200</item>
-    </style>
-
-    <style name="Theme.KEPZETANDROIDCLIENT.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.KEPZETANDROIDCLIENT.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.KEPZETANDROIDCLIENT.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="Theme.KEPZETANDROIDCLIENT" parent="Theme.AppCompat.Light" />
-
-    <style name="Theme.KEPZETANDROIDCLIENT.Fullscreen" parent="Theme.KEPZETANDROIDCLIENT">
-        <item name="android:actionBarStyle">
-            @style/Widget.Theme.KEPZETANDROIDCLIENT.ActionBar.Fullscreen
-        </item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
-    </style>
 </resources>
