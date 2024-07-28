@@ -1,6 +1,7 @@
 package com.symbol.kepzetclient;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +13,13 @@ import androidx.annotation.Nullable;
 
 public class HorizontalNumberPicker extends LinearLayout {
     private EditText et_number;
-    private int min, max;
+    public int min, max;
+
+    private EditText etxValue;
+    public EditText getEtxValue() {
+        return etxValue;
+    }
+
 
     public HorizontalNumberPicker(Context context, @Nullable AttributeSet attrs) {
 
@@ -21,13 +28,33 @@ public class HorizontalNumberPicker extends LinearLayout {
         inflate(context, R.layout.numberpicker_horizontal, this);
 
         et_number = findViewById(R.id.et_number);
+        etxValue = et_number;
 
         final Button btn_less = findViewById(R.id.btn_less);
         btn_less.setOnClickListener(new AddHandler(-1));
 
         final Button btn_more = findViewById(R.id.btn_more);
         btn_more.setOnClickListener(new AddHandler(1));
+
+
     }
+
+    @Override
+    public void setForeground(Drawable foreground) {
+        super.setForeground(foreground);
+        //et_number.setForeground(foreground);
+
+    }
+
+    public void setTextColor(int pColor){
+        et_number.setTextColor(pColor);
+    }
+
+    public int getTexColor() {
+        return et_number.getCurrentTextColor();
+    }
+
+
 
     /***
      * HANDLERS

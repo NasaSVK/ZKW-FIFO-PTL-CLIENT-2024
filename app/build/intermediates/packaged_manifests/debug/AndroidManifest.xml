@@ -9,6 +9,7 @@
         android:targetSdkVersion="28" />
 
     <uses-permission android:name="com.symbol.emdk.permission.EMDK" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <permission
         android:name="com.symbol.kepzetclient.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"

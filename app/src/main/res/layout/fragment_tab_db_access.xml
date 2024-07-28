@@ -17,10 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="tvRtext,hnpR,tvStext,hnpS" />
+        app:constraint_referenced_ids="tvRDbAText,hnpR,tvSDbAText,hnpSPos" />
 
     <TextView
-        android:id="@+id/tvRtext"
+        android:id="@+id/tvRDbAText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="R"
@@ -33,39 +33,40 @@
         android:id="@+id/hnpR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tvRtext"
+        app:layout_constraintStart_toEndOf="@id/tvRDbAText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvStext"
+        android:id="@+id/tvSDbAText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="S"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvRtext"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvRDbAText"
         app:layout_constraintStart_toEndOf="@+id/hnpR" />
 
     <com.symbol.kepzetclient.HorizontalNumberPicker
-        android:id="@+id/hnpS"
+        android:id="@+id/hnpSPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        app:layout_constraintStart_toEndOf="@+id/tvStext"
+        app:layout_constraintStart_toEndOf="@+id/tvSDbAText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnShowDB"
+        android:id="@+id/btnShowPos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="Show"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/hnpS"
+        app:layout_constraintStart_toEndOf="@+id/hnpSPos"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recvDB"
+        android:id="@+id/recvDbAccess"
+        android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
@@ -74,7 +75,10 @@
         app:layout_constraintBottom_toTopOf="@id/brBarrierBotto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brBarrierTop" />
+        app:layout_constraintTop_toBottomOf="@+id/brBarrierTop" >
+
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/brBarrierBotto"
@@ -90,8 +94,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Close"
+        android:onClick="Close1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/recvDB" />
+        app:layout_constraintEnd_toEndOf="@+id/recvDbAccess" />
 
     <Button
         android:id="@+id/btnSaveDB"

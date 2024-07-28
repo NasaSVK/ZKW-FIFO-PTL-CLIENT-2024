@@ -42,6 +42,7 @@ import com.symbol.emdk.barcode.StatusData;
 import com.symbol.emdk.barcode.StatusData.ScannerStates;
 import com.symbol.kepzetclient.custom_components.SetupActivity;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,7 +85,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
 
 
     TabLayout tabLayout;
-
+    private Connection con;
 
 
     public void OtvorSettingsScreen() {
@@ -126,6 +127,11 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
 
         textViewData.setSelected(true);
         textViewData.setMovementMethod(new ScrollingMovementMethod());
+
+        //DB CONNECTION
+        //ConnectionClass connectionClass = new ConnectionClass();
+        //con = connectionClass.CONN();
+
     }
 
     @Override

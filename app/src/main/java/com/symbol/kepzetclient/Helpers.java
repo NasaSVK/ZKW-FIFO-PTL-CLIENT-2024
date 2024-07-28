@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
+import org.joda.time.format.DateTimeFormat;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Helpers {
@@ -45,5 +48,10 @@ public class Helpers {
     public static String  OrezString(String pStr){
         return pStr.trim();
     }
+
+    public static String timestampAsString(Timestamp timestamp) {
+        return DateTimeFormat.forPattern("dd/MM/yy HH:mm:ss").print(timestamp.getTime());
+    }
+
 
 }

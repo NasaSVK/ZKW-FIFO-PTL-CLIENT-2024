@@ -23,7 +23,8 @@
         android:layout_weight="1"
         android:gravity="center"
         android:inputType="number"
-        android:text="012" />
+        android:text="012"
+        />
 
     <Button
         android:id="@+id/btn_more"

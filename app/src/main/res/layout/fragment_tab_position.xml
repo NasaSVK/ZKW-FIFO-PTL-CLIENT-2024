@@ -13,51 +13,50 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/tvRtext"
+        android:id="@+id/tvRDbAText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="R:"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/npR"
+        app:layout_constraintBottom_toBottomOf="@+id/hnpRPos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/npR"
+        app:layout_constraintTop_toTopOf="@+id/hnpRPos"
         tools:layout_conversion_absoluteHeight="24dp"
         tools:layout_conversion_absoluteWidth="15dp" />
 
     <com.symbol.kepzetclient.HorizontalNumberPicker
-        android:id="@+id/npR"
+        android:id="@+id/hnpRPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        app:layout_constraintStart_toEndOf="@id/tvRtext"
+        app:layout_constraintStart_toEndOf="@id/tvRDbAText"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="117dp" />
 
     <TextView
-        android:id="@+id/tvStext"
+        android:id="@+id/tvSDbAText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="S:"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvRtext"
-        app:layout_constraintStart_toEndOf="@+id/npR"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvRDbAText"
+        app:layout_constraintStart_toEndOf="@+id/hnpRPos"
         tools:layout_conversion_absoluteHeight="24dp"
         tools:layout_conversion_absoluteWidth="15dp"
         />
 
     <com.symbol.kepzetclient.HorizontalNumberPicker
-        android:id="@+id/hnpS"
+        android:id="@+id/hnpSPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tvStext"
+        app:layout_constraintStart_toEndOf="@+id/tvSDbAText"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="117dp" />
 
     <Button
-        android:id="@+id/btnShowDB"
+        android:id="@+id/btnShowPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show"
@@ -72,9 +71,9 @@
         android:layout_marginStart="8dp"
         android:text="@string/strPartNumberText"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etPartNumber"
+        app:layout_constraintBottom_toBottomOf="@+id/etxPartNumberPos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etPartNumber" />
+        app:layout_constraintTop_toTopOf="@+id/etxPartNumberPos" />
 
 
     <TextView
@@ -85,29 +84,29 @@
         android:text="@string/strChannelText"
 
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etChannel"
-        app:layout_constraintStart_toEndOf="@+id/etPartNumber"
-        app:layout_constraintTop_toTopOf="@+id/etChannel" />
+        app:layout_constraintBottom_toBottomOf="@+id/etxChannelPos"
+        app:layout_constraintStart_toEndOf="@+id/etxPartNumberPos"
+        app:layout_constraintTop_toTopOf="@+id/etxChannelPos" />
 
 
     <EditText
-        android:id="@+id/etPartNumber"
+        android:id="@+id/etxPartNumberPos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="796.04.000.001234"
         app:layout_constraintStart_toEndOf="@+id/tvPartNrText"
-        app:layout_constraintTop_toBottomOf="@+id/hnpS" />
+        app:layout_constraintTop_toBottomOf="@+id/hnpSPos" />
 
 
     <EditText
-        android:id="@+id/etChannel"
+        android:id="@+id/etxChannelPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00"
         android:ems="2"
         app:layout_constraintStart_toEndOf="@+id/tvChannelText"
-        app:layout_constraintTop_toBottomOf="@+id/btnShowDB" />
+        app:layout_constraintTop_toBottomOf="@+id/btnShowPos" />
 
     <TextView
         android:id="@+id/tvPackPos"
@@ -115,12 +114,12 @@
         android:layout_height="wrap_content"
         android:text="pack:"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etPackPos"
+        app:layout_constraintBottom_toBottomOf="@+id/etxPackPos"
         app:layout_constraintStart_toStartOf="@+id/tvPartNrText"
-        app:layout_constraintTop_toTopOf="@+id/etPackPos" />
+        app:layout_constraintTop_toTopOf="@+id/etxPackPos" />
 
     <EditText
-        android:id="@+id/etPackPos"
+        android:id="@+id/etxPackPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -128,7 +127,7 @@
         android:inputType="text"
         android:text="00"
         app:layout_constraintStart_toEndOf="@+id/tvPackPos"
-        app:layout_constraintTop_toBottomOf="@+id/etPartNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/etxPartNumberPos" />
 
     <TextView
         android:id="@+id/tvCountPos"
@@ -137,12 +136,12 @@
         android:layout_marginStart="16dp"
         android:text="count"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etCountPos"
-        app:layout_constraintStart_toEndOf="@+id/etPackPos"
-        app:layout_constraintTop_toTopOf="@+id/etCountPos" />
+        app:layout_constraintBottom_toBottomOf="@+id/etxCountPos"
+        app:layout_constraintStart_toEndOf="@+id/etxPackPos"
+        app:layout_constraintTop_toTopOf="@+id/etxCountPos" />
 
     <EditText
-        android:id="@+id/etCountPos"
+        android:id="@+id/etxCountPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -150,7 +149,7 @@
         android:inputType="number"
         android:text="00"
         app:layout_constraintStart_toEndOf="@+id/tvCountPos"
-        app:layout_constraintTop_toBottomOf="@+id/etPartNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/etxPartNumberPos" />
 
     <Button
         android:id="@+id/btnSavePos"
@@ -168,6 +167,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Close"
+        android:onClick="Close1"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -10,7 +10,7 @@
     <string name="position_fragment">PositionTAB</string>
     <string name="age_fragment">AgeTAB</string>
     <string name="strPalletNumberText">Pallet Nr:</string>
-    <string name="strResultText">Result:</string>
+    <string name="strResultText">RESULTS</string>
     <string name="strPartNumberText">Part Nr:</string>
     <string name="strChannelText">Chnl:</string>
     <string name="str_btn_search">Search</string>

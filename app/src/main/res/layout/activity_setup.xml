@@ -47,17 +47,17 @@
         android:layout_marginStart="8dp"
         android:text="Port:"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/evServerPort"
+        app:layout_constraintBottom_toBottomOf="@+id/etServerPort"
         app:layout_constraintStart_toEndOf="@+id/etServerIP"
-        app:layout_constraintTop_toTopOf="@+id/evServerPort" />
+        app:layout_constraintTop_toTopOf="@+id/etServerPort" />
 
     <EditText
-        android:id="@+id/evServerPort"
+        android:id="@+id/etServerPort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="3"
         android:inputType="text"
-                android:text="1234"
+        android:text="1234"
         app:layout_constraintStart_toEndOf="@+id/tvServerPortText"
         app:layout_constraintTop_toBottomOf="@+id/tvServerText" />
 
@@ -127,25 +127,25 @@
         app:layout_constraintTop_toBottomOf="@+id/etClientIp" />
 
     <TextView
-        android:id="@+id/tvTimText"
+        android:id="@+id/tvTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Tim"
+        android:text="Time"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etTim"
+        app:layout_constraintBottom_toBottomOf="@+id/etTime"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etTim" />
+        app:layout_constraintTop_toTopOf="@+id/etTime" />
 
     <EditText
-        android:id="@+id/etTim"
+        android:id="@+id/etTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:ems="4"
         android:inputType="text"
         android:text="1234567"
-        app:layout_constraintStart_toEndOf="@+id/tvTimText"
+        app:layout_constraintStart_toEndOf="@+id/tvTimeText"
         app:layout_constraintTop_toBottomOf="@+id/tvResultText" />
 
     />
@@ -154,9 +154,9 @@
         android:id="@+id/hnpVolume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/etTim"
+        app:layout_constraintBottom_toBottomOf="@+id/etTime"
         app:layout_constraintStart_toEndOf="@+id/tvVolumeText"
-        app:layout_constraintTop_toTopOf="@+id/etTim" />
+        app:layout_constraintTop_toTopOf="@+id/etTime" />
 
     <TextView
         android:id="@+id/tvVolumeText"
@@ -166,7 +166,7 @@
         android:text="Volume"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/hnpVolume"
-        app:layout_constraintStart_toEndOf="@+id/etTim"
+        app:layout_constraintStart_toEndOf="@+id/etTime"
         app:layout_constraintTop_toTopOf="@+id/hnpVolume" />
 
     <TextView
@@ -178,7 +178,7 @@
         android:text="Change password"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTim" />
+        app:layout_constraintTop_toBottomOf="@+id/etTime" />
 
     <TextView
         android:id="@+id/tvPssPhraseText"
@@ -199,9 +199,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="NEW"
-        app:layout_constraintBottom_toBottomOf="@+id/etPswd"
+        app:layout_constraintBottom_toBottomOf="@+id/etPswd1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etPswd" />
+        app:layout_constraintTop_toTopOf="@+id/etPswd1" />
 
     <TextView
         android:id="@+id/tvPswdText2"
@@ -209,11 +209,11 @@
         android:layout_height="wrap_content"
         android:text="NEW"
         app:layout_constraintBottom_toBottomOf="@+id/etPswd2"
-        app:layout_constraintStart_toEndOf="@+id/etPswd"
+        app:layout_constraintStart_toEndOf="@+id/etPswd1"
         app:layout_constraintTop_toTopOf="@+id/etPswd2" />
 
     <EditText
-        android:id="@+id/etPswd"
+        android:id="@+id/etPswd1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="4"
@@ -230,20 +230,20 @@
         android:inputType="text"
         android:text="********"
 
-        app:layout_constraintBottom_toBottomOf="@+id/etPswd"
+        app:layout_constraintBottom_toBottomOf="@+id/etPswd1"
         app:layout_constraintStart_toEndOf="@+id/tvPswdText2"
-        app:layout_constraintTop_toTopOf="@+id/etPswd" />
+        app:layout_constraintTop_toTopOf="@+id/etPswd1" />
 
     <CheckBox
-        android:id="@+id/cbManualAcceptText"
+        android:id="@+id/cbManualAccept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Alloe Manual Accept"
+        android:text="Allow Manual Accept"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPswd" />
+        app:layout_constraintTop_toBottomOf="@+id/etPswd1" />
 
     <TextView
         android:id="@+id/tvIgnoreListText"
@@ -253,7 +253,7 @@
         android:text="Add to ignore list"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbManualAcceptText" />
+        app:layout_constraintTop_toBottomOf="@+id/cbManualAccept" />
 
     <TextView
         android:id="@+id/tvNoText"
@@ -304,6 +304,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="quit"
+        android:onClick="quit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRestartAppText" />
 

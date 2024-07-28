@@ -16,16 +16,16 @@
         android:layout_marginTop="8dp"
         android:text="@string/strPalletNumberText"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edtPalletNumber"
+        app:layout_constraintBottom_toBottomOf="@+id/etxPalletNumberSrch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edtPalletNumber" />
+        app:layout_constraintTop_toTopOf="@+id/etxPalletNumberSrch" />
 
     <TextView
         android:id="@+id/tvResultText"
-        android:layout_width="55dp"
+        android:layout_width="wrap_content"
         android:layout_height="23dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/strResultText"
+        android:layout_marginTop="34dp"
+        android:text="RESULTS"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tvPalletNmbText"
         app:layout_constraintTop_toBottomOf="@+id/tvPalletNmbText" />
@@ -34,7 +34,8 @@
         android:id="@+id/tvPartNrText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
         android:text="@string/strPartNumberText"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tvResultText"
@@ -48,19 +49,7 @@
         android:text="@string/strChannelText"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvPartNrText"
-        app:layout_constraintEnd_toStartOf="@+id/edtChannel" />
-
-    <TextView
-        android:id="@+id/etresultSearch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="0123456789"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvResultText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/edtPalletNumber" />
+        app:layout_constraintEnd_toStartOf="@+id/etxChannelSrch" />
 
     <TextView
         android:id="@+id/tvPackText"
@@ -73,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPartNrText" />
 
     <EditText
-        android:id="@+id/etPack"
+        android:id="@+id/etxPackSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="00"
@@ -89,11 +78,11 @@
         android:layout_marginTop="24dp"
         android:text="R:"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/etPack"
+        app:layout_constraintStart_toEndOf="@+id/etxPackSrch"
         app:layout_constraintTop_toBottomOf="@+id/tvPartNrText" />
 
     <EditText
-        android:id="@+id/etR"
+        android:id="@+id/etxRSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="00"
@@ -108,11 +97,11 @@
         android:text="S:"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvRTextSearch"
-        app:layout_constraintStart_toEndOf="@+id/etR"
+        app:layout_constraintStart_toEndOf="@+id/etxRSrch"
         app:layout_constraintTop_toTopOf="@+id/tvRTextSearch" />
 
     <EditText
-        android:id="@+id/etS"
+        android:id="@+id/etxSSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="00"
@@ -127,11 +116,11 @@
         android:text="P:"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvSText"
-        app:layout_constraintStart_toEndOf="@+id/etS"
+        app:layout_constraintStart_toEndOf="@+id/etxSSrch"
         app:layout_constraintTop_toTopOf="@+id/tvSText" />
 
     <EditText
-        android:id="@+id/etPSearch"
+        android:id="@+id/etxZSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="00"
@@ -140,13 +129,13 @@
 
 
     <EditText
-        android:id="@+id/edtPalletNumber"
+        android:id="@+id/etxPalletNumberSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="0123456789"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        android:text="3007995733"
+        app:layout_constraintEnd_toStartOf="@+id/btnSearch"
         app:layout_constraintStart_toEndOf="@+id/tvPalletNmbText"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -155,14 +144,14 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="796.04.000.001234"
-
+        android:id="@+id/etxPartNumberSrch"
         app:layout_constraintBottom_toBottomOf="@+id/tvPartNrText"
         app:layout_constraintEnd_toStartOf="@+id/tvChannelText"
-        app:layout_constraintStart_toStartOf="@+id/edtPalletNumber"
+        app:layout_constraintStart_toStartOf="@+id/etxPalletNumberSrch"
         app:layout_constraintTop_toTopOf="@+id/tvPartNrText" />
 
     <EditText
-        android:id="@+id/edtChannel"
+        android:id="@+id/etxChannelSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -171,24 +160,26 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/str_btn_search"
-        app:layout_constraintBottom_toBottomOf="@+id/edtPalletNumber"
+        app:layout_constraintBottom_toBottomOf="@+id/etxPalletNumberSrch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edtPalletNumber"
-        app:layout_constraintTop_toTopOf="@+id/edtPalletNumber" />
+        app:layout_constraintStart_toEndOf="@+id/etxPalletNumberSrch"
+        app:layout_constraintTop_toTopOf="@+id/etxPalletNumberSrch" />
 
     <Button
+        android:id="@+id/btnClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/str_btn_close"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="Close1"
+app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
