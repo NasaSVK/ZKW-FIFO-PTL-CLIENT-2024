@@ -3207,6 +3207,7 @@ id btnCheckAge
 id btnClearDB
 id btnClose
 id btnCloseDB
+id btnConToServer
 id btnDbAccess
 id btnQuit
 id btnRefreshAge
@@ -3664,6 +3665,7 @@ id tvPswdText
 id tvPswdText2
 id tvRDbAText
 id tvRTextSearch
+id tvReceivedData
 id tvRestartAppText
 id tvResultText
 id tvSDbAText

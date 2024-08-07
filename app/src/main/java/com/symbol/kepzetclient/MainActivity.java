@@ -9,8 +9,10 @@ import static com.symbol.kepzetclient.Helpers.getCurrentDateTime;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.Menu;
@@ -40,14 +42,22 @@ import com.symbol.emdk.barcode.ScannerInfo;
 import com.symbol.emdk.barcode.ScannerResults;
 import com.symbol.emdk.barcode.StatusData;
 import com.symbol.emdk.barcode.StatusData.ScannerStates;
+import com.symbol.kepzetclient.auxx.LogFile;
 import com.symbol.kepzetclient.custom_components.SetupActivity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity implements EMDKListener, DataListener, StatusListener, ScannerConnectionListener, OnCheckedChangeListener {
 
+    private static com.symbol.kepzetclient.auxx.FS fs;
     private EMDKManager emdkManager = null;
     private BarcodeManager barcodeManager = null;
     private Scanner scanner = null;
@@ -70,11 +80,12 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     private ScannerInfo My2DBarCodeImager = null;
 
     private int scannerIndex = 0; // Keep the selected scanner
-    private int defaultIndex = 0; // Keep the default scanner
+    private final int defaultIndex = 0; // Keep the default scanner
     private int dataLength = 0;
     private String statusString = "";
 
     private TextView tvBarcode = null;
+    private TextView tvReceivedData = null;
 
     private boolean bSoftTriggerSelected = false;
     private boolean bDecoderSettingsChanged = true;
@@ -83,32 +94,48 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     private String history = "";
     public com.symbol.emdk.barcode.ScannerInfo SI = null;
 
+    public static LogFile lf;
+    private static MainActivity _mainActivity;
 
     TabLayout tabLayout;
     private Connection con;
+
 
 
     public void OtvorSettingsScreen() {
         startActivity(new Intent(MainActivity.this,Preferences.class));
     }
 
+    public static LogFile getLogFile(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (lf == null || !lf.getAssignedDate().isEqual(LocalDate.now()))
+                lf = new LogFile(_mainActivity, LocalDate.now());
+        }
+        return lf;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        _mainActivity = this;
+
+
 
         deviceList = new ArrayList<ScannerInfo>();
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setDefaultOrientation();
 
-        textViewData = (TextView)findViewById(R.id.textViewData);
-        tvBarcode = (TextView)findViewById(R.id.tvBarcode);
-        textViewStatus = (TextView)findViewById(R.id.textViewStatus);
+        textViewData = findViewById(R.id.textViewData);
+        tvReceivedData = findViewById(R.id.tvReceivedData);
+        tvBarcode = findViewById(R.id.tvBarcode);
+        textViewStatus = findViewById(R.id.textViewStatus);
         //checkBoxEAN8 = (CheckBox)findViewById(R.id.checkBoxEAN8);
         //checkBoxEAN13 = (CheckBox)findViewById(R.id.checkBoxEAN13);
         //checkBoxCode39 = (CheckBox)findViewById(R.id.checkBoxCode39);
         //checkBoxCode128 = (CheckBox)findViewById(R.id.checkBoxCode128);
-        spinnerScannerDevices = (TextView)findViewById(R.id.spinnerScannerDevices);
+        spinnerScannerDevices = findViewById(R.id.spinnerScannerDevices);
 
         EMDKResults results = EMDKManager.getEMDKManager(getApplicationContext(), this);
         if (results.statusCode != EMDKResults.STATUS_CODE.SUCCESS) {
@@ -511,7 +538,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                textViewStatus.setText("" + status);
+                textViewStatus.setText(status);
             }
         });
     }
@@ -551,6 +578,31 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             }
         });
     }
+    private void updateList(final String pText, ResultType pResutType){
+        Spanned as;
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (pText != null) {
+
+                    if (pResutType == ResultType.ERROR)
+                        textViewData.setText(Html.fromHtml(Helpers.getCurrentDateTime() + ": <span style='color:red'>" + pText + "</span><br>" + history,0));
+                    else
+                    if (pResutType == ResultType.WARNING)
+                        textViewData.setText(Html.fromHtml(Helpers.getCurrentDateTime() + ": <span style='color:yellow'>" + pText + "</span> <br>" + history,0));
+                    else
+                    if (pResutType == ResultType.SUCCESS)
+                        textViewData.setText(Html.fromHtml(Helpers.getCurrentDateTime() + ": <span style='color:green'>" + pText + "</span> <br>" + history,0));
+                    else
+                        textViewData.setText((Spanned)Html.fromHtml(Helpers.getCurrentDateTime() + ":" + pText + "<br>" + history,0));
+
+                    history  =  Helpers.getCurrentDateTime() + ": " + pText + "<br>" + history;
+                }
+            }
+        });
+    }
+
 
     private void setDefaultOrientation(){
         DisplayMetrics dm = new DisplayMetrics();
@@ -584,9 +636,9 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         // as you specify a parent activity in AndroidManifest.xml.
 
         int id = item.getItemId();
-        switch (id) {
-
-            case R.id.action_settings: this.OtvorSettingsScreen();  return true;
+        if (id == R.id.action_settings) {
+            this.OtvorSettingsScreen();
+            return true;
 //            case R.id.action_about:
 //                AboutBox.Show(MainActivity2.this);return true;
 //
@@ -598,10 +650,8 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
 //            case R.id.addDevice:
 //                showNoticeDialog();
 //                //InsertDialog.Show(MainActivity2.this);return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
 
 //        if (id == R.id.action_settings) {
 //            return true;
@@ -627,5 +677,132 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
 
 
     }
+
+    public void onClick_btnAccept(View view) {
+        //tcpSecnd.send ("TAccept");
+        TCWriteThread tcw = new TCWriteThread("TAccept");
+        tcw.SendContent();
+        try {
+            tcw.join();
+            updateList(tcw._resultText, ResultType.SUCCESS);
+        }
+        catch (InterruptedException e) {
+            updateList("TCP thread ERROR!", ResultType.ERROR);
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //SetText("S@" + LocalDateTime.now().toString() + ": accept");
+        }
+    }
+
+    private void SetText(String text)
+    {
+          runOnUiThread(()->{
+              lf.appendLog(text);
+          });
+//        // InvokeRequired required compares the thread ID of the
+//        // calling thread to the thread ID of the creating thread.
+//        // If these threads are different, it returns true.
+//        if (this.InvokeRequired)
+//        {
+//            SetTextCallback d = new SetTextCallback(SetText);
+//            this.Invoke(d, new object[] { text });
+//        }
+//        else
+//        {
+            //this.listBox1.Items.Add(text);
+            //listBox1.SelectedIndex = listBox1.Items.Count - 1;
+           // FS.logData(text);
+
+//        }
+    }
+
+    public void btnConToServer_onClick(View view) {
+        String IP = "192.168.1.24";
+        Integer port = 2222;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    Socket socket = new Socket(IP,port); //!!!!! uz vytvorenie objektu pre socket INICIALIZUJE SPOJENIE !!!!
+                    //###############################################
+                    //tu len precitam co mi prislo, resp. este PRIDE
+                    BufferedReader br_input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    String txtFromServer = br_input.readLine();
+                    //###############################################
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvReceivedData.setText(txtFromServer);
+                        }
+                    });
+
+                } catch (IOException e) {
+                    Helpers.redToast(_mainActivity,"Nepodarilo sa spojit so serverom");
+                    throw new RuntimeException(e);
+                }
+            }
+        }).start();
+
+    }
+
+    public enum  ResultType{
+        SUCCESS, ERROR, WARNING
+    }
+    class TCWriteThread extends  Thread implements Runnable{
+
+        String IP_SERVER = "192.168.1.8";
+        Integer port_server = 2222;
+        private boolean serverIsRunning;
+        private String _CONTENT;
+        private String _resultText;
+        private ResultType _resultType;
+
+        public TCWriteThread(String pContent){
+
+            this._CONTENT = pContent;
+        }
+
+        @Override
+        public void run() {
+
+            try {
+                Socket socket = new Socket(IP_SERVER, port_server);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvReceivedData.setTextColor(getResources().getColor(R.color.design_default_color_on_primary,null));
+                        tvReceivedData.setText("Ready for reading!");
+                    }
+                });
+
+                PrintWriter otWritter = new PrintWriter(socket.getOutputStream());
+                otWritter.write(_CONTENT);
+                otWritter.flush();
+                socket.close();
+                _resultText = "Accept SENT succesfully";
+            }
+            catch (IOException e) {
+                //throw new RuntimeException(e);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //https://stackoverflow.com/questions/6926644/android-color-to-int-conversion
+                        //tvReceivedData.setTextColor(android.graphics.Color.RED);
+                        //tvReceivedData.setText("Connection to server FAILED!!");
+                        _resultText = "Connection to server FAILED!!";
+                    }
+                });
+            }
+        }//run()
+
+        public void SendContent(){
+            serverIsRunning = true;
+            start();
+        }//startServer()
+
+    }//WriteThread
+
 
 }

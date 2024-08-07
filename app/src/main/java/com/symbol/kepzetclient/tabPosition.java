@@ -48,12 +48,13 @@ public class tabPosition extends Fragment  {
 
         btnShow = (Button)view.findViewById(R.id.btnShowPos);
         btnSave = (Button)view.findViewById(R.id.btnSavePos);
+        btnSave.setVisibility(View.INVISIBLE);
 
         hnpRPos = (HorizontalNumberPicker)view.findViewById(R.id.hnpRPos);
         hnpSPos = (HorizontalNumberPicker)view.findViewById(R.id.hnpSPos);
 
-        hnpRPos.setValue(3); hnpRPos.setMin(1); hnpRPos.setMax(100);
-        hnpSPos.setValue(48); hnpSPos.setMin(1); hnpSPos.setMax(100);
+        hnpRPos.setValue(3); hnpRPos.setMin(1); hnpRPos.setMax(5);
+        hnpSPos.setValue(48); hnpSPos.setMin(1); hnpSPos.setMax(50);
 
         TextWatcher twR = new TextWatcher() {
             @Override
@@ -90,35 +91,18 @@ public class tabPosition extends Fragment  {
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //int x = (int)nudXP.Value, y = (int)nudYP.Value, p = 0, count = 0;
+
                 Integer x = hnpRPos.getValue(), y = hnpSPos.getValue(), p = 0, count = 0;
-//               object[] pos = sqldb.getPos(x.ToString(), y.ToString());
                 FIFO fifo = GetData.getPosFIFO(_ParentActivity, x, y);
 
-//                if (pos == null || pos[0] == null)
-//                {
-//                    MessageBox.Show("no data for pos");
-//                    return;
-//                }
-                if (fifo == null || fifo.getID() <= 0)
+                if (fifo == null || fifo.getPartNr() == null)
                 {
-                    //MessageBox.Show("no data for pos");
                     Helpers.redToast(_ParentActivity,"no data for pos");
                     return;
                 }
-//                tbDBPn.Text = pos[0].ToString().Trim();
-//                tbDBChannel.Text = pos[1].ToString();
-//                tbDBPack.Text = pos[2].ToString();
                 etxPartNr.setText(fifo.getPartNr());
                 etxChnl.setText(String.valueOf(fifo.getChannel()));
                 etxPack.setText(String.valueOf(fifo.getPack()));
-
-//              https://www.youtube.com/watch?v=1IIKac0RPKY
-
-                //cbAgeCheck.Checked = Convert.ToBoolean(pos[4]);
-                //tbAgeLimit.Text = pos[3].ToString();
-                //tbAgeBypassTime.Text = pos[5].ToString();
-
 
                 try
                 {
@@ -128,22 +112,15 @@ public class tabPosition extends Fragment  {
 
                 catch(NumberFormatException  ex)
                 {
-                    p = 1;
-                    count = 6;
+                    p = 1; count = 6;
                 }
-                if (p == 0)
-                    p = 1;
+                if (p == 0) p = 1;
 
-//                tbDBCount.Text = (count / p).ToString();
-//                nudXP.ForeColor = System.Drawing.SystemColors.WindowText;
-//                nudYP.ForeColor = System.Drawing.SystemColors.WindowText;
-//                btnSaveP.Visible = true;
                 etxCount.setText(String.valueOf(count / p));
-                //hnpRPos.setForeground (new ColorDrawable(getResources().getColor(R.color.green,null)));
-                //hnpSPos.setForeground (new ColorDrawable(getResources().getColor(R.color.primary,null)));
+                //hnpRPos.setForeground(new ColorDrawable(getResources().getColor(R.color.green,null)));
+                //hnpSPos.setForeground(new ColorDrawable(getResources().getColor(R.color.primary,null)));
                 hnpSPos.setTextColor(getResources().getColor(R.color.green,null));
                 hnpRPos.setTextColor(getResources().getColor(R.color.green,null));
-                //hnpRPos.setTextColor(getResources().getColor(R.color.primary,null));
                 btnSave.setVisibility(View.VISIBLE);
             }
         });
@@ -168,20 +145,26 @@ public class tabPosition extends Fragment  {
                         newFIFO.setMaxCount(count*p);
 
                         result = GetData.updatePosByPos(getContext(),newFIFO);
+                        if (result){
+                            Toast.makeText(_ParentActivity,"Selected FIFO updated successfully!", Toast.LENGTH_SHORT).show();
+                            btnSave.setVisibility(View.INVISIBLE);
+                        }
+                        else
+                            Helpers.redToast(getContext(), "UPDATE FAILED!!");
+
                     }
                     catch (Exception ex)
                     {
-                        //MessageBox.Show("save Failed!\nukladanie zlyhalo\n" + ex.ToString());
-                         Helpers.redToast(getContext(), "SAVE FAILED!\n\nreason: " + ex.getMessage());
+                        Helpers.redToast(getContext(), "SAVING FAILED!\n\nreason: " + ex.getMessage());
                     }
                 }
                 else
                 {
-                    Helpers.redToast(getContext(), "Position changed, can not save!\nPozícia zmenená, zmeny sa neuložia\n");
+                    Helpers.redToast(getContext(), "Searched position changed, therefore it not be saved!\nVyhľadaná pozícia zmenená, preto nemôže byť uložená!");
+                    btnSave.setVisibility(View.INVISIBLE);
                 }
-                Toast.makeText(_ParentActivity,"Selelected FIFO updated successfuly!", Toast.LENGTH_SHORT);
-            }
 
+            }
         });
 
         return  view;

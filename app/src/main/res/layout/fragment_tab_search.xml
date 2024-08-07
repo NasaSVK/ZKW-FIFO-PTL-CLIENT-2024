@@ -66,6 +66,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="00"
+        android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvPackText"
         app:layout_constraintStart_toEndOf="@+id/tvPackText" />
 
@@ -86,6 +87,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="00"
+        android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvPackText"
         app:layout_constraintStart_toEndOf="@+id/tvRTextSearch" />
 
@@ -105,6 +107,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="00"
+        android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvSText"
         app:layout_constraintStart_toEndOf="@+id/tvSText" />
 
@@ -124,6 +127,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="00"
+        android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvPText"
         app:layout_constraintStart_toEndOf="@+id/tvPText" />
 
@@ -156,6 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="00"
+        android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvChannelText"
         app:layout_constraintEnd_toEndOf="parent" />
 

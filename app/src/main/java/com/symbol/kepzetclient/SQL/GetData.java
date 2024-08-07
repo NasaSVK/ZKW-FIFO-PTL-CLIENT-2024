@@ -164,7 +164,7 @@ public class GetData {
             try {
                 stmt = DB.getStatement(); //nemozno vytvorit Statement na conection, ktore uz ma Statement vytvoreny
                 int intResult = stmt.executeUpdate(query);
-                if ( intResult== 0) result =  true;
+                if ( intResult > 0) result =  true;
                 stmt.close();
                 DB.connection.close();
             }

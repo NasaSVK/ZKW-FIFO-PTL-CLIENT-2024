@@ -56,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="3"
-        android:inputType="text"
+        android:inputType="number"
         android:text="1234"
         app:layout_constraintStart_toEndOf="@+id/tvServerPortText"
         app:layout_constraintTop_toBottomOf="@+id/tvServerText" />
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:ems="3"
-        android:inputType="text"
+        android:inputType="number"
         android:text="4321"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/etClientIp" />
