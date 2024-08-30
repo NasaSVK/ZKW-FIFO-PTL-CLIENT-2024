@@ -7,10 +7,12 @@ package com.symbol.kepzetclient;
 import static com.symbol.kepzetclient.Helpers.getCurrentDateTime;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
@@ -21,6 +23,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.symbol.emdk.EMDKManager;
@@ -44,20 +47,33 @@ import com.symbol.emdk.barcode.StatusData;
 import com.symbol.emdk.barcode.StatusData.ScannerStates;
 import com.symbol.kepzetclient.auxx.LogFile;
 import com.symbol.kepzetclient.custom_components.SetupActivity;
+import com.symbol.kepzetclient.tcp.TCPClientListener;
+import com.symbol.kepzetclient.tcp.TCPCommunicatorClient;
+import com.symbol.kepzetclient.tcp.TCPCommunicatorServer;
+import com.symbol.kepzetclient.tcp.TCPServerListener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements EMDKListener, DataListener, StatusListener, ScannerConnectionListener, OnCheckedChangeListener {
+public class MainActivity extends Activity
+        implements EMDKListener, DataListener, StatusListener, ScannerConnectionListener, OnCheckedChangeListener,
+        TCPClientListener, TCPServerListener {
 
+
+    public Socket MyServerSocket;
     private static com.symbol.kepzetclient.auxx.FS fs;
+
+    private TCPCommunicatorClient tcpClient;
+    private TCPCommunicatorServer tcpServer;
+
     private EMDKManager emdkManager = null;
     private BarcodeManager barcodeManager = null;
     private Scanner scanner = null;
@@ -100,6 +116,19 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     TabLayout tabLayout;
     private Connection con;
 
+    private ProgressDialog dialog;
+    private boolean isFirstLoad = true;
+    private Handler UIHandler = new Handler();
+    private Handler HandlerServer = new Handler();
+
+    private void ConnectToServer() {
+        //setupDialog();
+        tcpClient = TCPCommunicatorClient.getInstance();
+        TCPCommunicatorClient.addListener(this);
+        //SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        tcpClient.init(/*settings.getString(EnumsAndStatics.SERVER_IP_PREF,*/ "192.168.1.8"//),
+                /*Integer.parseInt(settings.getString(EnumsAndStatics.SERVER_PORT_PREF, "1500"))*/,2222);
+    }
 
 
     public void OtvorSettingsScreen() {
@@ -118,9 +147,22 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        //client
+        this.ConnectToServer();
+        //this.btnStartServer(null);
+        //END client
+
+
+        //#########################################################################################
+        //server
+        this.tcpServer = TCPCommunicatorServer.getInstance();
+        TCPCommunicatorServer.addListener(this);
+        tcpServer.init(3333); //lokalny server na klientovi bude pocuvat na pripadne spravy HLAVNEHO SERVERU (192.168.1.8) na 3333ke
+        //END server
+        //#########################################################################################
+
         _mainActivity = this;
-
-
 
         deviceList = new ArrayList<ScannerInfo>();
 
@@ -159,6 +201,8 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         //ConnectionClass connectionClass = new ConnectionClass();
         //con = connectionClass.CONN();
 
+        textViewStatus.setText("AHOJJJJJ");
+
     }
 
     @Override
@@ -192,6 +236,17 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             // Initialize scanner
             initScanner();
         }
+
+        //TCP START
+        //setContentView(R.layout.activity_main);
+        if(!isFirstLoad)
+        {
+            TCPCommunicatorClient.closeStreams();
+            ConnectToServer();
+        }
+        else
+            isFirstLoad=false;
+        //TCP END
     }
 
     @Override
@@ -221,6 +276,8 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
             emdkManager.release();
             emdkManager = null;
         }
+        this.btnStopServer(null);
+
     }
 
     @Override
@@ -695,12 +752,12 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         }
     }
 
-    private void SetText(String text)
-    {
-          runOnUiThread(()->{
-              lf.appendLog(text);
-          });
-//        // InvokeRequired required compares the thread ID of the
+//    private void SetText(String text)
+//    {
+//          runOnUiThread(()->{
+//              lf.appendLog(text);
+//          });
+////        // InvokeRequired required compares the thread ID of the
 //        // calling thread to the thread ID of the creating thread.
 //        // If these threads are different, it returns true.
 //        if (this.InvokeRequired)
@@ -715,7 +772,7 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
            // FS.logData(text);
 
 //        }
-    }
+//    }
 
     public void btnConToServer_onClick(View view) {
         String IP = "192.168.1.24";
@@ -744,14 +801,108 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
                 }
             }
         }).start();
+    }
+
+    //CLIENT onTCPMessageRecieved
+    @Override
+    public void onTCPMessageRecieved(String pMessage) {
+        // TODO Auto-generated method stub
+        final String theMessage=pMessage;
+        //try {
+            //JSONObject obj = new JSONObject(message);
+            //String messageTypeString=obj.getString(EnumsAndStatics.MESSAGE_TYPE_FOR_JSON);
+            //MessageTypes messageType = EnumsAndStatics.getMessageTypeByString(messageTypeString);
+            //switch(messageType)
+            //{
+            //case MessageFromServer:
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // TODO Auto-generated method stub
+                            TextView editTextFromServer =(TextView)findViewById(R.id.tvReceivedData);
+                            editTextFromServer.setText(theMessage);
+                        }
+                    });
+
+               //     break;
+               // }
+                            }
+        //} catch (JSONException e) {
+            // TODO Auto-generated catch block
+            //e.printStackTrace();
+        //}
+
+    }
+    //CLIENT END
+
+    @Override
+    public void onTCPConnectionStatusChanged(boolean isConnectedNow) {
+
+        // TODO Auto-generated method stub
+        if(isConnectedNow)
+        {
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    // TODO Auto-generated method stub
+                    if (dialog != null)
+                        dialog.hide();
+                    Toast.makeText(getApplicationContext(), "Connected to server", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
 
     }
 
+
+    public void btnSendClick(View view)
+    {
+        //tcpClient.init("192.168.1.8",2222);
+        ConnectToServer();
+        String content  = "TAccept";
+        TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
+    }
+    //btnSendClick
+
+
+    //ServerListener
+    //https://www.facebook.com/share/r/cF3JcNMUMhKzrCLQ/
+    //https://www.facebook.com/share/v/fsyALHALtUWCjHpQ/
+    @Override
+    public void onTCPMessageServerRecieved(String pMessage) {
+
+        // TODO Auto-generated method stub
+        String theMessage = pMessage;
+        HandlerServer.post(new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                try
+                {
+                    TextView editTxt = (TextView) findViewById(R.id.tvTHISServer);
+                    editTxt.setText(theMessage);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    //END ServerListener
+
+    //######################################################################################################################################################################
+    //######################################################################################################################################################################
     public enum  ResultType{
         SUCCESS, ERROR, WARNING
     }
-    class TCWriteThread extends  Thread implements Runnable{
+    class TCWriteThread extends Thread implements Runnable{
 
+        //String IP_SERVER = "192.168.1.8";
         String IP_SERVER = "192.168.1.8";
         Integer port_server = 2222;
         private boolean serverIsRunning;
@@ -803,6 +954,109 @@ public class MainActivity extends Activity implements EMDKListener, DataListener
         }//startServer()
 
     }//WriteThread
+
+
+
+
+
+
+    class ServerThread extends  Thread implements Runnable{
+        private boolean serverIsRunning;
+        private ServerSocket serverSocket;
+        private int connectCount;
+
+        public void connectServer(){
+
+            serverIsRunning  = true;
+            start();
+        }
+
+        @Override
+        public void run() {
+
+            try {
+
+                //https://stackoverflow.com/questions/60396719/socket-and-serversocket-communication-unclear
+                serverSocket = new ServerSocket(MainActivity.this.serverPort);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvReceivedData.setText("Waiting for Clients");
+                    }
+                });
+
+                while(serverIsRunning){
+
+//                    Socket socket = serverSocket.accept();
+                    MyServerSocket = serverSocket.accept();
+                    //connectCount++;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvReceivedData.setText("TC21 conected to SERVER: " + MyServerSocket.getInetAddress() + ":" + MyServerSocket.getLocalPort());
+                        }
+                    });
+
+                    PrintWriter output_Server = new PrintWriter(MyServerSocket.getOutputStream());
+
+                    output_Server.write("TC21 is listenig on"+ Helpers.getLocalIP() +":3333");
+                    output_Server.flush();
+                    MyServerSocket.close();
+
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }//run()
+
+        public  void stopSerever(){
+            serverIsRunning = false;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    if(serverSocket != null) {
+                        try {
+                            serverSocket.close();
+                            runOnUiThread(new Runnable(){
+                                @Override
+                                public void run() {
+                                    textViewStatus.setText("Server Stopped");
+                                }
+                            });
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            }).start();
+        }//stopServer()
+
+
+        public  void startSerever(){
+            serverIsRunning = true;
+            start();
+        }//startServer()
+
+    }
+
+    private int serverPort = 2222;
+
+    private ServerThread serverThread;
+
+    public  void btnStartServer(View view){
+
+        serverThread = new ServerThread();
+        serverThread.startSerever();
+
+    } //btnStartServer
+
+    public  void btnStopServer(View view){
+
+        serverThread.stopSerever();
+    }
 
 
 }

@@ -339,7 +339,7 @@
                     android:layout_height="50sp"
                     android:width="100dp"
                     android:text="Accept"
-                    android:onClick="onClick_btnAccept"
+                    android:onClick="btnSendClick"
                     android:textSize="16sp"
                     />
             </TableRow>
@@ -430,6 +430,13 @@
                     android:textStyle="normal" />
             </LinearLayout>
         </ScrollView>
+
+        <TextView
+            android:id="@+id/tvTHISServer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:text="Messages for THIS Server" />
 
     </LinearLayout>
 

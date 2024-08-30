@@ -11,6 +11,8 @@ import androidx.core.content.ContextCompat;
 
 import org.joda.time.format.DateTimeFormat;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -51,6 +53,16 @@ public class Helpers {
 
     public static String timestampAsString(Timestamp timestamp) {
         return DateTimeFormat.forPattern("dd/MM/yy HH:mm:ss").print(timestamp.getTime());
+    }
+
+    public static InetAddress getLocalIP(){
+
+        try {
+            return InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+
+            throw new RuntimeException(e);
+        }
     }
 
 

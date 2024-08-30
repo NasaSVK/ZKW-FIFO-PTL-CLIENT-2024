@@ -3673,6 +3673,7 @@ id tvSText
 id tvServerIpText
 id tvServerPortText
 id tvServerText
+id tvTHISServer
 id tvTimeText
 id tvVolumeText
 id unchecked

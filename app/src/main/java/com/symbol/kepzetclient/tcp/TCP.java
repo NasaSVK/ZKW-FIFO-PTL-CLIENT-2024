@@ -5,9 +5,9 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
-public class TCP implements TCPListener{
+public class TCP implements TCPClientListener {
 
-    private TCPCommunicator tcpClient;
+    private TCPCommunicatorClient tcpClient;
     private ProgressDialog dialog;
     public static String currentUserName;
     private Handler UIHandler = new Handler();
@@ -20,8 +20,8 @@ public class TCP implements TCPListener{
 
     private void ConnectToServer() {
         setupDialog();
-        tcpClient = TCPCommunicator.getInstance();
-        TCPCommunicator.addListener(this);
+        tcpClient = TCPCommunicatorClient.getInstance();
+        TCPCommunicatorClient.addListener(this);
         //SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         tcpClient.init( "192.168.1.100", Integer.parseInt("1500"));
     }
@@ -55,7 +55,7 @@ public class TCP implements TCPListener{
 //        {
 //            e.printStackTrace();
 //        }
-//        TCPCommunicator.writeToSocket(obj,UIHandler,this);
+//        TCPCommunicatorClient.writeToSocket(obj,UIHandler,this);
         //dialog.show();
 
     }

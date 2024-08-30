@@ -3672,6 +3672,7 @@ int id tvSText 0x7f080239
 int id tvServerIpText 0x7f08023a
 int id tvServerPortText 0x7f08023b
 int id tvServerText 0x7f08023c
+int id tvTHISServer 0x7f080257
 int id tvTimeText 0x7f08023d
 int id tvVolumeText 0x7f08023e
 int id unchecked 0x7f08023f
