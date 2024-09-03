@@ -46,7 +46,7 @@ public class SetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
-        Settings.SELF.LoadToFile(SetupActivity.this);
+        Settings.getSELF().LoadToFile(SetupActivity.this);
 
         btnSave = (Button)findViewById(R.id.btnSave);
         btnCancel = (Button)findViewById(R.id.btnCancel);
@@ -72,7 +72,7 @@ public class SetupActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 SetupActivity.this.SaveTheValues();
-                Settings.SELF.SaveToFile(SetupActivity.this);
+                Settings.getSELF().SaveToFile(SetupActivity.this);
 
                 //Log.i("TestSerializacieObjektu", Settings.SaveToFile(SetupActivity.this));
                 //Settings.SaveToFile(SetupActivity.this);
@@ -98,33 +98,33 @@ public class SetupActivity extends AppCompatActivity {
     }
     public void FillTheValues(){
 
-        etServerIP.setText(Settings.SELF.ServerIP);
-        etClientIP.setText(Settings.SELF.ClientIP);
-        etServerPort.setText(String.valueOf(Settings.SELF.ServerPort));
-        etClientPort.setText(String.valueOf(Settings.SELF.ClientPort));
+        etServerIP.setText(Settings.getSELF().ServerIP);
+        etClientIP.setText(Settings.getSELF().ClientIP);
+        etServerPort.setText(String.valueOf(Settings.getSELF().ServerPort));
+        etClientPort.setText(String.valueOf(Settings.getSELF().ClientPort));
 
-        etTime.setText(String.valueOf(Settings.SELF.Time));
-        etPassword1.setText(Settings.SELF.Password);
-        etPassword2.setText(Settings.SELF.Password);
+        etTime.setText(String.valueOf(Settings.getSELF().Time));
+        etPassword1.setText(Settings.getSELF().Password);
+        etPassword2.setText(Settings.getSELF().Password);
 
-        cbManualAccept.setChecked(Settings.SELF.ManualAccepting);
-        hnpVolume.setValue(Settings.SELF.Volume);
+        cbManualAccept.setChecked(Settings.getSELF().ManualAccepting);
+        hnpVolume.setValue(Settings.getSELF().Volume);
 
     }
 
     public void SaveTheValues(){
 
-        Settings.SELF.ServerIP = String.valueOf(etServerIP.getText());
-        Settings.SELF.ClientIP = String.valueOf(etClientIP.getText());
-        Settings.SELF.ServerPort = Integer.valueOf(etServerPort.getText().toString());
-        Settings.SELF.ClientPort = Integer.valueOf(etClientPort.getText().toString());
+        Settings.getSELF().ServerIP = String.valueOf(etServerIP.getText());
+        Settings.getSELF().ClientIP = String.valueOf(etClientIP.getText());
+        Settings.getSELF().ServerPort = Integer.valueOf(etServerPort.getText().toString());
+        Settings.getSELF().ClientPort = Integer.valueOf(etClientPort.getText().toString());
 
-        Settings.SELF.Time = Integer.valueOf(etTime.getText().toString());
-        Settings.SELF.Password = etPassword1.getText().toString();
-        Settings.SELF.Password = etPassword2.getText().toString();
+        Settings.getSELF().Time = Integer.valueOf(etTime.getText().toString());
+        Settings.getSELF().Password = etPassword1.getText().toString();
+        Settings.getSELF().Password = etPassword2.getText().toString();
 
-        Settings.SELF.ManualAccepting = cbManualAccept.isChecked();
-        Settings.SELF.Volume = Integer.valueOf(hnpVolume.getValue());
+        Settings.getSELF().ManualAccepting = cbManualAccept.isChecked();
+        Settings.getSELF().Volume = Integer.valueOf(hnpVolume.getValue());
 
     }
 

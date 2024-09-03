@@ -19,11 +19,11 @@ public class FS {
             allowManual = 7,
             dbConnStr = 8;
 
-    public void logData(String data){
+    public static void logData(String data){
         _checkIfLogExists();
     }
 
-    private void _checkIfLogExists() {
+    private static void _checkIfLogExists() {
     }
 
     public FS() {

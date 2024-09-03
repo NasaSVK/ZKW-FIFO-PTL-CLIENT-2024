@@ -144,6 +144,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id = "@+id/tvPrevPallet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
@@ -165,6 +166,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id= "@+id/tvPartNunber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
@@ -185,6 +187,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tvPosition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
@@ -307,6 +310,7 @@
         </TableLayout>
 
         <TextView
+            android:id="@+id/tvNOK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -329,17 +333,19 @@
                 android:layout_height="match_parent">
 
                 <CheckBox
+                    android:id="@+id/cbLeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="lead" />
 
                 <Button
+                    android:id="@+id/btnDbAccess"
                     android:layout_width="match_parent"
                     android:layout_height="50sp"
                     android:width="100dp"
-                    android:text="Accept"
-                    android:onClick="btnSendClick"
+                    android:text="DbAcces"
+                    android:onClick="DbAccess_Click"
                     android:textSize="16sp"
                     />
             </TableRow>
@@ -349,6 +355,7 @@
                 android:layout_height="match_parent">
 
                 <CheckBox
+                    android:id="@+id/cbxClear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="1"
@@ -386,20 +393,13 @@
                     android:layout_column="1"
                     android:id="@+id/btnConToServer"
                     android:onClick="btnConToServer_onClick"
+                    android:visibility="gone"
                     />
 
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tvReceivedData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_span="2"
-                    android:text="no message from server" />
-
             </TableRow>
 
         </TableLayout>
@@ -413,14 +413,13 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="100sp">
+            android:layout_height="115dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layoutDirection="locale"
-                >
+                android:layoutDirection="locale">
 
                 <TextView
                     android:id="@+id/textViewData"
@@ -430,14 +429,6 @@
                     android:textStyle="normal" />
             </LinearLayout>
         </ScrollView>
-
-        <TextView
-            android:id="@+id/tvTHISServer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_span="2"
-            android:text="Messages for THIS Server" />
-
     </LinearLayout>
 
     <TextView
@@ -456,9 +447,31 @@
         android:layout_height="wrap_content"
         android:onClick="softScan"
         android:text="Scan"
-        app:layout_constraintBottom_toTopOf="@+id/llBottom" />
+        app:layout_constraintBottom_toTopOf="@+id/llInfo" />
 
+    <LinearLayout
+        android:id="@+id/llInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/llBottom"
+        >
 
+        <TextView
+            android:id="@+id/tvInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message:" />
+
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No message so farr"
+            android:layout_marginStart="2dp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/llBottom"
         android:layout_width="match_parent"

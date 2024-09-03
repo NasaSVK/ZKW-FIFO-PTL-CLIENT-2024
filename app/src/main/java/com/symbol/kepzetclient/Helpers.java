@@ -3,6 +3,7 @@ package com.symbol.kepzetclient;
 import android.content.Context;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,8 @@ import org.joda.time.format.DateTimeFormat;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Helpers {
@@ -25,7 +28,7 @@ public class Helpers {
     }
 
     public static String getCurrentDateTime(){
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM HH:mm:ss");
         Date date = new Date();
         return (dateFormat.format(date));
         //System.out.println(dateFormat.format(date));
@@ -64,6 +67,38 @@ public class Helpers {
             throw new RuntimeException(e);
         }
     }
+
+
+    public static String getId(View view) {
+        if (view.getId() == View.NO_ID) return "no-id";
+        else return view.getResources().getResourceName(view.getId());
+    }
+
+
+
+        public static boolean Ping(String pAddress){
+            try{
+                InetAddress address = InetAddress.getByName(pAddress);
+                boolean reachable = address.isReachable(10000);
+                return reachable;
+                //System.out.println("Is host reachable? " + reachable);
+            } catch (Exception e){
+
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+        public static String getNow() {
+
+            DateTimeFormatter formatter = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                return LocalDateTime.now().format(formatter);
+            }
+            return "1970-01-01 01:00:00";
+        }
+
 
 
 }

@@ -4,14 +4,16 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
+import com.symbol.kepzetclient.Helpers;
+import com.symbol.kepzetclient.MainActivity;
+import com.symbol.kepzetclient.auxx.Settings;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -25,8 +27,10 @@ public class TCPCommunicatorServer {
     private static Socket s;
     private static BufferedReader in;
     private static BufferedWriter out;
-    private static OutputStream outputStream;
+    //private static OutputStream outputStream;
     private static Handler handler = new Handler();
+
+
     private TCPCommunicatorServer()
     {
         allListeners = new ArrayList<TCPServerListener>();
@@ -79,42 +83,60 @@ public class TCPCommunicatorServer {
 
     public class InitTCPServerTask extends AsyncTask<Void, Void, Void>
     {
+        private boolean serverRunning;
         public InitTCPServerTask()
         {
-
+            serverRunning = true;
         }
 
         @Override
         protected Void doInBackground(Void... params) {
 
 
-            try {
-                ss = new ServerSocket(TCPCommunicatorServer.getServerPort());
+                try {
+                    ss = new ServerSocket(TCPCommunicatorServer.getServerPort());
 
-                s = ss.accept();
-                in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                outputStream = s.getOutputStream();
-                out = new BufferedWriter(new OutputStreamWriter(outputStream));
-                //receive a message
-                String incomingMsg;
-                while((incomingMsg=in.readLine())!=null)
-                {
-                    final String finalMessage=incomingMsg;
                     handler.post(new Runnable() {
-
                         @Override
                         public void run() {
-                            // TODO Auto-generated method stub
-                            for(TCPServerListener listener:allListeners)
-                                listener.onTCPMessageServerRecieved(finalMessage);
-                            Log.e("TCP", finalMessage);
+                            Settings.getSELF().LoadToFile(MainActivity.getContext());
+                            for (TCPServerListener listener : allListeners) {
+                                final String  TEXT  = "<font color='silver'>" +  Helpers.getCurrentDateTime() + "</font>" +"  "
+                                        + "<font color='gray'>" +  "TCP" + "</font> : <b>" + "LISTENER at " + "10.16.0.234"+":"+Settings.getSELF().ClientPort + "</b>";
+                                listener.onInfoEventOccured(TEXT);
+                            }
+
                         }
                     });
+
+                    while (serverRunning)
+                    {
+                    s = ss.accept();
+                    in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                    //outputStream = s.getOutputStream();
+                    //out = new BufferedWriter(new OutputStreamWriter(outputStream));
+                    //receive a message
+                    String incomingMsg;
+                    ArrayList<String> incomingMsgs = new ArrayList<>();
+                    while ((incomingMsg = in.readLine()) != null) {
+                        final String finalMessage = incomingMsg;
+                        incomingMsgs.add(incomingMsg);
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                // TODO Auto-generated method stub
+                                for (TCPServerListener listener : allListeners)
+                                    listener.onTCPMessageServerRecieved(finalMessage);
+                                Log.e("TCP", finalMessage);
+                            }
+                        });
+                    }
+                    }
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+
             return null;
 
 

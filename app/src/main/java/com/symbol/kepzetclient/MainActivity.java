@@ -8,8 +8,10 @@ import static com.symbol.kepzetclient.Helpers.getCurrentDateTime;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,9 +19,13 @@ import android.text.Html;
 import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
@@ -45,7 +51,9 @@ import com.symbol.emdk.barcode.ScannerInfo;
 import com.symbol.emdk.barcode.ScannerResults;
 import com.symbol.emdk.barcode.StatusData;
 import com.symbol.emdk.barcode.StatusData.ScannerStates;
+import com.symbol.kepzetclient.auxx.FS;
 import com.symbol.kepzetclient.auxx.LogFile;
+import com.symbol.kepzetclient.auxx.Settings;
 import com.symbol.kepzetclient.custom_components.SetupActivity;
 import com.symbol.kepzetclient.tcp.TCPClientListener;
 import com.symbol.kepzetclient.tcp.TCPCommunicatorClient;
@@ -61,12 +69,16 @@ import java.net.Socket;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends Activity
         implements EMDKListener, DataListener, StatusListener, ScannerConnectionListener, OnCheckedChangeListener,
         TCPClientListener, TCPServerListener {
 
+    String dataRcvd = null;
+
+    boolean stop = false;
 
     public Socket MyServerSocket;
     private static com.symbol.kepzetclient.auxx.FS fs;
@@ -80,6 +92,8 @@ public class MainActivity extends Activity
 
     private TextView textViewData = null;
     private TextView textViewStatus = null;
+
+    private ArrayList<View> Controls = null;
 
     //private CheckBox checkBoxEAN8 = null;
     //private CheckBox checkBoxEAN13 = null;
@@ -101,7 +115,16 @@ public class MainActivity extends Activity
     private String statusString = "";
 
     private TextView tvBarcode = null;
-    private TextView tvReceivedData = null;
+    private TextView tvPrevPallet = null;
+
+    private Button btnAccept = null;
+    private TextView tvNOK = null;
+    private TextView tvPartNumber = null;
+    private TextView tvPosition = null;
+
+    private TextView tvInfo = null;
+
+    private CheckBox cbClear = null;
 
     private boolean bSoftTriggerSelected = false;
     private boolean bDecoderSettingsChanged = true;
@@ -121,13 +144,34 @@ public class MainActivity extends Activity
     private Handler UIHandler = new Handler();
     private Handler HandlerServer = new Handler();
 
-    private void ConnectToServer() {
+    private List<multipackData> mpData;
+    private CheckBox cbLeader;
+
+
+    public static Context getContext(){
+
+        return MainActivity._mainActivity;
+    }
+
+    class multipackData
+    {
+        public multipackData(String n, Color pColor)
+        {
+            this.nr = n;
+            this.color = pColor;
+        }
+        public String nr;
+        public Color color;
+
+    }
+
+    private TCPCommunicatorClient.TCPWriterErrors ConnectToServer() {
         //setupDialog();
         tcpClient = TCPCommunicatorClient.getInstance();
         TCPCommunicatorClient.addListener(this);
-        //SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        tcpClient.init(/*settings.getString(EnumsAndStatics.SERVER_IP_PREF,*/ "192.168.1.8"//),
-                /*Integer.parseInt(settings.getString(EnumsAndStatics.SERVER_PORT_PREF, "1500"))*/,2222);
+        Settings.getSELF().LoadToFile(MainActivity.getContext());
+        //return tcpClient.init( "192.168.1.8",2222);
+        return tcpClient.init(Settings.getSELF().ServerIP,Settings.getSELF().ServerPort);
     }
 
 
@@ -147,12 +191,12 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        _mainActivity = this;
 
         //client
         this.ConnectToServer();
         //this.btnStartServer(null);
         //END client
-
 
         //#########################################################################################
         //server
@@ -162,7 +206,7 @@ public class MainActivity extends Activity
         //END server
         //#########################################################################################
 
-        _mainActivity = this;
+
 
         deviceList = new ArrayList<ScannerInfo>();
 
@@ -170,9 +214,18 @@ public class MainActivity extends Activity
         setDefaultOrientation();
 
         textViewData = findViewById(R.id.textViewData);
-        tvReceivedData = findViewById(R.id.tvReceivedData);
         tvBarcode = findViewById(R.id.tvBarcode);
         textViewStatus = findViewById(R.id.textViewStatus);
+        btnAccept = findViewById(R.id.btnDbAccess);
+        tvNOK = findViewById(R.id.tvNOK);
+        tvPartNumber = (TextView)findViewById(R.id.tvPartNunber);
+        tvPosition = (TextView)findViewById(R.id.tvPosition);
+        tvPrevPallet = (TextView)findViewById(R.id.tvPrevPallet);
+        tvInfo = (TextView)findViewById(R.id.tvInfo);
+        cbLeader = (CheckBox)findViewById(R.id.cbLeader);
+        cbClear = (CheckBox)findViewById(R.id.cbxClear);
+
+
         //checkBoxEAN8 = (CheckBox)findViewById(R.id.checkBoxEAN8);
         //checkBoxEAN13 = (CheckBox)findViewById(R.id.checkBoxEAN13);
         //checkBoxCode39 = (CheckBox)findViewById(R.id.checkBoxCode39);
@@ -201,7 +254,7 @@ public class MainActivity extends Activity
         //ConnectionClass connectionClass = new ConnectionClass();
         //con = connectionClass.CONN();
 
-        textViewStatus.setText("AHOJJJJJ");
+        //textViewStatus.setText("AHOJJJJJ")
 
     }
 
@@ -287,6 +340,16 @@ public class MainActivity extends Activity
             for(ScanData data : scanData) {
                 updateData("<font color='silver'>" +  Helpers.getCurrentDateTime() + "</font>" +"  "+ "<font color='gray'>" +  data.getLabelType() + "</font> : <b>" + data.getData() +"</b>");
             }
+
+            //TCP START
+
+            String content  = scanData.get(scanData.size()-1).getData();
+            //ConnectToServer();
+            TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
+
+
+            //TCP END
+
         }
     }
 
@@ -718,16 +781,12 @@ public class MainActivity extends Activity
 //        return super.onOptionsItemSelected(item);
     }
 
-    public void clkAccept(View view) {
+    public void DbAccess_Click(View view) {
         Intent dbActivity = new Intent(this, DbActivity.class);
         startActivity(dbActivity);
     }
 
     public void clkSetup(View view) {
-        //Intent preferencesIntent = new Intent(this, Preferences.class);
-        //startActivity(preferencesIntent);
-
-        //this.OtvorSettingsScreen();
 
         Intent SetupActivity = new Intent(this, SetupActivity.class);
         startActivity(SetupActivity);
@@ -775,8 +834,10 @@ public class MainActivity extends Activity
 //    }
 
     public void btnConToServer_onClick(View view) {
-        String IP = "192.168.1.24";
-        Integer port = 2222;
+
+        Settings.getSELF().LoadToFile(MainActivity.getContext());
+        String IP = Settings.getSELF().ServerIP;
+        Integer port = Settings.getSELF().ServerPort;
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -791,7 +852,7 @@ public class MainActivity extends Activity
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            tvReceivedData.setText(txtFromServer);
+                            tvInfo.setText(txtFromServer);
                         }
                     });
 
@@ -820,7 +881,7 @@ public class MainActivity extends Activity
                         @Override
                         public void run() {
                             // TODO Auto-generated method stub
-                            TextView editTextFromServer =(TextView)findViewById(R.id.tvReceivedData);
+                            TextView editTextFromServer =(TextView)findViewById(R.id.tvInfo);
                             editTextFromServer.setText(theMessage);
                         }
                     });
@@ -876,6 +937,7 @@ public class MainActivity extends Activity
 
         // TODO Auto-generated method stub
         String theMessage = pMessage;
+        dataRcvd = pMessage;
         HandlerServer.post(new Runnable() {
 
             @Override
@@ -883,20 +945,310 @@ public class MainActivity extends Activity
                 // TODO Auto-generated method stub
                 try
                 {
-                    TextView editTxt = (TextView) findViewById(R.id.tvTHISServer);
+                    TextView editTxt = (TextView) findViewById(R.id.tvInfo);
                     editTxt.setText(theMessage);
-                }
+                                    }
                 catch(Exception e)
                 {
                     e.printStackTrace();
                 }
             }
         });
+        //#######################
+        this.parseData();
+        //#######################
+
+    }
+    //vypise info o spusteni listenera do HISTORIE
+    @Override
+    public void onInfoEventOccured(String message) {
+
+        updateData(message);
+
     }
     //END ServerListener
 
     //######################################################################################################################################################################
     //######################################################################################################################################################################
+    //bcr_BarcodeRead START
+    void bcr_BarcodeRead(String pQrCode)
+    {
+//        if (lblPos.Text != "")
+//        {
+//            if (MessageBox.Show("are you sure?", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
+//            {
+//                return;
+//            }
+//        }
+
+        tvInfo.setText("");
+        tvPrevPallet.setText("");
+        tvPartNumber.setText("");
+        tvPosition.setText("");
+
+        //lblMultiPackTextforeach (Control c in this.Controls)
+        ////        {
+        ////            if (c is Label && c.Name.StartsWith("lblMP"))//pozicia z design-u x2
+        ////            {
+        ////                c.Text = "";
+        ////            }
+        ////        }.Text = "";
+//
+        if (stop)
+        {
+            tvNOK.setText("STOP");
+            tvNOK.setBackgroundColor(Color.RED);
+            //lampTimer.Enabled = true;
+            //NokSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
+            //NokSound.Play();
+            //NokSound.Volume = 3;
+            return;
+
+        }
+
+
+        int loopCount = 0;
+        boolean pingResult = Helpers.Ping("192.168.1.8");
+        while (!pingResult)
+        {
+
+            loopCount++;
+            if (loopCount > 10)
+            {
+                Helpers.redToast(this, "network error!! check network");
+                break;
+            }
+
+
+        }
+        StringBuilder sbQrCode = new StringBuilder(pQrCode);
+        String displayBc = (sbQrCode.substring(0) == "S")? sbQrCode.delete(0, 1).toString():sbQrCode.toString();
+
+        //##################################################
+        tvBarcode.setText(displayBc);//bre.strDataBuffer;
+        //##################################################
+        SetText("B:" + pQrCode);
+        try
+        {
+
+            ConnectToServer();
+            String content  = pQrCode;
+            TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
+            SetText("S@" + Helpers.getNow() + ":" + pQrCode);
+
+        }
+
+        catch (Exception ex)
+        {
+            Helpers.redToast(this,ex.toString());
+            Log.e("KepZet Error", ex.getMessage());
+        }
+    }
+    //bcr_BarcodeRead END
+
+    //ParseData START
+    private void parseData()
+    {
+
+//        if (dataRcvd == null)
+//            return;
+//        else
+//        if (dataRcvd.compareTo("") == 0)
+//            return;
+
+        String pos = null;
+        String pn = null;
+        String prevPal = null;
+        String result = null;
+        String multipack = null;
+        String info = null;
+
+        ///Toast.makeText("rcvd: " + dataRcvd, Toast.LENGTH_SHORT).show();
+
+//        if (this.InvokeRequired)
+//        {
+//            this.Invoke(new mydelegate(parseData));
+//            return;
+//        }
+        try
+        {
+            //List<String> lines = new List<String>();
+            String[] arrayTempLines = dataRcvd.split("\\\n");
+            List<String> lines = Arrays.asList(arrayTempLines);
+
+
+            pn = lines.get(0).trim();// 1013.0000.000.00
+            pos = lines.get(1).trim();// x5 Y41 S2
+            prevPal = lines.get(2).trim();// 1234567
+            result = lines.get(3).trim();// "OK"/"NOK"/""
+            multipack = lines.get(4).trim();//G1234|B2345|
+            info = lines.get(5).trim();
+
+            if (pos != "")
+
+                btnAccept.setActivated(true);
+
+            if (multipack.length() != 0)
+            {
+                String[] temp = multipack.split("\\|");
+
+                for (String s : temp)
+                {
+                    try
+                    {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            mpData.add(new multipackData(s.substring(1, 4), s.substring(0, 1) == "G" ? Color.valueOf(Color.GREEN) : Color.valueOf(Color.WHITE)));
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        SetText ("multipack data error:" + dataRcvd);
+
+                    }
+                }
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            Helpers.redToast(this, "received data(" + dataRcvd + ") parse error:" + ex.toString());
+        }
+        if (result == "OK")
+        {
+            tvNOK.setText("OK");
+            tvNOK.setBackgroundColor(Color.GREEN);
+            //NNP lampTimer.Enabled = true;
+            btnAccept.setActivated(false);
+            tvBarcode.setText("");
+            tvPartNumber.setText("");
+            tvPosition.setText("");
+            tvPrevPallet.setText("");
+            tvInfo.setText("");
+            //NNP
+            //OKSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
+            //OKSound.Play();
+            //OKSound.Volume = 3;
+        }
+        else if (result == "NOK")
+        {
+            tvNOK.setText("NOK");
+            tvNOK.setBackgroundColor(Color.RED);
+            //NNP lampTimer.Enabled = true;
+            //NNP
+            //NokSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
+            //NokSound.Play();
+            //NokSound.Volume = 3;
+        }
+        else
+        {
+            tvNOK.setText("");
+            tvNOK.setBackgroundColor(Color.TRANSPARENT);
+        }
+
+        if (result == "STOP")
+        {
+            stop = true;
+        }
+        else
+        {
+            stop = false;
+        }
+
+        if (info == "teamLeader logged in")
+            cbLeader.setChecked(true);
+        else if (info == "clear mode set")
+            cbClear.setChecked(true);
+        else if (info == "clear mode reset")
+            cbClear.setChecked(false);
+        else if (info.endsWith("clear mode reset, teamLeader logged out") || info == "teamLeader logged out")
+        {
+            cbLeader.setChecked(false);
+            cbClear.setChecked(false);
+        }
+
+
+        tvPartNumber.setText(pn);
+        tvPosition.setText(pos);
+        tvPrevPallet.setText(prevPal);
+        //lblMultiPackText.Text = multipack;
+        tvInfo.setText(info);
+
+        for(multipackData m : mpData)
+        {
+
+        }
+        int i = 1;
+
+        Controls = new ArrayList<View>();
+        //NNP doplnit naplnenie Controls;
+        for (View c : this.Controls)
+        {
+            if (c instanceof TextView &&  Helpers.getId(c).indexOf("lblMP")>-1)
+            {
+                int start_index = Helpers.getId(c).indexOf("lblMP");
+                String s = Helpers.getId(c).substring(start_index+5, 2);
+                i = Integer.parseInt(s);
+                if (i < mpData.size())
+                {
+                    ((TextView)c).setText(mpData.get(i).nr);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        ((TextView)c).setTextColor(mpData.get(i).color.toArgb());
+                    }
+                }
+                else
+                {
+                    ((TextView)c).setText("");
+                    ((TextView)c).setTextColor(Color.WHITE);
+                }
+            }
+        }
+        mpData.clear();
+    }
+    //END ParseDate
+    private void show_children(View v) {
+        ViewGroup viewgroup=(ViewGroup)v;
+        for (int i=0;i<viewgroup.getChildCount();i++) {
+            View v1=viewgroup.getChildAt(i);
+            if (v1 instanceof ViewGroup) show_children(v1);
+            Log.d("KEPZET-ANDROID-CLIENT", v1.toString());
+        }
+    }
+
+    /**
+     * @return "[package]:id/[xml-id]"
+     * where [package] is your package and [xml-id] is id of view
+     * or "no-id" if there is no id
+     */
+
+    //TIMERS START
+        //    private void lampTimerTick(object sender, EventArgs e)
+        //    {
+        //        lampTimer.Enabled = false;
+        //        lampText.Text = "";
+        //        lampText.BackColor = SystemColors.Window;
+        //
+        //    }
+        //    private void ipTimerTick(object sender, EventArgs e)
+        //    {
+        //        addresses = Dns.GetHostEntry(Dns.GetHostName()).AddressList;
+        //        ipTimerCounter++;
+        //        if (addresses[0].ToString() == "127.0.0.1" && ipTimerCounter < 10)
+        //            return;
+        //        ipTimer.Enabled = false;
+        //        ipTimer.Dispose();
+        //        startListener();
+        //    }
+    //TIMERS END
+
+    private void SetText(String s) {
+        //this.listBox1.Items.Add(text);
+        //listBox1.SelectedIndex = listBox1.Items.Count - 1;
+        FS.logData(s);
+    }
+    //Parse END
+
+
     public enum  ResultType{
         SUCCESS, ERROR, WARNING
     }
@@ -923,8 +1275,8 @@ public class MainActivity extends Activity
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tvReceivedData.setTextColor(getResources().getColor(R.color.design_default_color_on_primary,null));
-                        tvReceivedData.setText("Ready for reading!");
+                        tvInfo.setTextColor(getResources().getColor(R.color.design_default_color_on_primary,null));
+                        tvInfo.setText("Ready for reading!");
                     }
                 });
 
@@ -956,10 +1308,6 @@ public class MainActivity extends Activity
     }//WriteThread
 
 
-
-
-
-
     class ServerThread extends  Thread implements Runnable{
         private boolean serverIsRunning;
         private ServerSocket serverSocket;
@@ -981,7 +1329,7 @@ public class MainActivity extends Activity
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tvReceivedData.setText("Waiting for Clients");
+                        tvInfo.setText("Waiting for Clients");
                     }
                 });
 
@@ -993,7 +1341,7 @@ public class MainActivity extends Activity
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            tvReceivedData.setText("TC21 conected to SERVER: " + MyServerSocket.getInetAddress() + ":" + MyServerSocket.getLocalPort());
+                            tvInfo.setText("TC21 conected to SERVER: " + MyServerSocket.getInetAddress() + ":" + MyServerSocket.getLocalPort());
                         }
                     });
 

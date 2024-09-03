@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.symbol.kepzetclient.auxx.Settings;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -42,7 +44,7 @@ public class TCPCommunicatorClient {
         setServerPort(port);
         InitTCPClientTask task = new InitTCPClientTask();
         task.execute(new Void[0]);
-        return TCPWriterErrors.OK;
+        return task.result;
     }
     public static  TCPWriterErrors writeToSocket(/*final JSONObject obj*/ String pContent,Handler handle,Context context)
     {
@@ -55,10 +57,16 @@ public class TCPCommunicatorClient {
                 // TODO Auto-generated method stub
                 try
                 {
+                    Settings.getSELF().LoadToFile(context);
+                    //Socket socket = new Socket("192.168.1.8",2222);
+                    String IP = Settings.getSELF().ServerIP;
+                    Socket socket = new Socket(Settings.getSELF().ServerIP, Settings.getSELF().ServerPort);
+                    out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                     //String outMsg = obj.toString() + System.getProperty("line.separator");
                     out.write(pContent /*outMsg*/);
                     out.flush();
                     Log.i("TcpClient", "sent: " + pContent /*outMsg*/);
+                    out.close();
                 }
                 catch(Exception e)
                 {
@@ -120,22 +128,24 @@ public class TCPCommunicatorClient {
 
     public class InitTCPClientTask extends AsyncTask<Void, Void, Void>
     {
+
         public InitTCPClientTask()
         {
 
         }
+        TCPWriterErrors result;
 
         @Override
         protected Void doInBackground(Void... params) {
             // TODO Auto-generated method stub
 
-            try
-            {
-                s = new Socket(getServerHost(), getServerPort());
-                //in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-                for(TCPClientListener listener:allListeners)
-                    listener.onTCPConnectionStatusChanged(true);
+
+                try {
+                    s = new Socket(getServerHost(), getServerPort());
+                    //in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                    out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+                    for (TCPClientListener listener : allListeners)
+                        listener.onTCPConnectionStatusChanged(true);
 //                while(true)
 //                {
 //                    String inMsg = in.readLine();
@@ -147,11 +157,17 @@ public class TCPCommunicatorClient {
 //                    }
 //                }
 
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                    result = TCPWriterErrors.UnknownHostException;
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    result = TCPWriterErrors.IOException;
+
+                }
+
+                result = TCPWriterErrors.OK;
 
             return null;
 

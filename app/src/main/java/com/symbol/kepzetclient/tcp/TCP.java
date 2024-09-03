@@ -5,6 +5,9 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
+import com.symbol.kepzetclient.MainActivity;
+import com.symbol.kepzetclient.auxx.Settings;
+
 public class TCP implements TCPClientListener {
 
     private TCPCommunicatorClient tcpClient;
@@ -23,7 +26,8 @@ public class TCP implements TCPClientListener {
         tcpClient = TCPCommunicatorClient.getInstance();
         TCPCommunicatorClient.addListener(this);
         //SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        tcpClient.init( "192.168.1.100", Integer.parseInt("1500"));
+        Settings.getSELF().LoadToFile(MainActivity.getContext());
+        tcpClient.init(Settings.getSELF().ServerIP, Settings.getSELF().ServerPort);
     }
 
 

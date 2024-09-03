@@ -1,6 +1,8 @@
 package com.symbol.kepzetclient.auxx;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -17,15 +19,26 @@ import java.lang.reflect.Type;
 
 public class Settings {
 
-    public static Settings SELF = new Settings();
+    public static Settings getSELF()
+    {
+        if (SELF == null)
+        {
+            //SELF = new Settings(MainActivity.getContext());
+            SELF = new Settings();
+        }
+        //this.LoadToFile()
+        return SELF;
+    }
+
+    private static Settings SELF;
 
     private final static String SUBOR = "settings.txt";
 
-    public String ServerIP = "10.0.0.1";
-    public int ServerPort = 1433;
+    public String ServerIP = "192.168.1.8";
+    public int ServerPort = 2222;
 
-    public String ClientIP = "10.0.0.2";
-    public int ClientPort = 2020;
+    public String ClientIP = "localhost";
+    public int ClientPort = 3333;
 
     public int Time = 1500;
 
@@ -34,6 +47,12 @@ public class Settings {
     public String Password = "sknasa";
 
     public boolean ManualAccepting = true;
+
+
+//    public Settings(Context pContext){
+//
+//    }
+
 
     //TODO: IGNORE LIST<PalNr>
     public boolean SaveToFile(Context ctx) {
@@ -82,7 +101,16 @@ public class Settings {
             throw new RuntimeException(e);
         }
         //if (temp == null) return false;
-            Toast.makeText(ctx,"file read",Toast.LENGTH_SHORT).show();
+        //https://stackoverflow.com/questions/47536005/cant-toast-on-a-thread-that-has-not-called-looper-prepare
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                //Toast toast = Toast.makeText(ctx, "file read", Toast.LENGTH_SHORT);
+                //toast.show();
+            }
+        });
+
+        //Toast.makeText(ctx,"file read",Toast.LENGTH_SHORT).show();
 
 //        catch(Exception e){
 //            e.printStackTrace();

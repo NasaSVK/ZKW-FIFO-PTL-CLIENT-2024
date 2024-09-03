@@ -4,4 +4,6 @@ public interface TCPServerListener {
 
     public void onTCPMessageServerRecieved(String message);
 
+    public void onInfoEventOccured(String message);
+
 }
