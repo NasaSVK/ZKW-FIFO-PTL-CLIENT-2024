@@ -4,8 +4,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
+import com.symbol.kepzetclient.Helpers;
+import com.symbol.kepzetclient.MainActivity;
 import com.symbol.kepzetclient.auxx.Settings;
 
 import java.io.BufferedWriter;
@@ -51,7 +52,6 @@ public class TCPCommunicatorClient {
         UIHandler=handle;
         appContext=context;
         Runnable runnable = new Runnable() {
-
             @Override
             public void run() {
                 // TODO Auto-generated method stub
@@ -71,11 +71,15 @@ public class TCPCommunicatorClient {
                 catch(Exception e)
                 {
                     UIHandler.post(new Runnable() {
-
                         @Override
                         public void run() {
                             // TODO Auto-generated method stub
-                            Toast.makeText(appContext ,"a problem has occured, the app might not be able to reach the server", Toast.LENGTH_SHORT).show();
+                            Helpers.redToast(appContext ,"a problem has occured, the app might not be able to reach the server");
+
+                            if(appContext instanceof MainActivity){
+                                ((MainActivity)appContext).writeError("the app might not be able to reach the server");
+
+                            }
                         }
                     });
                 }
@@ -85,7 +89,6 @@ public class TCPCommunicatorClient {
         Thread thread = new Thread(runnable);
         thread.start();
         return TCPWriterErrors.OK;
-
     }
 
     public static void addListener(TCPClientListener listener)

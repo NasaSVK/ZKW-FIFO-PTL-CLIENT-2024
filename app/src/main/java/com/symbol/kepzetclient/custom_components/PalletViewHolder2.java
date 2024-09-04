@@ -17,19 +17,57 @@ public class PalletViewHolder2 extends RecyclerView.ViewHolder {
     private TextView tvDateTime;
     private CheckBox cbActive;
 
-    public PalletViewHolder2(@NonNull View itemView) {
+    private final RecycleViewInterface recyclerViewInterface;
+
+    public PalletViewHolder2(@NonNull View itemView, RecycleViewInterface pRecyclerViewInterface) {
 
         super(itemView);
         tvPalletNumber = (TextView) itemView.findViewById(R.id.tvPalletNumber);
         tvDateTime = (TextView) itemView.findViewById(R.id.tvDateTime);
         cbActive = (CheckBox)  itemView.findViewById(R.id.cbActive);
+        recyclerViewInterface = pRecyclerViewInterface;
 
+        cbActive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((CheckBox)view).isChecked()){
+                    if (recyclerViewInterface != null){
+                        int pos  = getAdapterPosition(); //:X :X :X :X :X
+                        if (pos != RecyclerView.NO_POSITION) //:X :X :X :X :X
+                            recyclerViewInterface.onItemCheckBoxChecked(pos);
+                    }
+                }
+                else
+                if (!((CheckBox)view).isChecked()){
+                    if (recyclerViewInterface != null){
+                        int pos  = getAdapterPosition(); //:X :X :X :X :X
+                        if (pos != RecyclerView.NO_POSITION) //:X :X :X :X :X
+                            recyclerViewInterface.onItemCheckBoxUnchecked(pos);
+                    }
+                }
+            }
+        });
+
+        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (recyclerViewInterface != null){
+                    int pos  = getAdapterPosition(); //:X :X :X :X :X
+                    if (pos != RecyclerView.NO_POSITION) //:X :X :X :X :X
+                        recyclerViewInterface.onItemLongClick(pos);
+                }
+                    return true;
+            }
+        });
     }
 
     public void setPalletData(WarehouseDB pallet) {
         tvPalletNumber.setText(pallet.getPalleteNr());
         tvDateTime.setText(timestampAsString(pallet.getFIFODateTime()));
-        cbActive.setChecked(true);
+        cbActive.setChecked(false);
     }
+
+
+
 }
 

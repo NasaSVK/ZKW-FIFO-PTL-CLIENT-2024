@@ -14,17 +14,19 @@ import java.util.ArrayList;
 
 public class PalletAdapter2 extends RecyclerView.Adapter<PalletViewHolder2> {
     private ArrayList<WarehouseDB> PalletList;
-    public  PalletAdapter2(ArrayList<WarehouseDB> pPalletList){
+    private RecycleViewInterface recycleViewInterface;
+    public  PalletAdapter2(ArrayList<WarehouseDB> pPalletList, RecycleViewInterface pRecycleViewInterface)
+    {
         PalletList = pPalletList;
+        recycleViewInterface = pRecycleViewInterface;
     }
-
 
     @NonNull
     @Override
     public PalletViewHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.pallet_recycle_row,parent,false);
         //vytvorenie definovaneho ViewHoldera a predanie ziskaneho layoutu z inflat prikazu
-        return new PalletViewHolder2(view);
+        return new PalletViewHolder2(view,this.recycleViewInterface);
     }
 
     //zaslanie dat pridruzenemu ViewHolderu pre kazdy zaznam
@@ -39,5 +41,13 @@ public class PalletAdapter2 extends RecyclerView.Adapter<PalletViewHolder2> {
     public int getItemCount() {
         return  PalletList.size();
     }
-}
+
+
+    //########################################## NEW ####################################
+    public void removeItem(int position) {
+        PalletList.remove(position);
+        notifyItemRemoved(position); //poslanie spravy ViewHolderu o zmanzani palety, ktory zabezpeci jej vizualne zmazanie
+    }
+
+    }
 

@@ -3201,6 +3201,7 @@ int id bounceStart 0x7f080062
 int id brBarrierBotto 0x7f080063
 int id brBarrierTop 0x7f080064
 int id brVerticalAge 0x7f080065
+int id btnAccept 0x7f080066
 int id btnCancel 0x7f080067
 int id btnCheckAge 0x7f080068
 int id btnClearDB 0x7f080069
@@ -3401,6 +3402,7 @@ int id listMode 0x7f08012b
 int id list_item 0x7f08012c
 int id llBottom 0x7f08012d
 int id llInfo 0x7f08012e
+int id llLastError 0x7f080261
 int id m3_side_sheet 0x7f08012f
 int id marquee 0x7f080130
 int id masked 0x7f080131
@@ -3656,6 +3658,8 @@ int id tvDateTime 0x7f08022a
 int id tvIgnoreListText 0x7f08022b
 int id tvInfo 0x7f08022c
 int id tvInfoText 0x7f08022d
+int id tvLastError 0x7f080262
+int id tvLastErrorText 0x7f080263
 int id tvMinAgeAgeText 0x7f08022e
 int id tvNOK 0x7f08022f
 int id tvNoText 0x7f080230

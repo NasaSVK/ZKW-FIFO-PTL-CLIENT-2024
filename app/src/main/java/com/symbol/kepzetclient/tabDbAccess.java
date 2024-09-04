@@ -17,26 +17,40 @@ import com.symbol.kepzetclient.SQL.FIFO;
 import com.symbol.kepzetclient.SQL.GetData;
 import com.symbol.kepzetclient.SQL.WarehouseDB;
 import com.symbol.kepzetclient.custom_components.PalletAdapter2;
+import com.symbol.kepzetclient.custom_components.RecycleViewInterface;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-public class tabDbAccess extends Fragment {
+public class tabDbAccess extends Fragment implements RecycleViewInterface {
 
     public final Activity _ParentActivity;
     private static androidx.recyclerview.widget.RecyclerView RecycleView1;
     //private DbActivity dbActivity;
     Connection con;
     String str;
+    ArrayList<WarehouseDB> pallets;
+    PalletAdapter2 adapter;
+
+    ArrayList<Integer> removedPositions;
+
+
+    public void removeSelectedViews(){
+
+        //RecycleView1.
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
          //Connect(this._ParentActivity);
+        this.removedPositions = new ArrayList<Integer>();
 
         // Inflate the layout for this fragment
          View view = inflater.inflate(R.layout.fragment_tab_db_access, container, false);
@@ -49,25 +63,19 @@ public class tabDbAccess extends Fragment {
          hnpS.setMin(0); hnpS.setMax(99);
          hnpS.setValue(48);
 
-
-
-
          Button btnClear = view.findViewById(R.id.btnClearDB);
          Button btnShow = view.findViewById(R.id.btnShowPos);
          int nbpX = hnpR.getValue();
          int nbpY = hnpS.getValue();
 
-
-
          btnClear.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
 
-                 RecycleView1.removeAllViewsInLayout();
+                 //RecycleView1.removeAllViewsInLayout();
+                 onClearClicked(null);
              }
          });
-
-
 
 
          btnShow = view.findViewById(R.id.btnShowPos);
@@ -80,7 +88,7 @@ public class tabDbAccess extends Fragment {
                      //int x = (int)nudX.Value, y = (int)nudY.Value, p = 0;
                      Integer x = hnpR.getValue(), y = hnpS.getValue(), p = 0;
                      //object[] id = sqldb.getPos("id", x.ToString(), y.ToString());
-                     ArrayList<WarehouseDB> pallets = GetData.getPosWarehouse(_ParentActivity,x, y);
+                     /*ArrayList<WarehouseDB>*/ pallets = GetData.getPosWarehouse(_ParentActivity,x, y);
                      //if (id == null)
                      if (pallets == null) return;
                      if (pallets.isEmpty()) {
@@ -115,23 +123,14 @@ public class tabDbAccess extends Fragment {
 //                         return;
 //                     }
 
-                     RecycleView1.setAdapter(new PalletAdapter2(pallets));
+                     adapter = new PalletAdapter2(pallets,tabDbAccess.this);
+                     RecycleView1.setAdapter(adapter);
 
                  }
                  else {
                      Helpers.redToast(getActivity(), "Connection to DB FAILED!");
                      return;
                  }
-
-
-
-
-
-
-
-
-
-
 
              }
 
@@ -140,10 +139,11 @@ public class tabDbAccess extends Fragment {
 
          //RecycleView
          this.RecycleView1 = (RecyclerView) view.findViewById(R.id.recvDbAccess);
+         this.RecycleView1.setItemViewCacheSize(100);
          RecyclerView.LayoutManager LM = new LinearLayoutManager(getContext());
          this.RecycleView1.setLayoutManager(LM);
 
-        ArrayList<WarehouseDB> pallets = new ArrayList<WarehouseDB>();
+          pallets = new ArrayList<WarehouseDB>();
          //ArrayList<Pallet> pallets = new ArrayList<Pallet>();
 //            Pallet novaPaleta1 = new Pallet();
 //            Pallet novaPaleta2 = new Pallet();
@@ -181,7 +181,8 @@ public class tabDbAccess extends Fragment {
         //ZISKAVANIE DAT ZO VZDIALENJ DB
         if (GetData.DB.CONN()) {
                     pallets = GetData.getAllPallets(_ParentActivity);
-                    this.RecycleView1.setAdapter(new PalletAdapter2(pallets));
+                    this.adapter = new PalletAdapter2(pallets,tabDbAccess.this);
+                    this.RecycleView1.setAdapter(adapter);
         }
 
 
@@ -252,5 +253,51 @@ public class tabDbAccess extends Fragment {
         this._ParentActivity = pParentActivity;
     }
 
+    //basicaly anything you want to have happen when the user clicks or holds on one of the item
+    @Override
+    public void onItemCheckBoxChecked(int pPosition) {
 
+        removedPositions.add(pPosition);
+    }
+
+    @Override
+    public void onItemCheckBoxUnchecked(int position) {
+
+        int remIndex = removedPositions.lastIndexOf(position);
+        removedPositions.remove(remIndex);
+
+    }
+
+    //basicaly anything you want to have happen when the user clicks or holds on one of the item
+    @Override
+    public void onItemLongClick(int position) {
+
+       pallets.remove(position);
+       adapter.notifyItemRemoved(position);
+
+    }
+
+    public void onClearClicked(View view){
+        int deletedRecords = 0;
+        this.removedPositions.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer integer, Integer t1) {
+                return integer - t1;
+            }
+        });
+        pallets.removeAll(this.removedPositions);
+        int i = 0;
+        for (int position:removedPositions) {
+            adapter.notifyItemRemoved(position-i);
+            i++;
+        }
+        this.removedPositions.clear();
+
+        if (GetData.DB.CONN()) {
+            //deletedRecords = GetData.deletePallets(this._ParentActivity,removedPositions);
+        }
+
+        Helpers.redToast(this._ParentActivity,"Successfully deleted records:"+ deletedRecords);
+
+    }
 }

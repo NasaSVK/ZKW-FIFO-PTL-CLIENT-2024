@@ -3202,6 +3202,7 @@ id bounceStart
 id brBarrierBotto
 id brBarrierTop
 id brVerticalAge
+id btnAccept
 id btnCancel
 id btnCheckAge
 id btnClearDB
@@ -3402,6 +3403,7 @@ id listMode
 id list_item
 id llBottom
 id llInfo
+id llLastError
 id m3_side_sheet
 id marquee
 id masked
@@ -3657,6 +3659,8 @@ id tvDateTime
 id tvIgnoreListText
 id tvInfo
 id tvInfoText
+id tvLastError
+id tvLastErrorText
 id tvMinAgeAgeText
 id tvNOK
 id tvNoText

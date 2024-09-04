@@ -43,6 +43,26 @@ public class GetData {
         return data;
     }
 
+    public static int deletePallets(Context pContext, ArrayList<String> pPallets) {
+
+        int dr = 0;
+        String query = Query.INSTANCE.deleteAllPallets(pPallets);
+        try {
+            stmt = DB.getStatement();
+            dr = stmt.executeUpdate(query);
+            stmt.close();
+            DB.connection.close();
+        }
+        catch (java.sql.SQLException ex){
+            Helpers.redToast(pContext,"GetData.getAllPallets(): SQL Exception caught!");
+        }
+        return dr;
+    }
+
+
+
+
+
     ///<summary>
     ///returns object array of values for selected position of selected type
     ///</summary>

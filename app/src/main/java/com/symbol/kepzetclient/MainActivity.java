@@ -69,14 +69,13 @@ import java.net.Socket;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends Activity
         implements EMDKListener, DataListener, StatusListener, ScannerConnectionListener, OnCheckedChangeListener,
         TCPClientListener, TCPServerListener {
 
-    String dataRcvd = null;
+    ArrayList<String> dataRcvd = null;
 
     boolean stop = false;
 
@@ -117,7 +116,7 @@ public class MainActivity extends Activity
     private TextView tvBarcode = null;
     private TextView tvPrevPallet = null;
 
-    private Button btnAccept = null;
+    private Button btnDbAccess = null;
     private TextView tvNOK = null;
     private TextView tvPartNumber = null;
     private TextView tvPosition = null;
@@ -146,6 +145,9 @@ public class MainActivity extends Activity
 
     private List<multipackData> mpData;
     private CheckBox cbLeader;
+
+    private Button btnAccept;
+    private TextView tvLastError;
 
 
     public static Context getContext(){
@@ -190,13 +192,15 @@ public class MainActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //String string = Helpers.getLocalIP().toString();
         _mainActivity = this;
 
+        //#########################################################################################
         //client
         this.ConnectToServer();
         //this.btnStartServer(null);
         //END client
+        //#########################################################################################
 
         //#########################################################################################
         //server
@@ -216,7 +220,8 @@ public class MainActivity extends Activity
         textViewData = findViewById(R.id.textViewData);
         tvBarcode = findViewById(R.id.tvBarcode);
         textViewStatus = findViewById(R.id.textViewStatus);
-        btnAccept = findViewById(R.id.btnDbAccess);
+        btnDbAccess = findViewById(R.id.btnDbAccess);
+        btnAccept = findViewById(R.id.btnAccept);
         tvNOK = findViewById(R.id.tvNOK);
         tvPartNumber = (TextView)findViewById(R.id.tvPartNunber);
         tvPosition = (TextView)findViewById(R.id.tvPosition);
@@ -224,7 +229,7 @@ public class MainActivity extends Activity
         tvInfo = (TextView)findViewById(R.id.tvInfo);
         cbLeader = (CheckBox)findViewById(R.id.cbLeader);
         cbClear = (CheckBox)findViewById(R.id.cbxClear);
-
+        tvLastError = (TextView)findViewById(R.id.tvLastError);
 
         //checkBoxEAN8 = (CheckBox)findViewById(R.id.checkBoxEAN8);
         //checkBoxEAN13 = (CheckBox)findViewById(R.id.checkBoxEAN13);
@@ -255,6 +260,7 @@ public class MainActivity extends Activity
         //con = connectionClass.CONN();
 
         //textViewStatus.setText("AHOJJJJJ")
+
 
     }
 
@@ -330,7 +336,6 @@ public class MainActivity extends Activity
             emdkManager = null;
         }
         this.btnStopServer(null);
-
     }
 
     @Override
@@ -338,16 +343,23 @@ public class MainActivity extends Activity
         if ((scanDataCollection != null) && (scanDataCollection.getResult() == ScannerResults.SUCCESS)) {
             ArrayList <ScanData> scanData = scanDataCollection.getScanData();
             for(ScanData data : scanData) {
-                updateData("<font color='silver'>" +  Helpers.getCurrentDateTime() + "</font>" +"  "+ "<font color='gray'>" +  data.getLabelType() + "</font> : <b>" + data.getData() +"</b>");
+                //updateData("<font color='silver'>" +  Helpers.getCurrentDateTime() + "</font>" +"  "+ "<font color='gray'>" +  data.getLabelType() + "</font> : <b>" + data.getData() +"</b>");
+                String Type = data.getLabelType().toString();
+                String Data = data.getData();
+                updateData(Type,Data);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvBarcode.setText(Data);
+                    }
+                });
+
             }
 
             //TCP START
-
-            String content  = scanData.get(scanData.size()-1).getData();
-            //ConnectToServer();
-            TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
-
-
+                String content  = scanData.get(scanData.size()-1).getData();
+                //ConnectToServer();
+                TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
             //TCP END
 
         }
@@ -663,15 +675,14 @@ public class MainActivity extends Activity
         });
     }
 
-    private void updateData(final String result){
+    private void updateData(String pType, String pText){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (result != null) {
-
+                if (pText != null) {
                     String CurrentDateTime = getCurrentDateTime();
-                    String CurrentCode = Helpers.parsujKod(Html.fromHtml(result, 0).toString());
-                    tvBarcode.setText(CurrentCode);
+                    //String CurrentCode = Helpers.parsujKod(Html.fromHtml(result, 0).toString());
+                    //tvBarcode.setText(pText);
 
                     //textViewData.setText( Html.fromHtml(CurrentDateTime + " <b>" + CurrentCode+"</b>\n" + history));
 
@@ -684,6 +695,8 @@ public class MainActivity extends Activity
                        // textViewData.append(Html.fromHtml(result,0));
                     //}
                     //textViewData.append("\n");
+
+                    String result = "<font color='silver'>" +  CurrentDateTime + "</font>" +"  "+ "<font color='gray'>" +  pType + "</font> : <b>" + pText +"</b>";
                     textViewData.setText(Html.fromHtml(result + "<br>" + history,0));
                     history  = result + "<br>" + history;
                     /*
@@ -918,26 +931,26 @@ public class MainActivity extends Activity
 
     }
 
-
+    //ButtonAccept STAR
     public void btnSendClick(View view)
     {
-        //tcpClient.init("192.168.1.8",2222);
-        ConnectToServer();
+        //ConnectToServer();
         String content  = "TAccept";
         TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
+        this.updateData("BUTTON", content);
     }
-    //btnSendClick
+    //ButtonAccept END
 
 
     //ServerListener
     //https://www.facebook.com/share/r/cF3JcNMUMhKzrCLQ/
     //https://www.facebook.com/share/v/fsyALHALtUWCjHpQ/
     @Override
-    public void onTCPMessageServerRecieved(String pMessage) {
+    public void onTCPMessageServerRecieved(ArrayList<String> pMessages) {
 
         // TODO Auto-generated method stub
-        String theMessage = pMessage;
-        dataRcvd = pMessage;
+        //String theMessage = pMessage;
+        dataRcvd = pMessages;
         HandlerServer.post(new Runnable() {
 
             @Override
@@ -946,7 +959,7 @@ public class MainActivity extends Activity
                 try
                 {
                     TextView editTxt = (TextView) findViewById(R.id.tvInfo);
-                    editTxt.setText(theMessage);
+                    editTxt.setText(String.join(", ", dataRcvd));
                                     }
                 catch(Exception e)
                 {
@@ -963,7 +976,7 @@ public class MainActivity extends Activity
     @Override
     public void onInfoEventOccured(String message) {
 
-        updateData(message);
+        updateData("TCP",message);
 
     }
     //END ServerListener
@@ -1072,21 +1085,21 @@ public class MainActivity extends Activity
 //        }
         try
         {
-            //List<String> lines = new List<String>();
-            String[] arrayTempLines = dataRcvd.split("\\\n");
-            List<String> lines = Arrays.asList(arrayTempLines);
+
+            //String[] arrayTempLines = dataRcvd.split("\\\n");
+            //List<String> lines = Arrays.asList(arrayTempLines);
 
 
-            pn = lines.get(0).trim();// 1013.0000.000.00
-            pos = lines.get(1).trim();// x5 Y41 S2
-            prevPal = lines.get(2).trim();// 1234567
-            result = lines.get(3).trim();// "OK"/"NOK"/""
-            multipack = lines.get(4).trim();//G1234|B2345|
-            info = lines.get(5).trim();
+            pn = dataRcvd.get(0).trim();// 1013.0000.000.00
+            pos = dataRcvd.get(1).trim();// x5 Y41 S2
+            prevPal = dataRcvd.get(2).trim();// 1234567
+            result = dataRcvd.get(3).trim();// "OK"/"NOK"/""
+            multipack = dataRcvd.get(4).trim();//G1234|B2345|
+            info = dataRcvd.get(5).trim();
 
-            if (pos != "")
 
-                btnAccept.setActivated(true);
+            if (pos.compareTo("")!=0)
+                btnAccept.setEnabled(true);
 
             if (multipack.length() != 0)
             {
@@ -1107,19 +1120,19 @@ public class MainActivity extends Activity
                     }
                 }
             }
-
-
         }
         catch (Exception ex)
         {
             Helpers.redToast(this, "received data(" + dataRcvd + ") parse error:" + ex.toString());
         }
-        if (result == "OK")
+
+        if (result.compareTo("OK") == 0)
         {
             tvNOK.setText("OK");
+            tvNOK.setTextColor(getResources().getColor(R.color.design_default_color_on_secondary));
             tvNOK.setBackgroundColor(Color.GREEN);
             //NNP lampTimer.Enabled = true;
-            btnAccept.setActivated(false);
+            btnAccept.setEnabled(false);
             tvBarcode.setText("");
             tvPartNumber.setText("");
             tvPosition.setText("");
@@ -1130,12 +1143,11 @@ public class MainActivity extends Activity
             //OKSound.Play();
             //OKSound.Volume = 3;
         }
-        else if (result == "NOK")
+        else if (result.compareTo("NOK") == 0)
         {
             tvNOK.setText("NOK");
             tvNOK.setBackgroundColor(Color.RED);
             //NNP lampTimer.Enabled = true;
-            //NNP
             //NokSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
             //NokSound.Play();
             //NokSound.Volume = 3;
@@ -1146,22 +1158,19 @@ public class MainActivity extends Activity
             tvNOK.setBackgroundColor(Color.TRANSPARENT);
         }
 
-        if (result == "STOP")
-        {
-            stop = true;
-        }
-        else
-        {
-            stop = false;
-        }
+        if (result.compareTo("STOP") == 0)
+                stop = true;
+            else
+                stop = false;
 
-        if (info == "teamLeader logged in")
+
+        if (info.compareTo("teamLeader logged in")==0)
             cbLeader.setChecked(true);
-        else if (info == "clear mode set")
+        else if (info.compareTo("clear mode set")==0)
             cbClear.setChecked(true);
-        else if (info == "clear mode reset")
+        else if (info.compareTo("clear mode reset")==0)
             cbClear.setChecked(false);
-        else if (info.endsWith("clear mode reset, teamLeader logged out") || info == "teamLeader logged out")
+        else if (info.endsWith("clear mode reset, teamLeader logged out") || info.compareTo("teamLeader logged out")==0)
         {
             cbLeader.setChecked(false);
             cbClear.setChecked(false);
@@ -1171,16 +1180,14 @@ public class MainActivity extends Activity
         tvPartNumber.setText(pn);
         tvPosition.setText(pos);
         tvPrevPallet.setText(prevPal);
-        //lblMultiPackText.Text = multipack;
+        //tvMultiPackText.Text = multipack;
         tvInfo.setText(info);
 
-        for(multipackData m : mpData)
-        {
-
-        }
+        if(mpData != null)
+            for(multipackData m : mpData){}
         int i = 1;
 
-        Controls = new ArrayList<View>();
+        Controls = Helpers.getChildrens(getWindow().getDecorView());
         //NNP doplnit naplnenie Controls;
         for (View c : this.Controls)
         {
@@ -1203,7 +1210,8 @@ public class MainActivity extends Activity
                 }
             }
         }
-        mpData.clear();
+        if (mpData != null)
+            mpData.clear();
     }
     //END ParseDate
     private void show_children(View v) {
@@ -1307,7 +1315,6 @@ public class MainActivity extends Activity
 
     }//WriteThread
 
-
     class ServerThread extends  Thread implements Runnable{
         private boolean serverIsRunning;
         private ServerSocket serverSocket;
@@ -1350,7 +1357,6 @@ public class MainActivity extends Activity
                     output_Server.write("TC21 is listenig on"+ Helpers.getLocalIP() +":3333");
                     output_Server.flush();
                     MyServerSocket.close();
-
                 }
 
             } catch (IOException e) {
@@ -1404,6 +1410,11 @@ public class MainActivity extends Activity
     public  void btnStopServer(View view){
 
         serverThread.stopSerever();
+    }
+
+
+    public void writeError(String pErrorText){
+        tvLastError.setText(pErrorText);
     }
 
 

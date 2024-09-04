@@ -101,11 +101,9 @@ public class TCPCommunicatorServer {
                         public void run() {
                             Settings.getSELF().LoadToFile(MainActivity.getContext());
                             for (TCPServerListener listener : allListeners) {
-                                final String  TEXT  = "<font color='silver'>" +  Helpers.getCurrentDateTime() + "</font>" +"  "
-                                        + "<font color='gray'>" +  "TCP" + "</font> : <b>" + "LISTENER at " + "10.16.0.234"+":"+Settings.getSELF().ClientPort + "</b>";
+                                final String  TEXT  = "LISTENER at " + Helpers.getLocalIP() + ":"+Settings.getSELF().ClientPort;
                                 listener.onInfoEventOccured(TEXT);
                             }
-
                         }
                     });
 
@@ -121,16 +119,17 @@ public class TCPCommunicatorServer {
                     while ((incomingMsg = in.readLine()) != null) {
                         final String finalMessage = incomingMsg;
                         incomingMsgs.add(incomingMsg);
+                    }
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
                                 // TODO Auto-generated method stub
                                 for (TCPServerListener listener : allListeners)
-                                    listener.onTCPMessageServerRecieved(finalMessage);
-                                Log.e("TCP", finalMessage);
+                                    listener.onTCPMessageServerRecieved(incomingMsgs);
+                                Log.e("TCP", String.join(", ", incomingMsgs));
                             }
                         });
-                    }
+
                     }
                 } catch (IOException e) {
                     // TODO Auto-generated catch block

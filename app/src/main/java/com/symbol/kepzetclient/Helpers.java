@@ -4,22 +4,28 @@ import android.content.Context;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
+import com.symbol.kepzetclient.tcp.Utils;
+
 import org.joda.time.format.DateTimeFormat;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Helpers {
+
+    private static ArrayList<View> Childrens;
 
     public static String parsujKod(String pKOD){
         int index  = pKOD.lastIndexOf(":");
@@ -58,14 +64,16 @@ public class Helpers {
         return DateTimeFormat.forPattern("dd/MM/yy HH:mm:ss").print(timestamp.getTime());
     }
 
-    public static InetAddress getLocalIP(){
+    public static String getLocalIP(){
 
-        try {
-            return InetAddress.getLocalHost();
-        } catch (UnknownHostException e) {
+        return Utils.getIPAddress(true);
 
-            throw new RuntimeException(e);
-        }
+//        try {
+//            return InetAddress.getLocalHost();
+//        } catch (UnknownHostException e) {
+//
+//            throw new RuntimeException(e);
+//        }
     }
 
 
@@ -98,6 +106,24 @@ public class Helpers {
             }
             return "1970-01-01 01:00:00";
         }
+
+
+    private static  void show_children(View v) {
+
+        ViewGroup viewgroup=(ViewGroup)v;
+        for (int i=0;i<viewgroup.getChildCount();i++) {
+            View v1=viewgroup.getChildAt(i);
+            if (v1 instanceof ViewGroup) show_children(v1);
+            Log.d("APPNAME",v1.toString());
+            Helpers.Childrens.add(v1);
+        }
+    }
+
+    public  static ArrayList<View> getChildrens(View pV){
+        Childrens = new ArrayList<View>();
+        show_children(pV);
+        return Helpers.Childrens;
+    }
 
 
 

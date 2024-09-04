@@ -1,5 +1,7 @@
 package com.symbol.kepzetclient.SQL;
 
+import java.util.ArrayList;
+
 public enum Query {
 
     INSTANCE;
@@ -9,6 +11,21 @@ public enum Query {
         String query = "SELECT * FROM [dbo].[warehouseDB]";
         return query;
     }
+
+    String ands(ArrayList<String> pPaletteNrs){
+        String result  = "";
+        for (String PN: pPaletteNrs) {
+            result +="[paletteNr] =" + PN + " AND ";
+        }
+        if (result != "")
+        result.substring(0,result.length()-6);
+        return result;
+    }
+    public String deleteAllPallets(ArrayList<String> pPaletteNrs){
+                String query = "DELETE FROM [dbo].[warehouseDB] where "+ands(pPaletteNrs);
+        return query;
+    }
+
 
     ///<summary>
     ///returns object array of values for selected position of selected type
