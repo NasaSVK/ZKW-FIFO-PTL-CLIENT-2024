@@ -3,6 +3,7 @@ package com.symbol.kepzetclient.tcp;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.symbol.kepzetclient.Helpers;
@@ -27,8 +28,10 @@ public class TCPCommunicatorClient {
     private static Socket s;
     private static Handler UIHandler = new Handler();
     private static Context appContext;
+
     private TCPCommunicatorClient()
     {
+
         allListeners = new ArrayList<TCPClientListener>();
     }
     public static TCPCommunicatorClient getInstance()
@@ -39,14 +42,60 @@ public class TCPCommunicatorClient {
         }
         return uniqInstance;
     }
-    public  TCPWriterErrors init(String host,int port)
+    public  TCPWriterErrors init(Context pContext, String pIP, int port)
     {
-        setServerHost(host);
+        setServerHost(pIP);
         setServerPort(port);
-        InitTCPClientTask task = new InitTCPClientTask();
-        task.execute(new Void[0]);
-        return task.result;
+        appContext = pContext;
+
+        //InitTCPClientTask task = new InitTCPClientTask();
+        //task.execute(new Void[0]);
+        //return task.result;
+        if (!Helpers.Ping(getServerHost()))
+        {
+            return TCPWriterErrors.HostUnreachable;
+        }
+
+        TCPWriterErrors result = null;
+        try {
+
+            s = new Socket(getServerHost(), getServerPort());
+
+            out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+
+            for (TCPClientListener listener : allListeners)
+                listener.onTCPConnectionStatusChanged(true);
+
+
+
+            result = TCPWriterErrors.OK;
+
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            result = TCPWriterErrors.UnknownHostException;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            result = TCPWriterErrors.IOException;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = TCPWriterErrors.otherProblem;
+
+        }
+
+        closeStreams();
+        try{
+            //s.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return result;
     }
+
     public static  TCPWriterErrors writeToSocket(/*final JSONObject obj*/ String pContent,Handler handle,Context context)
     {
         UIHandler=handle;
@@ -54,28 +103,38 @@ public class TCPCommunicatorClient {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                // TODO Auto-generated method stub
                 try
                 {
                     Settings.getSELF().LoadToFile(context);
-                    //Socket socket = new Socket("192.168.1.8",2222);
                     String IP = Settings.getSELF().ServerIP;
-                    Socket socket = new Socket(Settings.getSELF().ServerIP, Settings.getSELF().ServerPort);
-                    out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                    int port = Settings.getSELF().ServerPort;
+                    if (!Helpers.Ping(Settings.getSELF().ServerIP)){
+                        https://stackoverflow.com/questions/47536005/cant-toast-on-a-thread-that-has-not-called-looper-prepare
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.i("TcpClient", "SERVER: " + Settings.getSELF().ServerIP + " UNREACHABLE");
+                                Helpers.redToast(context,"SERVER " + Settings.getSELF().ServerIP + " UNREACHABLE!");
+                            }
+                        });
+                        return;
+                    }
+                    s = new Socket(IP, port);
+                    out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
                     //String outMsg = obj.toString() + System.getProperty("line.separator");
-                    out.write(pContent /*outMsg*/);
+                    //out.write(pContent,0,pContent.length());
+                    out.write(pContent.toCharArray());
                     out.flush();
-                    Log.i("TcpClient", "sent: " + pContent /*outMsg*/);
-                    out.close();
+                    //Log.i("TcpClient", "sent: " + pContent /*outMsg*/);
+                    closeStreams();
                 }
                 catch(Exception e)
                 {
                     UIHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            // TODO Auto-generated method stub
-                            Helpers.redToast(appContext ,"a problem has occured, the app might not be able to reach the server");
 
+                            Helpers.redToast(appContext ,"a problem has occured, the app might not be able to reach the server");
                             if(appContext instanceof MainActivity){
                                 ((MainActivity)appContext).writeError("the app might not be able to reach the server");
 
@@ -104,9 +163,13 @@ public class TCPCommunicatorClient {
     {
         try
         {
-            s.close();
+
             //in.close();
+            s.close();
             out.close();
+
+
+
         }
         catch(Exception e)
         {
@@ -133,32 +196,30 @@ public class TCPCommunicatorClient {
     {
 
         public InitTCPClientTask()
-        {
-
-        }
+        { }
         TCPWriterErrors result;
 
         @Override
         protected Void doInBackground(Void... params) {
+
             // TODO Auto-generated method stub
-
-
                 try {
                     s = new Socket(getServerHost(), getServerPort());
                     //in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                     out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
                     for (TCPClientListener listener : allListeners)
                         listener.onTCPConnectionStatusChanged(true);
-//                while(true)
-//                {
-//                    String inMsg = in.readLine();
-//                    if(inMsg!=null)
-//                    {
-//                        Log.i("TcpClient", "received: " + inMsg);
-//                        for(TCPClientListener listener:allListeners)
-//                            listener.onTCPMessageRecieved(inMsg);
-//                    }
-//                }
+        //                while(true)
+        //                {
+        //                    String inMsg = in.readLine();
+        //                    if(inMsg!=null)
+        //                    {
+        //                        Log.i("TcpClient", "received: " + inMsg);
+        //                        for(TCPClientListener listener:allListeners)
+        //                            listener.onTCPMessageRecieved(inMsg);
+        //                    }
+        //                }
+                    result = TCPWriterErrors.OK;
 
                 } catch (UnknownHostException e) {
                     e.printStackTrace();
@@ -169,14 +230,9 @@ public class TCPCommunicatorClient {
                     result = TCPWriterErrors.IOException;
 
                 }
-
-                result = TCPWriterErrors.OK;
-
-            return null;
-
+                return null;
         }
-
     }
-    public enum TCPWriterErrors{UnknownHostException,IOException,otherProblem,OK}
+    public enum TCPWriterErrors{UnknownHostException,IOException,otherProblem,OK,HostUnreachable}
 }
 

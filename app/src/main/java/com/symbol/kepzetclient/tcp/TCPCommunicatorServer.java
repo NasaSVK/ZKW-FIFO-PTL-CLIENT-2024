@@ -92,10 +92,10 @@ public class TCPCommunicatorServer {
         @Override
         protected Void doInBackground(Void... params) {
 
-
                 try {
-                    ss = new ServerSocket(TCPCommunicatorServer.getServerPort());
-
+                    Settings.getSELF().LoadToFile(MainActivity.getContext());
+                    int localServerPort = Settings.getSELF().ClientPort;
+                    ss = new ServerSocket(localServerPort);
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -114,11 +114,12 @@ public class TCPCommunicatorServer {
                     //outputStream = s.getOutputStream();
                     //out = new BufferedWriter(new OutputStreamWriter(outputStream));
                     //receive a message
-                    String incomingMsg;
-                    ArrayList<String> incomingMsgs = new ArrayList<>();
-                    while ((incomingMsg = in.readLine()) != null) {
-                        final String finalMessage = incomingMsg;
+                    String incomingMsg = null;
+                    ArrayList<String> incomingMsgs = new ArrayList<String>();
+                    incomingMsg = in.readLine();
+                    while (incomingMsg != null) {
                         incomingMsgs.add(incomingMsg);
+                        incomingMsg = in.readLine();
                     }
                         handler.post(new Runnable() {
                             @Override

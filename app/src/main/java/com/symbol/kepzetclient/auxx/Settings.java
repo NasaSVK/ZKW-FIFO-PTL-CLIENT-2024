@@ -35,12 +35,12 @@ public class Settings {
     private final static String SUBOR = "settings.txt";
 
     public String ServerIP = "192.168.1.8";
-    public int ServerPort = 2222;
+    public int ServerPort = 12000;
 
     public String ClientIP = "localhost";
     public int ClientPort = 3333;
 
-    public int Time = 1500;
+    public static int Time = 1500;
 
     public int Volume = 5;
 

@@ -10,6 +10,7 @@ public class WarehouseDB {
     private String partNr;
     String getPartNr(){
         return partNr; }
+
     public void setPartNr(String pPartNr) {
         this.partNr = pPartNr;}
 

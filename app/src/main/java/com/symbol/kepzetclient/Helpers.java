@@ -25,6 +25,8 @@ import java.util.Date;
 
 public class Helpers {
 
+    public static final int INTERVAL = 4000;
+
     private static ArrayList<View> Childrens;
 
     public static String parsujKod(String pKOD){
@@ -45,7 +47,7 @@ public class Helpers {
     //https://stackoverflow.com/questions/6687666/android-how-to-set-the-colour-of-a-toasts-text
     public static void redToast(Context pContext, String pText){
 
-        Toast toast = Toast.makeText(pContext, pText, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(pContext, pText, Toast.LENGTH_SHORT);
         View view = toast.getView();
         view.setBackgroundResource(R.drawable.red_toast_style);
         TextView v = (TextView)view.findViewById(android.R.id.message);
@@ -83,20 +85,6 @@ public class Helpers {
     }
 
 
-
-        public static boolean Ping(String pAddress){
-            try{
-                InetAddress address = InetAddress.getByName(pAddress);
-                boolean reachable = address.isReachable(10000);
-                return reachable;
-                //System.out.println("Is host reachable? " + reachable);
-            } catch (Exception e){
-
-                e.printStackTrace();
-                return false;
-            }
-        }
-
         public static String getNow() {
 
             DateTimeFormatter formatter = null;
@@ -123,6 +111,46 @@ public class Helpers {
         Childrens = new ArrayList<View>();
         show_children(pV);
         return Helpers.Childrens;
+    }
+
+
+    public static boolean Ping(String pIP){
+            try{
+                InetAddress address = InetAddress.getByName(pIP);
+                boolean reachable = address.isReachable(444);
+                System.out.println("Is host reachable? " + reachable);
+                return reachable;
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                return false;
+            }
+    }
+
+    //https://stackoverflow.com/questions/26311470/what-is-the-equivalent-of-javascript-settimeout-in-java
+    //Asynchronous implementation with JDK 1.8:
+    public static void setTimeout(Runnable runnable, int delay){
+        new Thread(() -> {
+            try {
+                Thread.sleep(delay);
+                runnable.run();
+            }
+            catch (Exception e){
+                System.err.println(e);
+            }
+        }).start();
+    }
+
+    //https://stackoverflow.com/questions/26311470/what-is-the-equivalent-of-javascript-settimeout-in-java
+    //To deal with the current running thread only use a synchronous version:
+    public static void setTimeoutSync(Runnable runnable, int delay) {
+        try {
+            Thread.sleep(delay);
+            runnable.run();
+        }
+        catch (Exception e){
+            System.err.println(e);
+        }
     }
 
 

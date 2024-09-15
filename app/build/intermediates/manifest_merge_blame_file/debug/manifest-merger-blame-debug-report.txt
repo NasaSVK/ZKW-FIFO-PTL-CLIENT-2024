@@ -67,8 +67,8 @@
 39-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:24:13-41
 40            android:label="KEPZET CLIENT APP"
 40-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:25:13-46
-41            android:theme="@style/AppTheme" >
-41-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:26:13-44
+41            android:theme="@style/MyActivityTheme" >
+41-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:26:13-51
 42            <intent-filter>
 42-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:27:13-30:29
 43                <action android:name="android.intent.action.MAIN" />

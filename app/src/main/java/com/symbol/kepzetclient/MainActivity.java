@@ -12,6 +12,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -75,7 +77,11 @@ public class MainActivity extends Activity
         implements EMDKListener, DataListener, StatusListener, ScannerConnectionListener, OnCheckedChangeListener,
         TCPClientListener, TCPServerListener {
 
+
     ArrayList<String> dataRcvd = null;
+    SoundPool soundPool = null;
+    private int alarm1Id;
+    private int alarm2Id;
 
     boolean stop = false;
 
@@ -148,6 +154,7 @@ public class MainActivity extends Activity
 
     private Button btnAccept;
     private TextView tvLastError;
+    private int OkNokThreadsCount;
 
 
     public static Context getContext(){
@@ -167,15 +174,51 @@ public class MainActivity extends Activity
 
     }
 
-    private TCPCommunicatorClient.TCPWriterErrors ConnectToServer() {
-        //setupDialog();
-        tcpClient = TCPCommunicatorClient.getInstance();
-        TCPCommunicatorClient.addListener(this);
-        Settings.getSELF().LoadToFile(MainActivity.getContext());
-        //return tcpClient.init( "192.168.1.8",2222);
-        return tcpClient.init(Settings.getSELF().ServerIP,Settings.getSELF().ServerPort);
-    }
+    private void ConnectToServer() {
 
+        //setupDialog();
+
+        tcpClient = TCPCommunicatorClient.getInstance();
+        //zabezpeci, ze pripadny pozitivny vysledok spojenia so serverom sa zobrazi na hlavne aktivite
+        TCPCommunicatorClient.addListener(this);
+        //nacitanie suboru s aktualnymi nastaveniami
+        Settings.getSELF().LoadToFile(MainActivity.getContext());
+        Thread connectionThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                TCPCommunicatorClient.TCPWriterErrors result = tcpClient.init(
+                        MainActivity.getContext(),
+                        Settings.getSELF().ServerIP,
+                        Settings.getSELF().ServerPort
+                );
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (result == TCPCommunicatorClient.TCPWriterErrors.IOException){
+                            Helpers.redToast(getContext(), "Can't connect to the server due to 'IOException'");
+                        }
+                        else
+                        if (result == TCPCommunicatorClient.TCPWriterErrors.UnknownHostException){
+                            Helpers.redToast(getContext(), "Can't connect to the server due to 'UnknownHostException'");
+                        }
+                        else
+                        if (result == TCPCommunicatorClient.TCPWriterErrors.otherProblem){
+                            Helpers.redToast(getContext(), "Can't connect to the server due to 'otherProblem'");
+                        }
+                        else
+                        if (result == null){
+                            Helpers.redToast(getContext(), "Can't connect to the server due to 'NULL'");
+                        }
+                        else
+                        if (result == TCPCommunicatorClient.TCPWriterErrors.HostUnreachable){
+                            Helpers.redToast(getContext(), "SERVER " + Settings.getSELF().ServerIP + " UNREACHABLE!");
+                        }
+                    }
+                });
+            }
+        });
+        connectionThread.start();
+    }
 
     public void OtvorSettingsScreen() {
         startActivity(new Intent(MainActivity.this,Preferences.class));
@@ -189,27 +232,67 @@ public class MainActivity extends Activity
         return lf;
     }
 
+    public void TimeOutCallBack()
+    {
+        if (this.OkNokThreadsCount <= 1) {
+            tvNOK.setText("");
+            tvNOK.setBackgroundColor(Color.TRANSPARENT);
+            }
+            this.OkNokThreadsCount--;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //String string = Helpers.getLocalIP().toString();
         _mainActivity = this;
 
+        //BEGIN SOUND
+            AudioAttributes audioAttributes = new AudioAttributes
+                    .Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+
+            soundPool = new SoundPool
+                    .Builder()
+                    .setMaxStreams(3)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+
+
+        // This load function takes three parameter context, file_name and priority.
+        alarm1Id = soundPool.load(this, R.raw.alarm, 1);
+        alarm2Id = soundPool.load(this, R.raw.alarm2, 1);
+        //soundPool.play(alarmId, 1, 1, 0, 0, 1);
+        //soundPool.autoPause();
+        //END SOUND
+
+        //https://stackoverflow.com/questions/17069955/play-sound-using-soundpool-example
+//        soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
+//        alarmId = soundPool.load(this.getContext(), R.raw.alarm, 1);
+//        alarm2Id = soundPool.load(this.getContext(), R.raw.alarm2, 1);
+//        soundPool.play(alarmId, 100, 100, 0, 0, 1);
+
         //#########################################################################################
-        //client
+        //BEGIN RemoteServer
         this.ConnectToServer();
-        //this.btnStartServer(null);
-        //END client
+        //END RemoteServer
         //#########################################################################################
 
         //#########################################################################################
-        //server
+        //BEGIN LocalServer
         this.tcpServer = TCPCommunicatorServer.getInstance();
         TCPCommunicatorServer.addListener(this);
-        tcpServer.init(3333); //lokalny server na klientovi bude pocuvat na pripadne spravy HLAVNEHO SERVERU (192.168.1.8) na 3333ke
-        //END server
+        Settings.getSELF().LoadToFile(MainActivity.getContext());
+        int clientPort = Settings.getSELF().ClientPort;
+        tcpServer.init(clientPort); //lokalny server na klientovi bude pocuvat na spravy HLAVNEHO SERVERU (192.168.1.8) na ulozeom porte (2004, 2005, 2006, 2007, 3333)
+        //END LocalServer
         //#########################################################################################
 
+        //SUND_TIME = Settings.getSELF().Time;
 
 
         deviceList = new ArrayList<ScannerInfo>();
@@ -231,10 +314,6 @@ public class MainActivity extends Activity
         cbClear = (CheckBox)findViewById(R.id.cbxClear);
         tvLastError = (TextView)findViewById(R.id.tvLastError);
 
-        //checkBoxEAN8 = (CheckBox)findViewById(R.id.checkBoxEAN8);
-        //checkBoxEAN13 = (CheckBox)findViewById(R.id.checkBoxEAN13);
-        //checkBoxCode39 = (CheckBox)findViewById(R.id.checkBoxCode39);
-        //checkBoxCode128 = (CheckBox)findViewById(R.id.checkBoxCode128);
         spinnerScannerDevices = findViewById(R.id.spinnerScannerDevices);
 
         EMDKResults results = EMDKManager.getEMDKManager(getApplicationContext(), this);
@@ -258,10 +337,13 @@ public class MainActivity extends Activity
         //DB CONNECTION
         //ConnectionClass connectionClass = new ConnectionClass();
         //con = connectionClass.CONN();
+    }
 
-        //textViewStatus.setText("AHOJJJJJ")
-
-
+    void playNOK() {
+            soundPool.play(alarm1Id, 1.0f, 1.0f, 1, 0, 1.0f);
+    }
+    void playOK() {
+            soundPool.play(alarm2Id, 1.0f, 1.0f, 1, 0, 1.0f);
     }
 
     @Override
@@ -297,10 +379,10 @@ public class MainActivity extends Activity
         }
 
         //TCP START
-        //setContentView(R.layout.activity_main);
         if(!isFirstLoad)
         {
             TCPCommunicatorClient.closeStreams();
+            //vytovri hlavne instanciu TCPClient-sa
             ConnectToServer();
         }
         else
@@ -330,12 +412,15 @@ public class MainActivity extends Activity
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        soundPool.release();
+
         // Release all the resources
         if (emdkManager != null) {
             emdkManager.release();
             emdkManager = null;
         }
-        this.btnStopServer(null);
+        //this.btnStopServer(null);
     }
 
     @Override
@@ -347,6 +432,7 @@ public class MainActivity extends Activity
                 String Type = data.getLabelType().toString();
                 String Data = data.getData();
                 updateData(Type,Data);
+                //tvBarcode.setText(Data);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -355,6 +441,7 @@ public class MainActivity extends Activity
                 });
 
             }
+
 
             //TCP START
                 String content  = scanData.get(scanData.size()-1).getData();
@@ -877,38 +964,12 @@ public class MainActivity extends Activity
         }).start();
     }
 
-    //CLIENT onTCPMessageRecieved
+
     @Override
-    public void onTCPMessageRecieved(String pMessage) {
-        // TODO Auto-generated method stub
-        final String theMessage=pMessage;
-        //try {
-            //JSONObject obj = new JSONObject(message);
-            //String messageTypeString=obj.getString(EnumsAndStatics.MESSAGE_TYPE_FOR_JSON);
-            //MessageTypes messageType = EnumsAndStatics.getMessageTypeByString(messageTypeString);
-            //switch(messageType)
-            //{
-            //case MessageFromServer:
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            // TODO Auto-generated method stub
-                            TextView editTextFromServer =(TextView)findViewById(R.id.tvInfo);
-                            editTextFromServer.setText(theMessage);
-                        }
-                    });
-
-               //     break;
-               // }
-                            }
-        //} catch (JSONException e) {
-            // TODO Auto-generated catch block
-            //e.printStackTrace();
-        //}
-
+    public void onTCPMessageRecieved(String message) {
+        //klient neprijma ziadne spravy zo vzdialeneho servera
+        //vsetky sravy su prijmane lokalnym serverom
     }
-    //CLIENT END
 
     @Override
     public void onTCPConnectionStatusChanged(boolean isConnectedNow) {
@@ -934,7 +995,7 @@ public class MainActivity extends Activity
     //ButtonAccept STAR
     public void btnSendClick(View view)
     {
-        //ConnectToServer();
+        //playSound1();
         String content  = "TAccept";
         TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
         this.updateData("BUTTON", content);
@@ -945,6 +1006,7 @@ public class MainActivity extends Activity
     //ServerListener
     //https://www.facebook.com/share/r/cF3JcNMUMhKzrCLQ/
     //https://www.facebook.com/share/v/fsyALHALtUWCjHpQ/
+    //vypise vsetky spravy zaslane serverom ako rekaciu na nejaku udalost
     @Override
     public void onTCPMessageServerRecieved(ArrayList<String> pMessages) {
 
@@ -952,26 +1014,26 @@ public class MainActivity extends Activity
         //String theMessage = pMessage;
         dataRcvd = pMessages;
         HandlerServer.post(new Runnable() {
-
             @Override
             public void run() {
                 // TODO Auto-generated method stub
                 try
                 {
+                    //#######################
+                    parseData();
+                    //#######################
                     TextView editTxt = (TextView) findViewById(R.id.tvInfo);
                     editTxt.setText(String.join(", ", dataRcvd));
-                                    }
+
+                }
                 catch(Exception e)
                 {
                     e.printStackTrace();
                 }
             }
         });
-        //#######################
-        this.parseData();
-        //#######################
-
     }
+
     //vypise info o spusteni listenera do HISTORIE
     @Override
     public void onInfoEventOccured(String message) {
@@ -980,6 +1042,19 @@ public class MainActivity extends Activity
 
     }
     //END ServerListener
+
+
+    public void PanelOkNokOff() {
+        OkNokThreadsCount++;
+        Helpers.setTimeout(() -> {
+
+                runOnUiThread(()-> {
+                            ((MainActivity) MainActivity.getContext()).TimeOutCallBack();
+                    });
+                }
+                , Helpers.INTERVAL);
+    }
+
 
     //######################################################################################################################################################################
     //######################################################################################################################################################################
@@ -998,6 +1073,7 @@ public class MainActivity extends Activity
         tvPrevPallet.setText("");
         tvPartNumber.setText("");
         tvPosition.setText("");
+        PanelOkNokOff();
 
         //lblMultiPackTextforeach (Control c in this.Controls)
         ////        {
@@ -1011,12 +1087,14 @@ public class MainActivity extends Activity
         {
             tvNOK.setText("STOP");
             tvNOK.setBackgroundColor(Color.RED);
+
             //lampTimer.Enabled = true;
+            PanelOkNokOff();
+
             //NokSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
             //NokSound.Play();
-            //NokSound.Volume = 3;
+            this.playNOK();
             return;
-
         }
 
 
@@ -1123,6 +1201,7 @@ public class MainActivity extends Activity
         }
         catch (Exception ex)
         {
+            //dataRcvd.
             Helpers.redToast(this, "received data(" + dataRcvd + ") parse error:" + ex.toString());
         }
 
@@ -1131,26 +1210,33 @@ public class MainActivity extends Activity
             tvNOK.setText("OK");
             tvNOK.setTextColor(getResources().getColor(R.color.design_default_color_on_secondary));
             tvNOK.setBackgroundColor(Color.GREEN);
+
             //NNP lampTimer.Enabled = true;
+            PanelOkNokOff();
+
             btnAccept.setEnabled(false);
             tvBarcode.setText("");
             tvPartNumber.setText("");
             tvPosition.setText("");
             tvPrevPallet.setText("");
             tvInfo.setText("");
-            //NNP
+
             //OKSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
             //OKSound.Play();
-            //OKSound.Volume = 3;
+            this.playOK();
+
         }
         else if (result.compareTo("NOK") == 0)
         {
             tvNOK.setText("NOK");
             tvNOK.setBackgroundColor(Color.RED);
+
             //NNP lampTimer.Enabled = true;
+            PanelOkNokOff();
+
             //NokSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
             //NokSound.Play();
-            //NokSound.Volume = 3;
+            this.playNOK();
         }
         else
         {
@@ -1170,7 +1256,7 @@ public class MainActivity extends Activity
             cbClear.setChecked(true);
         else if (info.compareTo("clear mode reset")==0)
             cbClear.setChecked(false);
-        else if (info.endsWith("clear mode reset, teamLeader logged out") || info.compareTo("teamLeader logged out")==0)
+        else if (info.endsWith("output sets reset") || info.endsWith("clear mode reset, teamLeader logged out") || info.compareTo("teamLeader logged out")==0)
         {
             cbLeader.setChecked(false);
             cbClear.setChecked(false);
@@ -1191,7 +1277,7 @@ public class MainActivity extends Activity
         //NNP doplnit naplnenie Controls;
         for (View c : this.Controls)
         {
-            if (c instanceof TextView &&  Helpers.getId(c).indexOf("lblMP")>-1)
+            if (c instanceof TextView &&  Helpers.getId(c).indexOf("tvMP")>-1)
             {
                 int start_index = Helpers.getId(c).indexOf("lblMP");
                 String s = Helpers.getId(c).substring(start_index+5, 2);

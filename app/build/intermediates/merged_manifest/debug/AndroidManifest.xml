@@ -38,7 +38,7 @@
         <activity
             android:name="com.symbol.kepzetclient.MainActivity"
             android:label="KEPZET CLIENT APP"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/MyActivityTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

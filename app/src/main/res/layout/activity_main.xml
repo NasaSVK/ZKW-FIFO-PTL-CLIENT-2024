@@ -211,27 +211,31 @@
 
                     <TableRow>
                         <TextView
+                            android:id="@+id/tvMP00"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="N/A 01"
+                            android:text="N/A 00"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 02"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                        <TextView
+                            android:id="@+id/tvMP03"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 03"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
+                            android:id="@+id/tvMP06"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="N/A 04"
+                            android:text="N/A 06"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tvMP09"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N/A 09"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </TableRow>
@@ -239,21 +243,24 @@
 
                     <TableRow>
                         <TextView
+                            android:id="@+id/tvMP01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="N/A 05"
+                            android:text="N/A 01"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_marginRight="6sp"
                             />
                         <TextView
+                            android:id="@+id/tvMP04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="N/A 06"
+                            android:text="N/A 04"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_marginRight="6sp"/>
                         <TextView
+                            android:id="@+id/tvMP07"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="N/A 07"
@@ -262,9 +269,10 @@
                             android:layout_marginRight="6sp"
                             />
                         <TextView
+                            android:id="@+id/tvMP10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="N/A 08"
+                            android:text="N/A 10"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_marginRight="6sp"
@@ -272,32 +280,36 @@
                     </TableRow>
                     <TableRow>
                         <TextView
+                            android:id="@+id/tvMP02"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="N/A 09"
+                            android:text="N/A 02"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_marginRight="4sp"
                             />
                         <TextView
+                            android:id="@+id/tvMP05"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="N/A 10"
+                            android:text="N/A 05"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_marginRight="4sp"/>
                         <TextView
+                            android:id="@+id/tvMP08"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="N/A 11"
+                            android:text="N/A 08"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_marginRight="4sp"
                             />
                         <TextView
+                            android:id="@+id/tvMP11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="N/A 12"
+                            android:text="N/A 11"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_marginRight="4sp"
@@ -336,7 +348,7 @@
                     android:id="@+id/cbLeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
+                    android:checked="false"
                     android:text="lead" />
 
                 <Button
@@ -344,7 +356,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50sp"
                     android:width="100dp"
-                    android:text="DbAcces"
+                    android:text="DbAccess"
                     android:onClick="DbAccess_Click"
                     android:textSize="16sp"
                     />
@@ -369,7 +381,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="1"
-                    android:checked="true"
+                    android:checked="false"
                     android:text="clear" />
 
                 <Button
@@ -435,7 +447,7 @@
                 <TextView
                     android:id="@+id/textViewData"
                     android:layout_width="match_parent"
-                    android:layout_height="105dp"
+                    android:layout_height="100dp"
                     android:textSize="14sp"
                     android:textStyle="normal" />
             </LinearLayout>

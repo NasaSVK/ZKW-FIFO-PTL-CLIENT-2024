@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class GetData {
 
@@ -43,10 +44,29 @@ public class GetData {
         return data;
     }
 
-    public static int deletePallets(Context pContext, ArrayList<String> pPallets) {
+    public static int deletePallets(Context pContext, ArrayList<WarehouseDB> pPallets) {
 
         int dr = 0;
-        String query = Query.INSTANCE.deleteAllPallets(pPallets);
+
+      ArrayList<String> delPallNrs = (ArrayList<String>) pPallets.stream().map(pallet -> pallet.getPalleteNr()).collect(Collectors.toList());
+
+        String query = Query.INSTANCE.deleteAllPallets(delPallNrs);
+        try {
+            stmt = DB.getStatement();
+            dr = stmt.executeUpdate(query);
+            stmt.close();
+            DB.connection.close();
+        }
+        catch (java.sql.SQLException ex){
+            Helpers.redToast(pContext,"GetData.getAllPallets(): SQL Exception caught!");
+        }
+        return dr;
+    }
+
+    public static int deletePallet(Context pContext, String pPallet) {
+
+        int dr = 0;
+        String query = Query.INSTANCE.deletePallet(pPallet);
         try {
             stmt = DB.getStatement();
             dr = stmt.executeUpdate(query);
@@ -155,8 +175,8 @@ public class GetData {
                     PalletPlus paleta  = new PalletPlus();
                     paleta.X = rs.getInt("posX");
                     paleta.Y = rs.getInt("posY");
-                    paleta.Z = rs.getInt("row");
                     paleta.partNr = rs.getString("partNr");
+                    paleta.Z = rs.getInt("row");
                     paleta.chnl = rs.getInt("channel");
                     paleta.pack = rs.getInt("pack");
                     data = paleta;
@@ -201,5 +221,23 @@ public class GetData {
 
         return result;
 
+    }
+
+    public static int updatePallets(Context pContext, ArrayList<WarehouseDB> pUpdatedPallets, Integer pX, int pY) {
+        int dr = 0;
+
+        ArrayList<String> updPallNrs = (ArrayList<String>) pUpdatedPallets.stream().map(pallet -> pallet.getPalleteNr()).collect(Collectors.toList());
+
+        String query = Query.INSTANCE.updatePallets(updPallNrs,pX,pY);
+        try {
+            stmt = DB.getStatement();
+            dr = stmt.executeUpdate(query);
+            stmt.close();
+            DB.connection.close();
+        }
+        catch (java.sql.SQLException ex){
+            Helpers.redToast(pContext,"GetData.getAllPallets(): SQL Exception caught!");
+        }
+        return dr;
     }
 }

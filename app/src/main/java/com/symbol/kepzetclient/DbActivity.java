@@ -70,7 +70,8 @@ public class DbActivity extends AppCompatActivity {
         });
     }
 
-    public void Close1(View view) {
+    public void btnClose_onClickHandler(View view) {
+        //zatvara celu DBACCESS aktivitu nie len prislusny FRAGMENT
         this.finish();
     }
 }

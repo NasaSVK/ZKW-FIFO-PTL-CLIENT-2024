@@ -130,7 +130,7 @@ ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-A
 	android:label
 		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:25:13-46
 	android:theme
-		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:26:13-44
+		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:26:13-51
 	android:name
 		ADDED from D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:24:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER

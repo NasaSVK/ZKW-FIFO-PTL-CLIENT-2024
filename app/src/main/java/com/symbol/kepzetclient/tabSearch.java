@@ -48,13 +48,18 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
         //  View Binding in Android : Activity, Fragment
         //  https://medium.com/@shobhith/view-binding-in-android-activity-fragment-3d8ed995e276
         _tabSearchBinding = FragmentTabSearchBinding.inflate(inflater, container, false);
         ConstraintLayout view = _tabSearchBinding.getRoot();
-        _tabSearchBinding.btnSearch.setOnClickListener(this);
+        _tabSearchBinding.btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                SearchPallet(view);
+            }
+        });
+
         return view;
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_tab_search, container, false);
@@ -92,7 +97,6 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
 
 
     public void btnClose_onClickHandler(View view) {
@@ -206,9 +210,65 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
         {
             fs.logData("searchRecord(" + palletNumber + ")" + ex.getMessage());
         }
-        finally
-        {
 
+    }
+
+    public void SearchPallet(View view) {
+
+        _tabSearchBinding.etxRSrch.setText(""); //X
+        _tabSearchBinding.etxSSrch.setText(""); //Y
+        _tabSearchBinding.etxZSrch.setText(""); //Z
+        _tabSearchBinding.etxPartNumberSrch.setText(""); //PartNumber
+        _tabSearchBinding.etxChannelSrch.setText(""); //Channel
+        _tabSearchBinding.etxPackSrch.setText(""); //Pack
+
+        if (_tabSearchBinding.etxPalletNumberSrch.getText().length() == 7)
+            _tabSearchBinding.etxPalletNumberSrch.setText("0" +  _tabSearchBinding.etxPalletNumberSrch.getText().toString());
+        try
+        {
+            Long i = Long.valueOf(_tabSearchBinding.etxPalletNumberSrch.getText().toString());
+            if (_tabSearchBinding.etxPalletNumberSrch.getText().length() != 10 && _tabSearchBinding.etxPalletNumberSrch.getText().length() != 8) {
+                Helpers.redToast(_ParentActivity,"the format of pallet number not valid");
+                FS.logData("btnSrch error:" + _tabSearchBinding.etxPalletNumberSrch.getText() + " the format of pallet number not valid");
+                return;
+            }
+        }
+        catch(Exception ex)
+        {
+            Helpers.redToast(_ParentActivity,"not a number");
+            FS.logData("btnSrch error:" + _tabSearchBinding.etxPalletNumberSrch.getText().length() + " is not a number");
+            return;
+        }
+
+        try
+        {
+            PalletPlus o =  GetData.getPalletPlus(_ParentActivity, _tabSearchBinding.etxPalletNumberSrch.getText().toString());
+            if (o.X == null)
+            {
+                Helpers.redToast(_ParentActivity,"record not found");
+                FS.logData("data not found:" + _tabSearchBinding.etxPalletNumberSrch.getText().toString());
+                return;
+            }
+            int row = o.Z;
+            int pack = o.pack;
+            int pos = 0;
+            _tabSearchBinding.etxRSrch.setText(o.X.toString());
+            _tabSearchBinding.etxSSrch.setText(o.Y.toString());
+            _tabSearchBinding.etxPartNumberSrch.setText(o.partNr.toString());
+            _tabSearchBinding.etxChannelSrch.setText(o.chnl.toString());
+            _tabSearchBinding.etxPackSrch.setText(o.pack.toString());
+            if (pack > 1)
+            {
+                pos = ((row - 1) / pack) + 1;
+            }
+            else
+                pos = row;
+            _tabSearchBinding.etxZSrch.setText(String.valueOf(pos));
+        }
+        catch (Exception ex)
+        {
+            FS.logData("searchRecord("+_tabSearchBinding.etxPalletNumberSrch.getText().toString()+")" + ex.getMessage());
         }
     }
+
 }

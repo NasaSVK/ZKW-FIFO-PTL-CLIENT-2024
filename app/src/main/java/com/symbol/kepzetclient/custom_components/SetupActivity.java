@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.symbol.kepzetclient.DbActivity;
+import com.symbol.kepzetclient.Helpers;
 import com.symbol.kepzetclient.HorizontalNumberPicker;
 import com.symbol.kepzetclient.R;
 import com.symbol.kepzetclient.auxx.Settings;
@@ -67,6 +68,8 @@ public class SetupActivity extends AppCompatActivity {
 
         this.FillTheValues();
 
+
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +102,7 @@ public class SetupActivity extends AppCompatActivity {
     public void FillTheValues(){
 
         etServerIP.setText(Settings.getSELF().ServerIP);
-        etClientIP.setText(Settings.getSELF().ClientIP);
+        etClientIP.setText(Helpers.getLocalIP());
         etServerPort.setText(String.valueOf(Settings.getSELF().ServerPort));
         etClientPort.setText(String.valueOf(Settings.getSELF().ClientPort));
 

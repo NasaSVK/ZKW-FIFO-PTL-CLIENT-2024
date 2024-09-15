@@ -97,7 +97,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Close"
-        android:onClick="Close1"
+        android:onClick="btnClose_onClickHandler"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/recvDbAccess" />
 
@@ -105,22 +105,21 @@
         android:id="@+id/btnSaveDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnCloseDB" />
+        app:layout_constraintStart_toEndOf="@+id/btnClearDB" />
 
     <Button
         android:id="@+id/btnClearDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Clear"
         android:onClick="onClearClicked"
+        android:text="Clear"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSaveDB" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <!--    <de.codecrafters.tableview.TableView-->

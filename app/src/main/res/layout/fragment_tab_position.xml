@@ -168,7 +168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Close"
-        android:onClick="Close1"
+        android:onClick="btnClose_onClickHandler"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"

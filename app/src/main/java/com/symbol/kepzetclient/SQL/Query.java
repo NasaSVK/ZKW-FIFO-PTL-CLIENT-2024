@@ -15,14 +15,20 @@ public enum Query {
     String ands(ArrayList<String> pPaletteNrs){
         String result  = "";
         for (String PN: pPaletteNrs) {
-            result +="[paletteNr] =" + PN + " AND ";
+            result +="[paletteNr] = '" + PN + "' OR ";
         }
-        if (result != "")
-        result.substring(0,result.length()-6);
+        if (result.compareTo("")!=0)
+            result = result.substring(0,result.length()-4);
+
         return result;
     }
     public String deleteAllPallets(ArrayList<String> pPaletteNrs){
                 String query = "DELETE FROM [dbo].[warehouseDB] where "+ands(pPaletteNrs);
+        return query;
+    }
+
+    public String deletePallet(String pPaletteNrs){
+        String query = "DELETE FROM [dbo].[warehouseDB] where paletteNr = '"+ pPaletteNrs+"'";
         return query;
     }
 
@@ -52,15 +58,29 @@ public enum Query {
     ///</summary>
     public String getPallet(String pPalletNr)
     {
-        String query = "DECLARE @pack int, @x int, @y int, @pallet nchar(20); SET @pallet = N'" + pPalletNr + "';" +
+//        String query = "DECLARE @pack int, @x int, @y int, @pallet nchar(20); SET @pallet = '" + pPalletNr + "';" +
+//                "SELECT @x = [posX],@y = [posY] FROM [dbo].[warehouseDB] WHERE [paletteNr] = @pallet;";
+////                +
+//                "SELECT @pack = [pack] FROM [dbo].[layout] WHERE [posX] = @x and [posY] = @y;";
+//                +
+//                "WITH temp AS(" +
+//                "SELECT ROW_NUMBER() OVER (ORDER BY [fifoDatetime],[id]) AS row , [id], [paletteNr],[posX],[posY],[partNr],[channel]" +
+//                "FROM [dbo].[warehouseDB] WHERE [posX] = @x and [posY] = @y)" +
+//                "SELECT [posX], [posY], row, [partNr], [channel], @pack AS pack FROM [temp] WHERE [paletteNr] = @pallet";
+
+        //object[] o = readerQuery("SELECT * FROM [dbo].[warehouseDB] WHERE [paletteNr] = N'12345672'", 10);
+
+//        query = "DECLARE @pack int, @x int, @y int, @pallet nchar(20); SET @pallet = '" + pPalletNr + "';" +
+//                "SELECT [posX],@y = [posY],[partNr] FROM [dbo].[warehouseDB] WHERE [paletteNr] = @pallet;";
+
+        String query = "DECLARE @pack int, @x int, @y int, @pallet nchar(20); SET @pallet = '" + pPalletNr + "';" +
                 "SELECT @x = [posX],@y = [posY] FROM [dbo].[warehouseDB] WHERE [paletteNr] = @pallet;" +
                 "SELECT @pack = [pack] FROM [dbo].[layout] WHERE [posX] = @x and [posY] = @y;" +
                 "WITH temp AS(" +
                 "SELECT ROW_NUMBER() OVER (ORDER BY [fifoDatetime],[id]) AS row , [id], [paletteNr],[posX],[posY],[partNr],[channel]" +
                 "FROM [dbo].[warehouseDB] WHERE [posX] = @x and [posY] = @y)" +
                 "SELECT [posX], [posY], row, [partNr], [channel], @pack AS pack FROM [temp] WHERE [paletteNr] = @pallet";
-
-        //object[] o = readerQuery("SELECT * FROM [dbo].[warehouseDB] WHERE [paletteNr] = N'12345672'", 10);
+//
 
         return query;
 
@@ -72,6 +92,13 @@ public enum Query {
 //        return query;
 
         String query = "UPDATE [dbo].[layout] SET [partNr] = N'" + pNewFIFO.getPartNr() + "', [channel] = " + pNewFIFO.getChannel() + ",[pack] = " + pNewFIFO.getPack() + ",[maxcount] = " + pNewFIFO.getMaxCount() + " WHERE [posX] = " + pNewFIFO.getPosX() + " AND [posY] = " + pNewFIFO.getPosY();
+        return query;
+
+    }
+
+    public String updatePallets(ArrayList<String> updPallNrs, Integer pX, int pY ) {
+
+        String query = "UPDATE [dbo].[warehouseDB] SET [posX] = " + pX + ", [posY] = " + pY + " WHERE [paletteNr] = '"+ updPallNrs.get(0) + "';";
         return query;
 
     }

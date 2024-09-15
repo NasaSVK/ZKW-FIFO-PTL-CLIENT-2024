@@ -1,4 +1,4 @@
-#Wed Sep 04 23:53:24 CEST 2024
+#Sun Sep 15 13:30:37 CEST 2024
 base.0=D\:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=D\:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=D\:\\duracer\\Desktop\\ZEBRA_SAMPLES\\EMDK-Android-Samples-master\\KEPZET-ANDROID-CLIENT\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex

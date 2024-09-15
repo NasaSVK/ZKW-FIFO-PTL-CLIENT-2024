@@ -2,6 +2,8 @@ package com.symbol.kepzetclient;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +36,15 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
     Connection con;
     String str;
     ArrayList<WarehouseDB> pallets;
+
     PalletAdapter2 adapter;
 
     ArrayList<Integer> removedPositions;
+
+    private ArrayList<Integer> updatedPositions;
+
+    HorizontalNumberPicker hnpR = null;
+    HorizontalNumberPicker hnpS = null;
 
 
     public void removeSelectedViews(){
@@ -56,17 +64,46 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
          View view = inflater.inflate(R.layout.fragment_tab_db_access, container, false);
 
          //HorizontalNumberPicker
-         HorizontalNumberPicker hnpR = view.findViewById(R.id.hnpR);
-         hnpR.setMin(0); hnpR.setMax(99);
+         hnpR = view.findViewById(R.id.hnpR);
+         hnpR.setMin(1); hnpR.setMax(5);
          hnpR.setValue(1);
-         HorizontalNumberPicker hnpS = view.findViewById(R.id.hnpSPos);
-         hnpS.setMin(0); hnpS.setMax(99);
+         hnpS = view.findViewById(R.id.hnpSPos);
+         hnpS.setMin(1); hnpS.setMax(50);
          hnpS.setValue(48);
+
+         hnpR.setTextColor(getResources().getColor(R.color.green,null));
+         hnpS.setTextColor(getResources().getColor(R.color.green,null));
+         //btnSave.setVisibility(View.VISIBLE);
+
+        TextWatcher twR = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                hnpR.setTextColor(getResources().getColor(R.color.design_default_color_on_primary,null));
+            }
+            @Override
+            public void afterTextChanged(Editable editable){}
+        };
+        TextWatcher twS = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                hnpS.setTextColor(getResources().getColor(R.color.design_default_color_on_primary,null));
+            }
+            @Override
+            public void afterTextChanged(Editable editable){}
+        };
+
+        hnpR.getEtxValue().addTextChangedListener(twR);
+        hnpS.getEtxValue().addTextChangedListener(twS);
+
 
          Button btnClear = view.findViewById(R.id.btnClearDB);
          Button btnShow = view.findViewById(R.id.btnShowPos);
-         int nbpX = hnpR.getValue();
-         int nbpY = hnpS.getValue();
+         Button btnSave = view.findViewById(R.id.btnSaveDB);
+
 
          btnClear.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -77,63 +114,24 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
              }
          });
 
+         btnSave.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+
+                 //sqldb.updateRecordByPalletNr(gridData[i].palletNr, tbDBRowpn[i].Text, tbDBRowdt[i].Text);
+                 //FS.logData("updateRecord(" + gridData[i].palletNr + "," + tbDBRowpn[i].Text + "," + tbDBRowdt[i].Text + ")");
+                 updatePallets(view);
+                 ShowPallets(view);
+             }
+         });
+
 
          btnShow = view.findViewById(R.id.btnShowPos);
          btnShow.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 //gridData.Clear();
-                 if (GetData.DB.CONN()) {
-                     RecycleView1.removeAllViewsInLayout();
-                     //int x = (int)nudX.Value, y = (int)nudY.Value, p = 0;
-                     Integer x = hnpR.getValue(), y = hnpS.getValue(), p = 0;
-                     //object[] id = sqldb.getPos("id", x.ToString(), y.ToString());
-                     /*ArrayList<WarehouseDB>*/ pallets = GetData.getPosWarehouse(_ParentActivity,x, y);
-                     //if (id == null)
-                     if (pallets == null) return;
-                     if (pallets.isEmpty()) {
-                         Helpers.redToast(getActivity(), "no pallet on position");
-                         return;
-                     }
-
-                     //object[] palettNr = sqldb.getPos("paletteNr", x.ToString(), y.ToString());
-                     ///object[] dt = sqldb.getPos("FIFODatetime", x.ToString(), y.ToString());
-                     //if (GetData.DB.CONN())
-                     {
-                         FIFO fifo = GetData.getPosFIFO(_ParentActivity,x, y);
-                             if (fifo == null || fifo.getID() == 0) {
-                             Helpers.redToast(getContext(), "no data for pos");
-                             return;
-                         }
-
-                         try {
-                             //p = Convert.ToInt32(pos[2].ToString());
-                             //pos[2] - zeby hodonta v tretom stlpci co je "pack"
-                             p = fifo.getPack();
-                         } catch (Exception e) {
-                             p = 1;
-                         }
-                         if (p == 0) p = 1;
-
-
-
-                     }
-//                     else {
-//                         Helpers.redToast(getActivity(), "Connection to DB FAILED!");
-//                         return;
-//                     }
-
-                     adapter = new PalletAdapter2(pallets,tabDbAccess.this);
-                     RecycleView1.setAdapter(adapter);
-
-                 }
-                 else {
-                     Helpers.redToast(getActivity(), "Connection to DB FAILED!");
-                     return;
-                 }
-
+                 ShowPallets(view);
              }
-
          });
 
 
@@ -144,10 +142,7 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
          this.RecycleView1.setLayoutManager(LM);
 
           pallets = new ArrayList<WarehouseDB>();
-         //ArrayList<Pallet> pallets = new ArrayList<Pallet>();
-//            Pallet novaPaleta1 = new Pallet();
-//            Pallet novaPaleta2 = new Pallet();
-//            Pallet novaPaleta3 = new Pallet();
+
 //
 //        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
 //            //LocalDateTime dt1 = LocalDateTime.now();
@@ -157,26 +152,7 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
 //            Timestamp dt2 = new Timestamp(2024,06,06,12,12,12,0);
 //            //LocalDateTime dt3 = LocalDateTime.of(2024,07,07,07,07,07,0);
 //            Timestamp dt3 = new Timestamp(2024,07,07,07,07,07,0);
-//
-//           novaPaleta1.setPalletNumber("11111111");
-//           novaPaleta1.setDateTime(dt1);
-//           novaPaleta1.setActive(true);
-//
-//            novaPaleta2.setPalletNumber("22222222");
-//            novaPaleta2.setDateTime(dt2);
-//            novaPaleta2.setActive(false);
-//
-//            novaPaleta3.setPalletNumber("33333333");
-//            novaPaleta3.setDateTime(dt3);
-//            novaPaleta3.setActive(true);
 //         }
-//         pallets.add(novaPaleta1);
-//         pallets.add(novaPaleta2);
-//         pallets.add(novaPaleta3);
-//
-//
-//        this.RecycleView1.setAdapter(new PalletAdapter(pallets));
-
 
         //ZISKAVANIE DAT ZO VZDIALENJ DB
         if (GetData.DB.CONN()) {
@@ -185,8 +161,7 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
                     this.RecycleView1.setAdapter(adapter);
         }
 
-
-
+        //TABLEVIEW komponent
 //        TableView tbvPallets = view.findViewById(R.id.tbvPallets);
 //        String[] headers = {"ID","Pallet nb","DateTime","Remove"};
 //        String[][]  data = {{"1","1234567890","2024-06-28","true"},{"2","2345678901","2024-06-28","false"}, {"3","3456789012","2024-06-28", "false"}};
@@ -194,10 +169,6 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
 //        tbvPallets.setHeaderAdapter(new SimpleTableHeaderAdapter(view.getContext(), Arrays.toString(data)));
         return view;
     }
-
-
-
-
 
 
     public void Connect(Activity pActivity){
@@ -209,16 +180,12 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
             ConnectionToDB connectionToDB = new ConnectionToDB();
                 boolean isDBConnected = connectionToDB.CONN();
                 str = connectionToDB.ConnectionResult;
-                //Statement stmt = con.createStatement();
 
                     //Statement stmt = con.createStatement();
                     //String query  = "SELECT * FROM svetla";
                     //stmt.execute(query);
                     //connectionClass.stmt.execute(query);
                     //str = "SELECT executed successfully";
-
-
-
 //            }
 //            catch (SQLException e) {
 //                Helpers.redToast(pActivity, "SQL Exception: " + e.getMessage());
@@ -245,6 +212,45 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
         });
     }
 
+    private void ShowPallets(View view){
+        //gridData.Clear();
+        if (GetData.DB.CONN()) {
+            RecycleView1.removeAllViewsInLayout();
+            //int x = (int)nudX.Value, y = (int)nudY.Value, p = 0;
+            Integer x = hnpR.getValue(), y = hnpS.getValue(), p = 0;
+            pallets = GetData.getPosWarehouse(_ParentActivity,x, y);
+            //if (id == null)
+            if (pallets == null) return;
+            if (pallets.isEmpty()) {
+                Helpers.redToast(getActivity(), "no pallet on position");
+                return;
+            }
+            //if (GetData.DB.CONN())
+            {
+                FIFO fifo = GetData.getPosFIFO(_ParentActivity,x, y);
+                if (fifo == null || fifo.getID() == 0) {
+                    Helpers.redToast(getContext(), "no data for pos");
+                    return;
+                }
+
+                try {
+                    //p = Convert.ToInt32(pos[2].ToString());
+                    //pos[2] - zeby hodonta v tretom stlpci co je "pack"
+                    p = fifo.getPack();
+                } catch (Exception e) {
+                    p = 1;
+                }
+                if (p == 0) p = 1;
+            }
+
+            adapter = new PalletAdapter2(pallets,tabDbAccess.this);
+            RecycleView1.setAdapter(adapter);
+
+        }
+        else {
+            Helpers.redToast(getActivity(), "Connection to DB FAILED!");
+        }
+    }
 
 
 
@@ -272,9 +278,18 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
     @Override
     public void onItemLongClick(int position) {
 
-       pallets.remove(position);
-       adapter.notifyItemRemoved(position);
+        //ZISKAVANIE DAT ZO VZDIALENJ DB
+        if (GetData.DB.CONN()) {
+//            pallets = GetData.getAllPallets(_ParentActivity);
+//            this.adapter = new PalletAdapter2(pallets,tabDbAccess.this);
+//            this.RecycleView1.setAdapter(adapter);
+            WarehouseDB DeletedPallet = pallets.get(position);
+            int deletedCount = GetData.deletePallet(_ParentActivity,DeletedPallet.getPalleteNr());
+            if (deletedCount > 0 )
+                pallets.remove(position);
 
+            adapter.notifyItemRemoved(position);
+        }
     }
 
     public void onClearClicked(View view){
@@ -285,6 +300,34 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
                 return integer - t1;
             }
         });
+
+        //////////////////////////////////////////////////////////////////////////
+        ArrayList<WarehouseDB> deletedPallets = new ArrayList<>();
+        removedPositions.forEach((index)-> deletedPallets.add(pallets.get(index)));
+        if(deletedPallets.size() == 0)
+        {
+            Helpers.redToast(this._ParentActivity, "NO pallets for deleting!");
+            return;
+        }
+
+        try {
+            if (GetData.DB.CONN()) {
+
+                int recordsCount = GetData.deletePallets(_ParentActivity, deletedPallets);
+                if (recordsCount != 0)
+                    Toast.makeText(this._ParentActivity, "Successfully deleted records: " + recordsCount,Toast.LENGTH_LONG).show();
+            }
+            else {
+                Helpers.redToast(this._ParentActivity, "Can not connect to DB");
+                return;
+            }
+        }
+        catch (Exception ex){
+            Helpers.redToast(this._ParentActivity, "Deleting FAILED: " + ex.getMessage());
+            return;
+        }
+
+        //////////////////////////////////////////////////////////////////////////
         pallets.removeAll(this.removedPositions);
         int i = 0;
         for (int position:removedPositions) {
@@ -293,11 +336,72 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
         }
         this.removedPositions.clear();
 
-        if (GetData.DB.CONN()) {
-            //deletedRecords = GetData.deletePallets(this._ParentActivity,removedPositions);
+    }
+
+    public void updatePallets(View view){
+
+        //pallets - sktruktura ktorej obsah sa zobrazuje v RecycleView
+        updatedPositions = removedPositions;
+        removedPositions =  reverseINT(updatedPositions, pallets.size()-1);
+
+        this.removedPositions.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer integer, Integer t1) {
+                return integer - t1;
+            }
+        });
+
+        //////////////////////////////////////////////////////////////////////////
+        ArrayList<WarehouseDB> deletedPallets = new ArrayList<>();
+        ArrayList<WarehouseDB> updatedPallets = new ArrayList<>();
+        removedPositions.forEach((index)-> deletedPallets.add(pallets.get(index)));
+        updatedPositions.forEach((index)-> updatedPallets.add(pallets.get(index)));
+        if(updatedPallets.size() == 0)
+        {
+            Helpers.redToast(this._ParentActivity, "NO pallets for UDATE!");
+            return;
         }
 
-        Helpers.redToast(this._ParentActivity,"Successfully deleted records:"+ deletedRecords);
+        try {
+            if (GetData.DB.CONN()) {
 
+                //int recordsCount = GetData.deletePallets(_ParentActivity, deletedPallets);
+                int recordsCount = GetData.updatePallets(_ParentActivity, updatedPallets, hnpR.getValue(),hnpS.getValue());
+                if (recordsCount != 0)
+                    Toast.makeText(this._ParentActivity, "Successfully UPDATED records: " + recordsCount,Toast.LENGTH_LONG).show();
+            }
+            else {
+                Helpers.redToast(this._ParentActivity, "Can not connect to DB");
+                return;
+            }
+        }
+        catch (Exception ex){
+            Helpers.redToast(this._ParentActivity, "Updating FAILED: " + ex.getMessage());
+            return;
+        }
+
+        //////////////////////////////////////////////////////////////////////////
+        //pallets - sktruktura ktorej obsah sa zobrazuje v RecycleView
+//        pallets.removeAll(this.removedPositions);
+//        int i = 0;
+//        for (int position:removedPositions) {
+//            adapter.notifyItemRemoved(position-i);
+//            i++;
+//        }
+        this.pallets.clear();
+        this.removedPositions.clear();
     }
+
+    private ArrayList<Integer> reverseINT(ArrayList<Integer> pArrayList, int pMax) {
+
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        for (int i =  0; i<=pMax; i++){
+            if (pArrayList.contains(i))  continue;
+            else
+                result.add(i);
+        }
+
+        return result;
+    }
+
 }
