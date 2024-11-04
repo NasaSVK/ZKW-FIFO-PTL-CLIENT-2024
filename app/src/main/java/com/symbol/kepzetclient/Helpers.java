@@ -1,6 +1,7 @@
 package com.symbol.kepzetclient;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
@@ -14,8 +15,7 @@ import androidx.core.content.ContextCompat;
 
 import com.symbol.kepzetclient.tcp.Utils;
 
-import org.joda.time.format.DateTimeFormat;
-
+import java.io.File;
 import java.net.InetAddress;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -40,7 +40,6 @@ public class Helpers {
         Date date = new Date();
         return (dateFormat.format(date));
         //System.out.println(dateFormat.format(date));
-
     }
 
     //https://www.youtube.com/watch?v=L-1lwnjZFGg
@@ -63,7 +62,12 @@ public class Helpers {
     }
 
     public static String timestampAsString(Timestamp timestamp) {
-        return DateTimeFormat.forPattern("dd/MM/yy HH:mm:ss").print(timestamp.getTime());
+//        long TSLong = timestamp.getTime();
+//        return DateTimeFormat.forPattern("dd/MM/yy HH:mm:ss").print(TSLong);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        if (timestamp == null) return "N/A";
+        String dateString = formatter.format(timestamp);
+        return dateString;
     }
 
     public static String getLocalIP(){
@@ -117,7 +121,7 @@ public class Helpers {
     public static boolean Ping(String pIP){
             try{
                 InetAddress address = InetAddress.getByName(pIP);
-                boolean reachable = address.isReachable(444);
+                boolean reachable = address.isReachable(600);
                 System.out.println("Is host reachable? " + reachable);
                 return reachable;
             }
@@ -153,6 +157,44 @@ public class Helpers {
         }
     }
 
+    //https://stackoverflow.com/questions/22979806/display-the-android-application-apk-creation-date-in-application?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    public static String getAppTimeStamp(Context context) {
+        String timeStamp = "";
+
+        try {
+            ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), 0);
+            String appFile = appInfo.sourceDir;
+            long time = new File(appFile).lastModified();
+
+            //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("dd-MM-yyyy");
+            timeStamp = formatter.format(time);
+
+        } catch (Exception e) {
+
+        }
+
+        return timeStamp;
+    }
 
 
+    public static String getAppTimeStamp2(Context context) {
+
+        String timeStamp = null;
+        try
+        {
+            ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), 0);
+            String appFile = appInfo.sourceDir;
+            long time = new File(appFile).lastModified();
+
+            //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yy.MM");
+            timeStamp = formatter.format(time);
+        }
+        catch (Exception e) {
+            Helpers.redToast(context, "getAppTimeStamp2: " + e.getMessage());
+        }
+
+        return timeStamp;
+    }
 }

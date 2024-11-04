@@ -11,7 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.symbol.kepzetclient.SQL.GetData;
-import com.symbol.kepzetclient.auxx.FS;
+
 import com.symbol.kepzetclient.auxx.PalletPlus;
 import com.symbol.kepzetclient.databinding.FragmentTabSearchBinding;
 
@@ -35,8 +35,6 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
     //View Binding in Android : Activity, Fragment
     //https://medium.com/@shobhith/view-binding-in-android-activity-fragment-3d8ed995e276
     private  FragmentTabSearchBinding _tabSearchBinding = null;
-    private FS fs;
-
 
     @Override
     public void onDestroyView() {
@@ -68,7 +66,6 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
     public tabSearch(Activity pParentActivity) {
         // Required empty public constructor
         this._ParentActivity = pParentActivity;
-        fs = new FS();
     }
 
     /**
@@ -139,7 +136,7 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
 //            }
             if (palletNumber.length() != 10 && palletNumber.length() != 8) {
                 Helpers.redToast(getContext(),"the format of pallet number not valid");
-                fs.logData("btnSrch error:" + palletNumber + " the format of pallet number not valid");
+                ((MainActivity)MainActivity.getContext()).logStream.logData("DB SEARCH: btnSrch error:" + palletNumber + " the format of pallet number not valid");
                 return;
             }
         }
@@ -149,7 +146,7 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
 //            FS.logData("btnSrch error:" + tbPalNr.Text + " is not a number");
 //            return;
             Helpers.redToast(getContext(),"not a number");
-            fs.logData("btnSrch error:" + palletNumber + " is not a number");
+            ((MainActivity)MainActivity.getContext()).logStream.logData("DB SEARCH: btnSrch error:" + palletNumber + " is not a number");
             return;
         }
 
@@ -169,7 +166,7 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
             {
                 //MessageBox.Show("record not found");
                 Helpers.redToast(getContext(), "record not found");
-                fs.logData("data not found for:" + palletPlus);
+                ((MainActivity)MainActivity.getContext()).logStream.logData("DB SEARCH: data not found for:" + palletPlus);
                 return;
             }
 
@@ -208,7 +205,7 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
         }
         catch (Exception ex)
         {
-            fs.logData("searchRecord(" + palletNumber + ")" + ex.getMessage());
+            ((MainActivity)MainActivity.getContext()).logStream.logData("DB SEARCH:  searchRecord(" + palletNumber + ")" + ex.getMessage());
         }
 
     }
@@ -229,14 +226,14 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
             Long i = Long.valueOf(_tabSearchBinding.etxPalletNumberSrch.getText().toString());
             if (_tabSearchBinding.etxPalletNumberSrch.getText().length() != 10 && _tabSearchBinding.etxPalletNumberSrch.getText().length() != 8) {
                 Helpers.redToast(_ParentActivity,"the format of pallet number not valid");
-                FS.logData("btnSrch error:" + _tabSearchBinding.etxPalletNumberSrch.getText() + " the format of pallet number not valid");
+                ((MainActivity)MainActivity.getContext()).logStream.logData("DB SEARCH:" + _tabSearchBinding.etxPalletNumberSrch.getText() + " the format of pallet number not valid");
                 return;
             }
         }
         catch(Exception ex)
         {
             Helpers.redToast(_ParentActivity,"not a number");
-            FS.logData("btnSrch error:" + _tabSearchBinding.etxPalletNumberSrch.getText().length() + " is not a number");
+            ((MainActivity)MainActivity.getContext()).logStream.logData("DB SEARCH:" + _tabSearchBinding.etxPalletNumberSrch.getText().length() + " is not a number");
             return;
         }
 
@@ -246,7 +243,7 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
             if (o.X == null)
             {
                 Helpers.redToast(_ParentActivity,"record not found");
-                FS.logData("data not found:" + _tabSearchBinding.etxPalletNumberSrch.getText().toString());
+                ((MainActivity)MainActivity.getContext()).logStream.logData("DB SEARCH: data not found:" + _tabSearchBinding.etxPalletNumberSrch.getText().toString());
                 return;
             }
             int row = o.Z;
@@ -267,7 +264,7 @@ public class tabSearch extends Fragment implements  View.OnClickListener {
         }
         catch (Exception ex)
         {
-            FS.logData("searchRecord("+_tabSearchBinding.etxPalletNumberSrch.getText().toString()+")" + ex.getMessage());
+            ((MainActivity)MainActivity.getContext()).logStream.logData("DB SEARCH: searchRecord("+_tabSearchBinding.etxPalletNumberSrch.getText().toString()+")" + ex.getMessage());
         }
     }
 

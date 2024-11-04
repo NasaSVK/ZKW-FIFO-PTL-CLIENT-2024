@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/aboutLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvVerziaText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tvPodoporaText"
+        android:layout_marginVertical="5dp"
+        android:layout_marginLeft="10dp"
+        android:text="Verzia:"
+
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvVerzia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvVerziaText"
+        android:layout_alignBottom="@id/tvVerziaText"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvVerziaText"
+        android:text="1.0.0 (Product Version)"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvVerziaTypText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvVerziaText"
+
+        android:layout_alignRight="@+id/tvPodoporaText"
+        android:layout_marginVertical="5dp"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginTop="-19dp"
+        android:text="TYP verzie:"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvVerziaTyp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvVerziaTypText"
+        android:layout_alignBottom="@+id/tvVerziaTypText"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-29dp"
+        android:layout_marginBottom="-30dp"
+        android:layout_toEndOf="@+id/tvVerziaTypText"
+        android:layout_toRightOf="@id/tvVerziaText"
+        android:text="Release Candidate"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:id="@+id/tvVyvojText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvVerziaTypText"
+        android:layout_marginVertical="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-19dp"
+
+        android:text="Výskum/Vývoj:"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvVyvoj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvVyvojText"
+        android:layout_alignBottom="@+id/tvVyvojText"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="0dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvVyvojText"
+        android:text="Dušan Nemček"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvPodoporaText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvVyvoj"
+        android:layout_marginVertical="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignRight="@+id/tvVyvojText"
+        android:text="Podpora:"
+
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvPodpora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvPodoporaText"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="0dp"
+        android:layout_marginStart="9dp"
+        android:layout_toEndOf="@+id/tvPodoporaText"
+        android:layout_toRightOf="@+id/tvPodoporaText"
+        android:lines="2"
+        android:text="suda@nasask.sk\nkopnicky@nasask.sk"
+        android:textSize="14sp" />
+
+
+    <!--
+    <TextView
+        android:id="@+id/aboutText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textColor="@android:color/white" />
+-->
+
+</RelativeLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">KEPZET<sup><small>®</small></sup> client v0.24.03</string>
+<!--    <string name="app_name">KEPZET<sup><small>®</small></sup> client v0.24.03</string>-->
+    <string name="app_name">PTL Client <sup><small>®</small></sup> 2024</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_preferences">Preferences</string>
     <string name="search">SEARCH</string>
@@ -15,4 +16,11 @@
     <string name="strChannelText">Chnl:</string>
     <string name="str_btn_search">Search</string>
     <string name="str_btn_close">Close</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_text_size">25dp</string>
+    <string name="main_text_padding_vertical">6dp</string>
+    <string name="main_text_padding_start">6dp</string>
 </resources>

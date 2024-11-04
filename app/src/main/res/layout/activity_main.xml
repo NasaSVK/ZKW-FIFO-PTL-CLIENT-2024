@@ -112,215 +112,275 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp">
+                android:textSize="18dp"
+                android:paddingVertical="6dp"
+
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
                     android:text="Barcode:"
-                    android:textSize="22sp" />
+                    android:textSize="16sp"
+                    android:textColor="@color/green"
+                    />
 
+<!--                android:textColor="@android:color/secondary_text_material_dark"-->
                 <TextView
                     android:id="@+id/tvBarcode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
-                    android:textSize="22dp"
-                    android:textStyle="bold" />
+                    android:textSize="28dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_white"
+                    android:paddingStart="6sp"
+                    android:maxLines="3"
+                    />
 
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp">
+                android:textSize="18dp"
+                android:paddingVertical="6dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
                     android:text="First Pallet:"
-                    android:textSize="18sp" />
+                    android:textSize="16sp"
+                    android:textColor="@color/green"
+                    />
 
                 <TextView
-                    android:id = "@+id/tvPrevPallet"
+                    android:id = "@+id/tvFirstPallet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_white"
                     android:text="N/A"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:paddingStart="6dp"
+                    android:maxLines="1"
+                    />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp">
+                android:textSize="18dp"
+                android:paddingVertical="6sp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
                     android:text="Part Num.:"
-                    android:textSize="18sp" />
+                    android:textSize="16sp"
+                    android:textColor="@color/green"
+                    />
 
                 <TextView
                     android:id= "@+id/tvPartNunber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/text_white"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:paddingStart="6dp"
+                    android:maxLines="1"
+                    />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp">
+                android:paddingVertical="6dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
                     android:text="Position:"
-                    android:textSize="18sp" />
+                    android:textSize="16sp"
+                    android:textColor="@color/green"
+                    />
 
                 <TextView
                     android:id="@+id/tvPosition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N/A"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/text_white"
+                    android:textStyle="bold"
+                    android:textSize="28sp"
+                    android:paddingStart="6dp"
+                    android:maxLines="1"
+                    />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="18dp">
+                android:textSize="18dp"
+                android:paddingVertical="6dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="2dp"
-                    android:text="Multi Pack:"
-                    android:textSize="18sp" />
+                    android:text="Prev Pallet:"
+                    android:textSize="16sp"
+                    android:textColor="@color/green"
+                    />
 
-                <TableLayout>
-
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/tvMP00"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 00"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/tvMP03"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 03"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/tvMP06"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 06"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/tvMP09"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 09"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </TableRow>
-
-
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/tvMP01"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 01"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginRight="6sp"
-                            />
-                        <TextView
-                            android:id="@+id/tvMP04"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 04"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginRight="6sp"/>
-                        <TextView
-                            android:id="@+id/tvMP07"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 07"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginRight="6sp"
-                            />
-                        <TextView
-                            android:id="@+id/tvMP10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 10"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginRight="6sp"
-                            />
-                    </TableRow>
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/tvMP02"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 02"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginRight="4sp"
-                            />
-                        <TextView
-                            android:id="@+id/tvMP05"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 05"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginRight="4sp"/>
-                        <TextView
-                            android:id="@+id/tvMP08"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 08"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginRight="4sp"
-                            />
-                        <TextView
-                            android:id="@+id/tvMP11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="N/A 11"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:layout_marginRight="4sp"
-                            />
-                    </TableRow>
-                </TableLayout>
+                <TextView
+                    android:id = "@+id/tvPrevPallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_white"
+                    android:text="N/A"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:paddingStart="6dp"
+                    android:maxLines="1"
+                    />
             </TableRow>
+
+<!--            <TableRow-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:textSize="18dp">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingEnd="2dp"-->
+<!--                    android:text="Multi Pack:"-->
+<!--                    android:textSize="18sp" />-->
+
+<!--                <TableLayout>-->
+
+<!--                    <TableRow>-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP00"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 00"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold" />-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP03"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 03"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold" />-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP06"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 06"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold" />-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP09"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 09"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold" />-->
+<!--                    </TableRow>-->
+
+
+<!--                    <TableRow>-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP01"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 01"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginRight="6sp"-->
+<!--                            />-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP04"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 04"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginRight="6sp"/>-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP07"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 07"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginRight="6sp"-->
+<!--                            />-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP10"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 10"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginRight="6sp"-->
+<!--                            />-->
+<!--                    </TableRow>-->
+<!--                    <TableRow>-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP02"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 02"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginRight="4sp"-->
+<!--                            />-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP05"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 05"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginRight="4sp"/>-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP08"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 08"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginRight="4sp"-->
+<!--                            />-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvMP11"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="N/A 11"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginRight="4sp"-->
+<!--                            />-->
+<!--                    </TableRow>-->
+<!--                </TableLayout>-->
+<!--            </TableRow>-->
 
 
         </TableLayout>
-
+        <!-- android:textColor="@android:color/secondary_text_material_dark"-->
         <TextView
             android:id="@+id/tvNOK"
             android:layout_width="match_parent"
@@ -329,6 +389,7 @@
             android:layout_marginTop="4sp"
             android:layout_marginBottom="4sp"
             android:background="@android:color/holo_red_light"
+            android:textColor="@color/back"
             android:gravity="center"
             android:padding="2sp"
             android:text="NOK"
@@ -359,17 +420,8 @@
                     android:text="DbAccess"
                     android:onClick="DbAccess_Click"
                     android:textSize="16sp"
+                    android:visibility="gone"
                     />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:width="100dp"
-                    android:text="Setup"
-                    android:textSize="16sp"
-
-                    android:onClick="clkSetup"
-                    />
-
             </TableRow>
 
             <TableRow
@@ -393,6 +445,7 @@
                     android:textSize="16sp"
                     android:layout_span="2"
                     android:enabled="true"
+                    android:visibility="invisible"
                     android:onClick="btnSendClick"
                     />
 
@@ -433,11 +486,15 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:text="History:"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:visibility="gone"
+            />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="105dp">
+            android:layout_height="105dp"
+            android:visibility="gone"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -470,6 +527,7 @@
         android:layout_height="wrap_content"
         android:onClick="softScan"
         android:text="Scan"
+        android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/llLastError" />
 
 
@@ -503,43 +561,98 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/llBottom"
+        app:layout_constraintBottom_toTopOf="@+id/llBottomAbsolute"
         >
 
         <TextView
             android:id="@+id/tvInfoText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Message:" />
+            android:text="Mssage:" />
 
         <TextView
             android:id="@+id/tvInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No message so farr"
+            android:text="No message so far"
             android:layout_marginStart="2dp"
-            android:textStyle="bold"
+            android:textStyle="normal"
+            android:textColor="@color/text_white"
             />
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/llBottom"
+<!--    <LinearLayout-->
+<!--        android:id="@+id/llBottom"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/llBottomAbsolute"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="ScnStatus:" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textViewStatus"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textStyle="bold" />-->
+<!--    </LinearLayout>-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/llBottomAbsolute"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:id="@+id/llBottom"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Status: " />
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+            app:layout_constraintEnd_toStartOf="@+id/btnSetup"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/textViewStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_marginStart="1sp"/>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textViewStatus"
-            android:layout_width="match_parent"
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:text="Warehouse PBL client app v.241016"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/text2"
+            />
+
+        <Button
+            android:id="@+id/btnSetup"
+            android:layout_width="wrap_content"
+            android:layout_height="50sp"
+            android:width="100dp"
+            android:text="Setup"
+            android:textSize="16sp"
+            android:onClick="clkSetup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </android.support.constraint.ConstraintLayout>
 
 
 </android.support.constraint.ConstraintLayout>

@@ -107,7 +107,7 @@ public class tabPosition extends Fragment  {
                 try
                 {
                     p = Integer.parseInt(etxPack.getText().toString());
-                    count = Integer.parseInt(etxCount.getText().toString());
+                    count = fifo.getMaxCount();
                 }
 
                 catch(NumberFormatException  ex)

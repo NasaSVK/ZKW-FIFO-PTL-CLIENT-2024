@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +9,13 @@
     android:padding="8dp"
     >
 
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        android:id="@+id/fragment_container_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+
     <TextView
         android:id="@+id/tvServerText"
         android:layout_width="wrap_content"
@@ -15,8 +23,7 @@
         android:text="Server"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvServerIpText"
@@ -34,10 +41,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:digits="0123456789."
         android:ems="10"
-        android:inputType="text"
+        android:inputType="number"
         android:text="10.0.0.123"
         app:layout_constraintStart_toEndOf="@+id/tvServerIpText"
+        app:layout_constraintTop_toBottomOf="@+id/tvServerText" />
+
+    <EditText
+        android:id="@+id/etServerPort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="3"
+        android:inputType="number"
+        android:text="1234"
+        app:layout_constraintStart_toEndOf="@+id/tvServerPortText"
         app:layout_constraintTop_toBottomOf="@+id/tvServerText" />
 
     <TextView
@@ -51,25 +69,88 @@
         app:layout_constraintStart_toEndOf="@+id/etServerIP"
         app:layout_constraintTop_toTopOf="@+id/etServerPort" />
 
-    <EditText
-        android:id="@+id/etServerPort"
+    <TextView
+        android:id="@+id/tvDBServerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="3"
+        android:text="DB Server"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etServerIP"
+         />
+
+    <TextView
+        android:id="@+id/tvDBServerIpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="DB:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etDBName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etDBName" />
+
+    <EditText
+        android:id="@+id/etDBName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:inputType="text"
+        android:text="zkwPBL"
+        app:layout_constraintStart_toEndOf="@+id/tvDBServerIpText"
+        app:layout_constraintTop_toBottomOf="@+id/tvDBServerText" />
+<TextView
+        android:id="@+id/tvDBUserText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="User:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etDBUser"
+        app:layout_constraintStart_toEndOf="@+id/etDBName"
+        app:layout_constraintTop_toTopOf="@+id/etDBUser" />
+
+    <EditText
+        android:id="@+id/etDBUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:ems="4"
+        android:inputType="text"
+        android:text="sknasa"
+        app:layout_constraintStart_toEndOf="@+id/tvDBUserText"
+        app:layout_constraintTop_toBottomOf="@+id/tvDBServerText" />
+
+    <TextView
+        android:id="@+id/tvDBServerPortText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Port:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etDBServerPort"
+        app:layout_constraintStart_toStartOf="@+id/tvServerPortText"
+        app:layout_constraintTop_toTopOf="@+id/etDBServerPort" />
+
+    <EditText
+        android:id="@+id/etDBServerPort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:inputType="number"
-        android:text="1234"
-        app:layout_constraintStart_toEndOf="@+id/tvServerPortText"
-        app:layout_constraintTop_toBottomOf="@+id/tvServerText" />
+        android:text="53563"
+        app:layout_constraintStart_toEndOf="@+id/tvDBServerPortText"
+        app:layout_constraintTop_toBottomOf="@+id/tvDBServerText" />
 
     <TextView
         android:id="@+id/tvClientText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Client"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etServerIP" />
+        app:layout_constraintTop_toBottomOf="@+id/etDBName"
+        android:layout_marginTop="8dp"
+        />
 
     <TextView
         android:id="@+id/tvClientIPText"
@@ -87,7 +168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-
+        android:enabled="false"
         android:ems="10"
         android:inputType="text"
         android:text="10.0.0.321"
@@ -143,7 +224,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:ems="4"
-        android:inputType="text"
+        android:inputType="number"
         android:text="1234567"
         app:layout_constraintStart_toEndOf="@+id/tvTimeText"
         app:layout_constraintTop_toBottomOf="@+id/tvResultText" />
@@ -151,12 +232,12 @@
     />
 
     <com.symbol.kepzetclient.HorizontalNumberPicker
-        android:id="@+id/hnpVolume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/etTime"
-        app:layout_constraintStart_toEndOf="@+id/tvVolumeText"
-        app:layout_constraintTop_toTopOf="@+id/etTime" />
+    android:id="@+id/hnpVolume"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="@+id/etTime"
+    app:layout_constraintStart_toEndOf="@+id/tvVolumeText"
+    app:layout_constraintTop_toTopOf="@+id/etTime" />
 
     <TextView
         android:id="@+id/tvVolumeText"
@@ -185,7 +266,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="passphrase not ide"
+        android:text="passphrase not identical"
         android:textColor="@android:color/holo_red_light"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -216,9 +297,9 @@
         android:id="@+id/etPswd1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="4"
+        android:ems="3"
         android:inputType="text"
-        android:text="********"
+        android:text="9876"
         app:layout_constraintStart_toEndOf="@+id/tvPswdText"
         app:layout_constraintTop_toBottomOf="@+id/tvChangePsdText" />
 
@@ -226,9 +307,9 @@
         android:id="@+id/etPswd2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="4"
+        android:ems="3"
         android:inputType="text"
-        android:text="********"
+        android:text="9876"
 
         app:layout_constraintBottom_toBottomOf="@+id/etPswd1"
         app:layout_constraintStart_toEndOf="@+id/tvPswdText2"
@@ -240,10 +321,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Allow Manual Accept"
+        android:text="Manual Accept"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPswd1" />
+        app:layout_constraintStart_toEndOf="@+id/etPswd2"
+        app:layout_constraintTop_toTopOf="@+id/etPswd2"
+        />
 
     <TextView
         android:id="@+id/tvIgnoreListText"
@@ -253,7 +335,9 @@
         android:text="Add to ignore list"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbManualAccept" />
+        app:layout_constraintTop_toBottomOf="@+id/cbManualAccept"
+        android:visibility="gone"
+        />
 
     <TextView
         android:id="@+id/tvNoText"
@@ -261,20 +345,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="No"
-        app:layout_constraintBottom_toBottomOf="@+id/etNo"
+        app:layout_constraintBottom_toBottomOf="@+id/etIgnoreNo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etNo" />
+        app:layout_constraintTop_toTopOf="@+id/etIgnoreNo"
+        android:visibility="gone"
+        />
 
     <EditText
-        android:id="@+id/etNo"
+        android:id="@+id/etIgnoreNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:ems="6"
-        android:inputType="text"
+        android:inputType="number"
         android:text="123456"
         app:layout_constraintStart_toEndOf="@+id/tvNoText"
-        app:layout_constraintTop_toBottomOf="@+id/tvIgnoreListText" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIgnoreListText"
+        android:visibility="gone"
+        />
 
     <Button
         android:id="@+id/btnSend"
@@ -282,63 +370,141 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Send"
-        app:layout_constraintBottom_toBottomOf="@+id/etNo"
-        app:layout_constraintStart_toEndOf="@+id/etNo"
-        app:layout_constraintTop_toTopOf="@+id/etNo" />
+        app:layout_constraintBottom_toBottomOf="@+id/etIgnoreNo"
+        app:layout_constraintStart_toEndOf="@+id/etIgnoreNo"
+        app:layout_constraintTop_toTopOf="@+id/etIgnoreNo"
+        android:visibility="gone"
+        />
 
     <TextView
         android:id="@+id/tvRestartAppText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:visibility="invisible"
         android:text="Restart app for changes to take effect"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNo" />
+        app:layout_constraintTop_toTopOf="parent"
+         />
 
     <Button
         android:id="@+id/btnQuit"
-        android:layout_width="wrap_content"
+        android:layout_width="95dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="quit"
+        android:layout_marginEnd="16dp"
         android:onClick="quit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRestartAppText" />
+        android:text="quit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnClose" />
 
     <Button
         android:id="@+id/btnDbAccess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="0dp"
         android:text="dbAccess"
-        app:layout_constraintBottom_toBottomOf="@+id/btnQuit"
-        app:layout_constraintEnd_toEndOf="@+id/btnSend"
-        app:layout_constraintStart_toStartOf="@+id/btnSend"
-        app:layout_constraintTop_toTopOf="@+id/btnQuit" />
+        app:layout_constraintBottom_toTopOf="@+id/btnCancel"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
+        android:layout_width="95dp"
         android:layout_height="wrap_content"
-        android:text="Cancle"
-        app:layout_constraintStart_toStartOf="@+id/btnQuit"
-        app:layout_constraintTop_toBottomOf="@+id/btnQuit" />
+        android:layout_marginStart="16dp"
+        android:onClick="btnCancelOnClickHandler"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="0dp"
+        android:layout_width="95dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="0dp"
         android:text="Save"
-        app:layout_constraintBottom_toBottomOf="@+id/btnCancel"
-        app:layout_constraintEnd_toEndOf="@+id/btnDbAccess"
-        app:layout_constraintStart_toStartOf="@+id/btnDbAccess"
-        app:layout_constraintTop_toTopOf="@+id/btnCancel" />
+        app:layout_constraintBottom_toTopOf="@+id/btnQuit"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnClose"
+
+        android:layout_height="wrap_content"
+        android:text="CLOSE"
+        android:onClick="btnCloseOnClickHandler"
+        app:layout_constraintEnd_toStartOf="@+id/btnQuit"
+        app:layout_constraintStart_toEndOf="@+id/btnCancel"
+        app:layout_constraintTop_toTopOf="@+id/btnCancel"
+        android:layout_width="95dp"
+        />
+
+    <TextView
+        android:id="@+id/tvMaxCoordinatesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Matrix MAX Coordinates"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/etPswd1" />
     />
 
+    <TextView
+        android:id="@+id/tvMaxXText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Max X"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/hnpMaxX"
+        app:layout_constraintTop_toTopOf="@id/hnpMaxX"
+        />
+    />
 
+    <com.symbol.kepzetclient.HorizontalNumberPicker
+        android:id="@+id/hnpMaxX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tvMaxXText"
+        app:layout_constraintTop_toBottomOf="@+id/tvMaxCoordinatesText" />
 
+    <TextView
+        android:id="@+id/tvMaxYText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Max Y"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toEndOf="@id/hnpMaxX"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/hnpMaxY"
+        app:layout_constraintTop_toTopOf="@id/hnpMaxY"
+        />
+    />
 
+    <com.symbol.kepzetclient.HorizontalNumberPicker
+        android:id="@+id/hnpMaxY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tvMaxYText"
+        app:layout_constraintTop_toBottomOf="@+id/tvMaxCoordinatesText" />
 
+    <Button
+        android:id="@+id/btnAboutDlg"
+        android:layout_height="65dp"
+        android:background="@mipmap/ic_launcher_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/btnClose"
+        app:layout_constraintEnd_toStartOf="@+id/btnSave"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnDbAccess"
+        android:layout_width="65dp"
+        android:layout_marginBottom="-10dp"
+
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,14 @@
 apply plugin: 'com.android.application'
 
-
-
 android {
     compileSdk 34
     defaultConfig {
         applicationId "com.symbol.kepzetclient"
-        minSdkVersion 24
+        minSdkVersion 26
         //noinspection ExpiredTargetSdkVersion
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 12
-        versionName "7.3.1"
+        versionName "1.0.0"
     }
     buildTypes {
         release {

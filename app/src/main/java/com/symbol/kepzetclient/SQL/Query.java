@@ -98,7 +98,8 @@ public enum Query {
 
     public String updatePallets(ArrayList<String> updPallNrs, Integer pX, int pY ) {
 
-        String query = "UPDATE [dbo].[warehouseDB] SET [posX] = " + pX + ", [posY] = " + pY + " WHERE [paletteNr] = '"+ updPallNrs.get(0) + "';";
+        //String query = "UPDATE [dbo].[warehouseDB] SET [posX] = " + pX + ", [posY] = " + pY + " WHERE [paletteNr] = '"+ updPallNrs.get(0) + "';";
+        String query = "UPDATE [dbo].[warehouseDB] SET [posX] = " + pX + ", [posY] = " + pY + " WHERE" + ands(updPallNrs);
         return query;
 
     }

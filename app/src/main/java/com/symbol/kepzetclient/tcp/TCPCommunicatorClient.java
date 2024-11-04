@@ -105,7 +105,7 @@ public class TCPCommunicatorClient {
             public void run() {
                 try
                 {
-                    Settings.getSELF().LoadToFile(context);
+                    //Settings.getSELF().LoadToFile(context);
                     String IP = Settings.getSELF().ServerIP;
                     int port = Settings.getSELF().ServerPort;
                     if (!Helpers.Ping(Settings.getSELF().ServerIP)){
@@ -122,10 +122,14 @@ public class TCPCommunicatorClient {
                     s = new Socket(IP, port);
                     out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
                     //String outMsg = obj.toString() + System.getProperty("line.separator");
+                    out.write(pContent);
+                    //out.write(pContent+ System.getProperty("line.separator"));
                     //out.write(pContent,0,pContent.length());
-                    out.write(pContent.toCharArray());
+                    //out.write(pContent.toCharArray());
+                    //out.newLine();
                     out.flush();
-                    //Log.i("TcpClient", "sent: " + pContent /*outMsg*/);
+                    Log.i("TcpClient", "sent: " + pContent /*outMsg*/);
+                    MainActivity.getInstance().logStream.logData("TCP SEND: sent:" + pContent );
                     closeStreams();
                 }
                 catch(Exception e)
@@ -135,6 +139,7 @@ public class TCPCommunicatorClient {
                         public void run() {
 
                             Helpers.redToast(appContext ,"a problem has occured, the app might not be able to reach the server");
+
                             if(appContext instanceof MainActivity){
                                 ((MainActivity)appContext).writeError("the app might not be able to reach the server");
 
@@ -163,13 +168,9 @@ public class TCPCommunicatorClient {
     {
         try
         {
-
             //in.close();
             s.close();
             out.close();
-
-
-
         }
         catch(Exception e)
         {

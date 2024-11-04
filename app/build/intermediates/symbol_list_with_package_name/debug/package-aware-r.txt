@@ -1365,6 +1365,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color black_overlay
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -1423,11 +1424,18 @@ color dim_foreground_material_dark
 color dim_foreground_material_light
 color error_color_material_dark
 color error_color_material_light
+color error_light_red
 color foreground_material_dark
 color foreground_material_light
 color green
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color ic_launcher_background
+color light_blue_600
+color light_blue_900
+color light_blue_A200
+color light_blue_A400
+color light_orange
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
 color m3_assist_chip_stroke_color
@@ -2106,6 +2114,9 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color text
+color text2
+color text_white
 color tooltip_background_dark
 color tooltip_background_light
 dimen abc_action_bar_content_inset_material
@@ -3015,6 +3026,9 @@ drawable ic_call_decline_low
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
+drawable ic_launcher
+drawable ic_launcher_background
+drawable ic_launcher_background2
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
@@ -3114,6 +3128,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id aboutLayout
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -3202,6 +3217,7 @@ id bounceStart
 id brBarrierBotto
 id brBarrierTop
 id brVerticalAge
+id btnAboutDlg
 id btnAccept
 id btnCancel
 id btnCheckAge
@@ -3210,6 +3226,8 @@ id btnClose
 id btnCloseDB
 id btnConToServer
 id btnDbAccess
+id btnPswdCancel
+id btnPswdOk
 id btnQuit
 id btnRefreshAge
 id btnSave
@@ -3218,12 +3236,14 @@ id btnSaveDB
 id btnSavePos
 id btnSearch
 id btnSend
+id btnSetup
 id btnShowPos
 id btnStartAge
 id btnStopAge
 id btn_less
 id btn_more
 id buttonPanel
+id cLayout
 id cache_measures
 id callMeasure
 id cancel_button
@@ -3297,6 +3317,7 @@ id dragRight
 id dragStart
 id dragUp
 id dropdown_menu
+id dummy_button
 id easeIn
 id easeInOut
 id easeOut
@@ -3315,8 +3336,11 @@ id enterAlwaysCollapsed
 id escape
 id etClientIp
 id etClientPort
+id etDBName
+id etDBServerPort
+id etDBUser
+id etIgnoreNo
 id etMinAgeAge
-id etNo
 id etPswd1
 id etPswd2
 id etServerIP
@@ -3331,6 +3355,7 @@ id etxPackSrch
 id etxPalletNumberSrch
 id etxPartNumberPos
 id etxPartNumberSrch
+id etxPswPassword
 id etxRSrch
 id etxSSrch
 id etxZSrch
@@ -3355,6 +3380,8 @@ id fragment_container_view_tag
 id frameLayout
 id frameLayout2
 id frost
+id fullscreen_content
+id fullscreen_content_controls
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
@@ -3367,6 +3394,8 @@ id groups
 id header_title
 id hide_ime_id
 id hideable
+id hnpMaxX
+id hnpMaxY
 id hnpR
 id hnpRPos
 id hnpSPos
@@ -3402,6 +3431,7 @@ id linear
 id listMode
 id list_item
 id llBottom
+id llBottomAbsolute
 id llInfo
 id llLastError
 id m3_side_sheet
@@ -3655,24 +3685,20 @@ id tvChannelText
 id tvClientIPText
 id tvClientText
 id tvCountPos
+id tvDBServerIpText
+id tvDBServerPortText
+id tvDBServerText
+id tvDBUserText
 id tvDateTime
+id tvFirstPallet
 id tvIgnoreListText
 id tvInfo
 id tvInfoText
 id tvLastError
 id tvLastErrorText
-id tvMP00
-id tvMP01
-id tvMP02
-id tvMP03
-id tvMP04
-id tvMP05
-id tvMP06
-id tvMP07
-id tvMP08
-id tvMP09
-id tvMP10
-id tvMP11
+id tvMaxCoordinatesText
+id tvMaxXText
+id tvMaxYText
 id tvMinAgeAgeText
 id tvNOK
 id tvNoText
@@ -3683,9 +3709,12 @@ id tvPalletNmbText
 id tvPalletNumber
 id tvPartNrText
 id tvPartNunber
+id tvPodoporaText
+id tvPodpora
 id tvPosition
 id tvPrevPallet
 id tvPssPhraseText
+id tvPswdError
 id tvPswdText
 id tvPswdText2
 id tvRDbAText
@@ -3698,7 +3727,14 @@ id tvServerIpText
 id tvServerPortText
 id tvServerText
 id tvTimeText
+id tvTitle
+id tvVerzia
+id tvVerziaText
+id tvVerziaTyp
+id tvVerziaTypText
 id tvVolumeText
+id tvVyvoj
+id tvVyvojText
 id unchecked
 id uniform
 id unlabeled
@@ -3837,6 +3873,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout about_dlg
 layout activity_main
 layout activity_setup
 layout custom_dialog
@@ -3857,6 +3894,8 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_age
+layout fragment_fullscreen
+layout fragment_password
 layout fragment_tab_db_access
 layout fragment_tab_position
 layout fragment_tab_search
@@ -3925,9 +3964,10 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
-layout z_activity_pref
 menu main
 mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw alarm
 raw alarm2
@@ -3983,11 +4023,14 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
 string dbAccess
+string dummy_button
+string dummy_content
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
@@ -4007,6 +4050,9 @@ string m3_sys_motion_easing_linear
 string m3_sys_motion_easing_standard
 string m3_sys_motion_easing_standard_accelerate
 string m3_sys_motion_easing_standard_decelerate
+string main_text_padding_start
+string main_text_padding_vertical
+string main_text_size
 string material_clock_display_divider
 string material_clock_toggle_content_description
 string material_hour_24h_suffix
@@ -4753,6 +4799,7 @@ style ThemeOverlay_AppCompat_Dialog
 style ThemeOverlay_AppCompat_Dialog_Alert
 style ThemeOverlay_AppCompat_Light
 style ThemeOverlay_Design_TextInputEditText
+style ThemeOverlay_KEPZETANDROIDCLIENT_FullscreenContainer
 style ThemeOverlay_Material3
 style ThemeOverlay_Material3_ActionBar
 style ThemeOverlay_Material3_AutoCompleteTextView
@@ -5241,6 +5288,7 @@ style Widget_MaterialComponents_Toolbar_PrimarySurface
 style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
+style Widget_Theme_KEPZETANDROIDCLIENT_ButtonBar_Fullscreen
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth

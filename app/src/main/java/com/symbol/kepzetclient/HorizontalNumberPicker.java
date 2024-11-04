@@ -16,6 +16,8 @@ public class HorizontalNumberPicker extends LinearLayout {
     public int min, max;
 
     private EditText etxValue;
+    private boolean _rotate;
+
     public EditText getEtxValue() {
         return etxValue;
     }
@@ -24,6 +26,8 @@ public class HorizontalNumberPicker extends LinearLayout {
     public HorizontalNumberPicker(Context context, @Nullable AttributeSet attrs) {
 
         super(context, attrs);
+
+        _rotate = false;
 
         inflate(context, R.layout.numberpicker_horizontal, this);
 
@@ -71,9 +75,16 @@ public class HorizontalNumberPicker extends LinearLayout {
         public void onClick(View v) {
             int newValue = getValue() + diff;
             if (newValue < min) {
-                newValue = min;
-            } else if (newValue > max) {
-                newValue = max;
+                if (!_rotate)
+                    newValue = min;
+                else
+                    newValue = max;
+            } else
+                if (newValue > max) {
+                    if (! _rotate)
+                        newValue = max;
+                    else
+                        newValue = min;
             }
             et_number.setText(String.valueOf(newValue));
         }
@@ -115,5 +126,13 @@ public class HorizontalNumberPicker extends LinearLayout {
 
     public void setMax(int max) {
         this.max = max;
+    }
+
+    public boolean getRotate(){
+        return _rotate;
+    }
+
+    public void setRotate(boolean pRotate){
+        this._rotate = pRotate;
     }
 }

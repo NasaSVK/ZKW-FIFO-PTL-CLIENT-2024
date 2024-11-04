@@ -2,7 +2,6 @@ package com.symbol.kepzetclient.tcp;
 
 import android.os.AsyncTask;
 import android.os.Handler;
-import android.util.Log;
 
 import com.symbol.kepzetclient.Helpers;
 import com.symbol.kepzetclient.MainActivity;
@@ -20,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TCPCommunicatorServer {
+
+    public enum TCPWriterErrors{UnknownHostException,IOException,otherProblem,OK}
     private static TCPCommunicatorServer uniqInstance;
     private static int serverPort;
     private static List<TCPServerListener> allListeners;
@@ -29,6 +30,7 @@ public class TCPCommunicatorServer {
     private static BufferedWriter out;
     //private static OutputStream outputStream;
     private static Handler handler = new Handler();
+    private static boolean serverRunning;
 
 
     private TCPCommunicatorServer()
@@ -83,7 +85,7 @@ public class TCPCommunicatorServer {
 
     public class InitTCPServerTask extends AsyncTask<Void, Void, Void>
     {
-        private boolean serverRunning;
+
         public InitTCPServerTask()
         {
             serverRunning = true;
@@ -93,16 +95,19 @@ public class TCPCommunicatorServer {
         protected Void doInBackground(Void... params) {
 
                 try {
-                    Settings.getSELF().LoadToFile(MainActivity.getContext());
+                    //Settings.getSELF().LoadToFile(MainActivity.getContext());
                     int localServerPort = Settings.getSELF().ClientPort;
                     ss = new ServerSocket(localServerPort);
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            Settings.getSELF().LoadToFile(MainActivity.getContext());
+                            //Settings.getSELF().LoadToFile(MainActivity.getContext());
                             for (TCPServerListener listener : allListeners) {
                                 final String  TEXT  = "LISTENER at " + Helpers.getLocalIP() + ":"+Settings.getSELF().ClientPort;
-                                listener.onInfoEventOccured(TEXT);
+                                //menej miesta na vypis => kratsi TAG
+                                listener.onInfoEventOccured("TCP", TEXT);
+                                //viac miesta na vypis => dlhsi TAG
+                                MainActivity.getInstance().logStream.logData("TCP LOCAL SERVER: " + TEXT);
                             }
                         }
                     });
@@ -126,8 +131,11 @@ public class TCPCommunicatorServer {
                             public void run() {
                                 // TODO Auto-generated method stub
                                 for (TCPServerListener listener : allListeners)
+                                    //kedze listenerom je (aj) MainActivity, da musi spracovat dorucene data
                                     listener.onTCPMessageServerRecieved(incomingMsgs);
-                                Log.e("TCP", String.join(", ", incomingMsgs));
+                                //LOGUJEM TU, MOZEM SPECIFIKOVAT "TAG" TCP RECIEVED
+                                //Log.e("TCP RECIEVED", String.join(", ", incomingMsgs));
+                                //MainActivity.getInstance().logStream.logData("TCP RECIEVED: " + String.join(", ", incomingMsgs));
                             }
                         });
 
@@ -138,19 +146,17 @@ public class TCPCommunicatorServer {
                 }
 
             return null;
-
-
-
         }
 
     }
 
-    public enum TCPWriterErrors{UnknownHostException,IOException,otherProblem,OK}
+
 
     public static void closeStreams() {
         // TODO Auto-generated method stub
         try
         {
+            serverRunning = false;
             s.close();
             ss.close();
             out.close();

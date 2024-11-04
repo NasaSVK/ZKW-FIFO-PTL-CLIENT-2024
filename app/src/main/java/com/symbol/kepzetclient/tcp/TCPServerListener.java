@@ -6,6 +6,6 @@ public interface TCPServerListener {
 
     public void onTCPMessageServerRecieved(ArrayList<String> messages);
 
-    public void onInfoEventOccured(String message);
+    public void onInfoEventOccured(String pTyp, String message);
 
 }

@@ -7,8 +7,10 @@ package com.symbol.kepzetclient;
 import static com.symbol.kepzetclient.Helpers.getCurrentDateTime;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -23,7 +25,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -53,8 +54,8 @@ import com.symbol.emdk.barcode.ScannerInfo;
 import com.symbol.emdk.barcode.ScannerResults;
 import com.symbol.emdk.barcode.StatusData;
 import com.symbol.emdk.barcode.StatusData.ScannerStates;
-import com.symbol.kepzetclient.auxx.FS;
 import com.symbol.kepzetclient.auxx.LogFile;
+import com.symbol.kepzetclient.auxx.LogStream;
 import com.symbol.kepzetclient.auxx.Settings;
 import com.symbol.kepzetclient.custom_components.SetupActivity;
 import com.symbol.kepzetclient.tcp.TCPClientListener;
@@ -72,11 +73,15 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 public class MainActivity extends Activity
         implements EMDKListener, DataListener, StatusListener, ScannerConnectionListener, OnCheckedChangeListener,
         TCPClientListener, TCPServerListener {
 
+    private static final int MY_BUTTON_INVALID_ID = -1;
+    private final Semaphore dialogSemaphore = new Semaphore(0, true);
+    private int pressedButtonID;
 
     ArrayList<String> dataRcvd = null;
     SoundPool soundPool = null;
@@ -86,7 +91,8 @@ public class MainActivity extends Activity
     boolean stop = false;
 
     public Socket MyServerSocket;
-    private static com.symbol.kepzetclient.auxx.FS fs;
+
+    public com.symbol.kepzetclient.auxx.LogStream logStream;
 
     private TCPCommunicatorClient tcpClient;
     private TCPCommunicatorServer tcpServer;
@@ -127,7 +133,11 @@ public class MainActivity extends Activity
     private TextView tvPartNumber = null;
     private TextView tvPosition = null;
 
+    private TextView tvFirstPallet = null;
+
     private TextView tvInfo = null;
+
+    private TextView tvTitle = null;
 
     private CheckBox cbClear = null;
 
@@ -141,6 +151,11 @@ public class MainActivity extends Activity
     public static LogFile lf;
     private static MainActivity _mainActivity;
 
+    public static MainActivity getInstance(){
+
+        return _mainActivity;
+    }
+
     TabLayout tabLayout;
     private Connection con;
 
@@ -149,12 +164,13 @@ public class MainActivity extends Activity
     private Handler UIHandler = new Handler();
     private Handler HandlerServer = new Handler();
 
-    private List<multipackData> mpData;
+    private List<multipackData> mpData = new ArrayList<multipackData>();;
     private CheckBox cbLeader;
 
     private Button btnAccept;
     private TextView tvLastError;
     private int OkNokThreadsCount;
+    private int OkNokTime;
 
 
     public static Context getContext(){
@@ -182,7 +198,7 @@ public class MainActivity extends Activity
         //zabezpeci, ze pripadny pozitivny vysledok spojenia so serverom sa zobrazi na hlavne aktivite
         TCPCommunicatorClient.addListener(this);
         //nacitanie suboru s aktualnymi nastaveniami
-        Settings.getSELF().LoadToFile(MainActivity.getContext());
+        //Settings.getSELF().LoadToFile(MainActivity.getContext());
         Thread connectionThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -220,10 +236,7 @@ public class MainActivity extends Activity
         connectionThread.start();
     }
 
-    public void OtvorSettingsScreen() {
-        startActivity(new Intent(MainActivity.this,Preferences.class));
-    }
-
+//   stary, nepouzity system LOGov
     public static LogFile getLogFile(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (lf == null || !lf.getAssignedDate().isEqual(LocalDate.now()))
@@ -235,10 +248,14 @@ public class MainActivity extends Activity
     public void TimeOutCallBack()
     {
         if (this.OkNokThreadsCount <= 1) {
-            tvNOK.setText("");
-            tvNOK.setBackgroundColor(Color.TRANSPARENT);
+            hideInstantly();
             }
             this.OkNokThreadsCount--;
+    }
+
+    public void hideInstantly(){
+        tvNOK.setText("");
+        tvNOK.setBackgroundColor(Color.TRANSPARENT);
     }
 
 
@@ -246,8 +263,13 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //String string = Helpers.getLocalIP().toString();
         _mainActivity = this;
+
+        //vytvorenie instancie pre pristup k logom
+        logStream = new LogStream(_mainActivity);
+
+        //PO SPUSTENI APLKACIE NALOADUJEM INSTANCIU S NASTAVENIAMI
+        Settings.getSELF().LoadToFile(MainActivity.getContext());
 
         //BEGIN SOUND
             AudioAttributes audioAttributes = new AudioAttributes
@@ -266,8 +288,6 @@ public class MainActivity extends Activity
         // This load function takes three parameter context, file_name and priority.
         alarm1Id = soundPool.load(this, R.raw.alarm, 1);
         alarm2Id = soundPool.load(this, R.raw.alarm2, 1);
-        //soundPool.play(alarmId, 1, 1, 0, 0, 1);
-        //soundPool.autoPause();
         //END SOUND
 
         //https://stackoverflow.com/questions/17069955/play-sound-using-soundpool-example
@@ -282,18 +302,18 @@ public class MainActivity extends Activity
         //END RemoteServer
         //#########################################################################################
 
+
         //#########################################################################################
         //BEGIN LocalServer
         this.tcpServer = TCPCommunicatorServer.getInstance();
         TCPCommunicatorServer.addListener(this);
-        Settings.getSELF().LoadToFile(MainActivity.getContext());
+        //NIE JE NUTNE LOADOVAT SI KAZDE NASTAVENIE DO OSOBITNEHO ATRIBUTU; tam kde treba staci zavolat: Setting.getSTATIC().???
         int clientPort = Settings.getSELF().ClientPort;
         tcpServer.init(clientPort); //lokalny server na klientovi bude pocuvat na spravy HLAVNEHO SERVERU (192.168.1.8) na ulozeom porte (2004, 2005, 2006, 2007, 3333)
         //END LocalServer
         //#########################################################################################
 
         //SUND_TIME = Settings.getSELF().Time;
-
 
         deviceList = new ArrayList<ScannerInfo>();
 
@@ -309,10 +329,13 @@ public class MainActivity extends Activity
         tvPartNumber = (TextView)findViewById(R.id.tvPartNunber);
         tvPosition = (TextView)findViewById(R.id.tvPosition);
         tvPrevPallet = (TextView)findViewById(R.id.tvPrevPallet);
+        tvFirstPallet = (TextView)findViewById(R.id.tvFirstPallet);
         tvInfo = (TextView)findViewById(R.id.tvInfo);
         cbLeader = (CheckBox)findViewById(R.id.cbLeader);
         cbClear = (CheckBox)findViewById(R.id.cbxClear);
         tvLastError = (TextView)findViewById(R.id.tvLastError);
+
+        tvTitle = (TextView)findViewById(R.id.tvTitle);
 
         spinnerScannerDevices = findViewById(R.id.spinnerScannerDevices);
 
@@ -322,10 +345,8 @@ public class MainActivity extends Activity
             return;
         }
 
-        //checkBoxEAN8.setOnCheckedChangeListener(this);
-        //checkBoxEAN13.setOnCheckedChangeListener(this);
-        //checkBoxCode39.setOnCheckedChangeListener(this);
-        //checkBoxCode128.setOnCheckedChangeListener(this);
+        //tvNOK.setVisibility(View.INVISIBLE);
+        this.hideInstantly();
 
         //nutne volat ZA az po vytvoreni deviceList-u (enumerateScannerSevice)), inak sa scener neinicializuje
         //deviceList sa vytvara v enumerateScannerDevices();
@@ -334,16 +355,22 @@ public class MainActivity extends Activity
         textViewData.setSelected(true);
         textViewData.setMovementMethod(new ScrollingMovementMethod());
 
-        //DB CONNECTION
-        //ConnectionClass connectionClass = new ConnectionClass();
-        //con = connectionClass.CONN();
+        tvFirstPallet.setText("");
+        tvBarcode.setText("");
+        tvPartNumber.setText("");
+        tvPosition.setText("");
+        tvPrevPallet.setText("");
+        //tvInfo.setText("");
+        tvTitle.setText("Warehouse PBL® Client 2024 v."+ Helpers.getAppTimeStamp2(_mainActivity));
     }
 
     void playNOK() {
-            soundPool.play(alarm1Id, 1.0f, 1.0f, 1, 0, 1.0f);
+
+        soundPool.play(alarm1Id, 1.0f, 1.0f, 1, 0, 1.0f);
     }
     void playOK() {
-            soundPool.play(alarm2Id, 1.0f, 1.0f, 1, 0, 1.0f);
+
+        soundPool.play(alarm2Id, 1.0f, 1.0f, 1, 0, 1.0f);
     }
 
     @Override
@@ -354,9 +381,7 @@ public class MainActivity extends Activity
         initBarcodeManager();
         // Enumerate scanner devices
         enumerateScannerDevices();
-
         addSpinnerScannerDevicesListener();
-
         // Set default scanner
         spinnerScannerDevices.setText(My2DBarCodeImager.getFriendlyName());
         //spinnerScannerDevices.setSelection(defaultIndex);
@@ -379,15 +404,17 @@ public class MainActivity extends Activity
         }
 
         //TCP START
-        if(!isFirstLoad)
-        {
-            TCPCommunicatorClient.closeStreams();
-            //vytovri hlavne instanciu TCPClient-sa
-            ConnectToServer();
-        }
-        else
-            isFirstLoad=false;
+//        if(!isFirstLoad)
+//        {
+//            TCPCommunicatorClient.closeStreams();
+//            //vytovri hlavne instanciu TCPClient-sa
+//            ConnectToServer();
+//        }
+//        else
+//            isFirstLoad=false;
         //TCP END
+
+        Toast.makeText(this,"onResume()",Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -397,6 +424,8 @@ public class MainActivity extends Activity
         // Release the barcode manager resources
         deInitScanner();
         deInitBarcodeManager();
+        Toast.makeText(this,"onPause()",Toast.LENGTH_SHORT);
+
     }
 
     @Override
@@ -407,6 +436,8 @@ public class MainActivity extends Activity
             emdkManager = null;
         }
         updateStatus("EMDK closed unexpectedly! Please close and restart the application.");
+
+        Toast.makeText(this,"onClose()",Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -421,6 +452,7 @@ public class MainActivity extends Activity
             emdkManager = null;
         }
         //this.btnStopServer(null);
+        Toast.makeText(this,"onDestroy()",Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -431,24 +463,28 @@ public class MainActivity extends Activity
                 //updateData("<font color='silver'>" +  Helpers.getCurrentDateTime() + "</font>" +"  "+ "<font color='gray'>" +  data.getLabelType() + "</font> : <b>" + data.getData() +"</b>");
                 String Type = data.getLabelType().toString();
                 String Data = data.getData();
-                updateData(Type,Data);
-                //tvBarcode.setText(Data);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tvBarcode.setText(Data);
-                    }
-                });
+                updateData(Type, Data);
 
-            }
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        //tvBarcode.setText(Data);
+//                        bcr_BarcodeRead(Data);}
+//                });
+
+                bcr_BarcodeRead(Data);
 
 
-            //TCP START
-                String content  = scanData.get(scanData.size()-1).getData();
+                //TCP START
+                //String content  = scanData.get(scanData.size()-1).getData();
                 //ConnectToServer();
-                TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
-            //TCP END
+                //TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
+                //TCP END
 
+                //LOG START
+                //logStream.logData("TCP SEND: " + Data);
+                //LOG END
+            }
         }
     }
 
@@ -849,38 +885,6 @@ public class MainActivity extends Activity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            this.OtvorSettingsScreen();
-            return true;
-//            case R.id.action_about:
-//                AboutBox.Show(MainActivity2.this);return true;
-//
-//            case (R.id.searchDeviceMenu):
-//                Intent intent = new Intent(MainActivity2.this, SearchActivity.class);
-//                startActivity(intent);
-//                return true;
-//            //AUXX.redToast(MainActivity2.this,"Vyhľadávanie bude dorobené!!!"); return true;
-//            case R.id.addDevice:
-//                showNoticeDialog();
-//                //InsertDialog.Show(MainActivity2.this);return true;
-        }
-        return super.onOptionsItemSelected(item);
-
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
-
-//        return super.onOptionsItemSelected(item);
-    }
-
     public void DbAccess_Click(View view) {
         Intent dbActivity = new Intent(this, DbActivity.class);
         startActivity(dbActivity);
@@ -935,7 +939,7 @@ public class MainActivity extends Activity
 
     public void btnConToServer_onClick(View view) {
 
-        Settings.getSELF().LoadToFile(MainActivity.getContext());
+        //Settings.getSELF().LoadToFile(MainActivity.getContext());
         String IP = Settings.getSELF().ServerIP;
         Integer port = Settings.getSELF().ServerPort;
         new Thread(new Runnable() {
@@ -1008,38 +1012,45 @@ public class MainActivity extends Activity
     //https://www.facebook.com/share/v/fsyALHALtUWCjHpQ/
     //vypise vsetky spravy zaslane serverom ako rekaciu na nejaku udalost
     @Override
-    public void onTCPMessageServerRecieved(ArrayList<String> pMessages) {
+    public void onTCPMessageServerRecieved(ArrayList<String> pIncMessages) {
 
         // TODO Auto-generated method stub
-        //String theMessage = pMessage;
-        dataRcvd = pMessages;
+        dataRcvd = pIncMessages;
+        //https://stackoverflow.com/questions/15136199/when-to-use-handler-post-when-to-new-thread
         HandlerServer.post(new Runnable() {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
                 try
                 {
-                    //#######################
-                    parseData();
-                    //#######################
-                    TextView editTxt = (TextView) findViewById(R.id.tvInfo);
-                    editTxt.setText(String.join(", ", dataRcvd));
-
+                    //#####################################################
+                    //#####################################################
+                    //na to co prislo zo serveru aplikujme parseData() a
+                        MainActivity._mainActivity.parseData();
+                    //a vypisem do tvInfo
+                    //LEN NA DIAGNOSTICKE UCELY; v produkcnej verzi sa na miesto celej kolekcie doslych dat vypisuje LEN previous pallet
+                    //tvInfo.setText(String.join(", ", dataRcvd));
+                    //#####################################################
+                    //####################################################
                 }
                 catch(Exception e)
                 {
                     e.printStackTrace();
+                    MainActivity._mainActivity.logStream.logData("TCP RECIEVED ERROR: " + String.join(", ", e.getMessage()));
                 }
             }
         });
+
+        //naco zatazovat hlavne vlanko zapisom do LOGOV =>
+        //MainActivity._mainActivity.logStream.logData("TCP RECIEVED: " + String.join(", ", dataRcvd));
+        Log.e("TCP RECIEVED", String.join(", ", pIncMessages));
+        MainActivity.getInstance().logStream.logData("TCP RECIEVED: " + String.join(", ", pIncMessages));
     }
 
     //vypise info o spusteni listenera do HISTORIE
     @Override
-    public void onInfoEventOccured(String message) {
-
-        updateData("TCP",message);
-
+    public void onInfoEventOccured(String pType, String pMessage) {
+        updateData(pType, pMessage);
     }
     //END ServerListener
 
@@ -1052,202 +1063,258 @@ public class MainActivity extends Activity
                             ((MainActivity) MainActivity.getContext()).TimeOutCallBack();
                     });
                 }
-                , Helpers.INTERVAL);
+                //, Helpers.INTERVAL);
+                , Settings.getSELF().Time);
     }
 
 
     //######################################################################################################################################################################
     //######################################################################################################################################################################
-    //bcr_BarcodeRead START
-    void bcr_BarcodeRead(String pQrCode)
+    public int ShowMyModalDialog(Runnable mMyDialog)  //should be called from non-UI thread
     {
-//        if (lblPos.Text != "")
-//        {
-//            if (MessageBox.Show("are you sure?", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
-//            {
-//                return;
-//            }
-//        }
-
-        tvInfo.setText("");
-        tvPrevPallet.setText("");
-        tvPartNumber.setText("");
-        tvPosition.setText("");
-        PanelOkNokOff();
-
-        //lblMultiPackTextforeach (Control c in this.Controls)
-        ////        {
-        ////            if (c is Label && c.Name.StartsWith("lblMP"))//pozicia z design-u x2
-        ////            {
-        ////                c.Text = "";
-        ////            }
-        ////        }.Text = "";
-//
-        if (stop)
-        {
-            tvNOK.setText("STOP");
-            tvNOK.setBackgroundColor(Color.RED);
-
-            //lampTimer.Enabled = true;
-            PanelOkNokOff();
-
-            //NokSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
-            //NokSound.Play();
-            this.playNOK();
-            return;
-        }
-
-
-        int loopCount = 0;
-        boolean pingResult = Helpers.Ping("192.168.1.8");
-        while (!pingResult)
-        {
-
-            loopCount++;
-            if (loopCount > 10)
-            {
-                Helpers.redToast(this, "network error!! check network");
-                break;
-            }
-
-
-        }
-        StringBuilder sbQrCode = new StringBuilder(pQrCode);
-        String displayBc = (sbQrCode.substring(0) == "S")? sbQrCode.delete(0, 1).toString():sbQrCode.toString();
-
-        //##################################################
-        tvBarcode.setText(displayBc);//bre.strDataBuffer;
-        //##################################################
-        SetText("B:" + pQrCode);
+        pressedButtonID = MY_BUTTON_INVALID_ID;
+        runOnUiThread(mMyDialog);
         try
         {
-
-            ConnectToServer();
-            String content  = pQrCode;
-            TCPCommunicatorClient.writeToSocket(content,UIHandler,this);
-            SetText("S@" + Helpers.getNow() + ":" + pQrCode);
-
+            dialogSemaphore.acquire();
         }
-
-        catch (Exception ex)
+        catch (InterruptedException e)
         {
-            Helpers.redToast(this,ex.toString());
-            Log.e("KepZet Error", ex.getMessage());
+
         }
+        return pressedButtonID;
     }
-    //bcr_BarcodeRead END
+
+
+
+    /** CALLBACK po NACITANI QR-kodu
+     * @param pQrCode - nacitany QR kod v string formate
+     */
+    void bcr_BarcodeRead(String pQrCode)
+    {
+        final Runnable MyYesNoDialog = new Runnable()
+        {
+            //https://stackoverflow.com/questions/6120567/android-how-to-get-a-modal-dialog-or-similar-modal-behavior
+            public void run()
+            {
+                AlertDialog errorDialog = new AlertDialog.Builder(MainActivity.getContext()).setMessage("Are you sure???")
+                        .setPositiveButton("YES", (dialog, which) -> {
+                    pressedButtonID = 1;
+                    dialogSemaphore.release();
+                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        pressedButtonID = 0;
+                        dialogSemaphore.release();
+                    }
+                }).create();
+                errorDialog.setCancelable(false);
+                errorDialog.show();
+            }
+        };
+
+        //https://stackoverflow.com/questions/6120567/android-how-to-get-a-modal-dialog-or-similar-modal-behavior
+        //nutne spustat MIMO GUI VLAKNA, inak sa dialog NEZOBRAZI
+        //nutne spustat MIMO GUI VLAKNA, inak sa dialog NEZOBRAZI
+        //nutne spustat MIMO GUI VLAKNA, inak sa dialog NEZOBRAZI
+        if (tvPosition.getText().toString().compareTo("")!=0){
+            int RESULT = ShowMyModalDialog(MyYesNoDialog);
+            if (RESULT == 0){
+                return;
+            }
+            else
+                btnAccept.setVisibility(View.INVISIBLE);
+        }
+
+        runOnUiThread(()-> {
+            tvInfo.setText("");
+            tvPrevPallet.setText("");
+            tvPartNumber.setText("");
+            tvPosition.setText("");
+            tvFirstPallet.setText("");
+            PanelOkNokOff();
+
+            //MULTIPACK
+//            Controls = Helpers.getChildrens(getWindow().getDecorView());
+//            for (View c : this.Controls) {
+//                if (c instanceof TextView && Helpers.getId(c).indexOf("tvMP") >= 0) {
+//                    ((TextView) c).setText("");
+//                }
+//            }
+
+//            if (stop) {
+//                tvNOK.setText("STOP");
+//                tvNOK.setBackgroundColor(getResources().getColor(R.color.light_orange));
+//                PanelOkNokOff();
+//                this.playNOK();
+//                return;
+//            }
+        });
+
+
+
+        StringBuilder sbQrCode = new StringBuilder(pQrCode);
+        //odstranenie Ska zo zaciatku precitaneho stringu
+        //String displayBc = (sbQrCode.substring(0) == "S")? sbQrCode.delete(0, 1).toString():sbQrCode.toString();
+        String displayBc = sbQrCode.toString();
+        runOnUiThread(()-> {
+            //zapis do logu
+            tvBarcode.setText(displayBc);//bre.strDataBuffer;
+        });
+
+
+        SetText("B:" + pQrCode);
+
+                //PING TEST
+//                int loopCount = 0;
+//                String ServerIP = Settings.getSELF().ServerIP;
+//                boolean pingResult = Helpers.Ping(ServerIP);
+//                while (!pingResult)
+//                {
+//                    loopCount++;
+//                    //tri zlyhania, KONCIM
+//                    if (loopCount == 3)
+//                    {
+//                        runOnUiThread(()-> {
+//                            String pErrorText = "!! Connection to SERVER failed !! check network";
+//                            Helpers.redToast(MainActivity.getContext(), pErrorText);
+//                            tvLastError.setText(pErrorText);
+//                            SetText(pErrorText);
+//                        });
+//                        break;
+//                    }
+//                    pingResult = Helpers.Ping(Settings.getSELF().ServerIP);
+//                }
+                //ak neprejde ping, tak koncim vlakno
+                //if (!pingResult) return;
+                ////END PING TEST
+
+                try
+                {
+                    //ConnectToServer(); <=> NETREBA, PRI ZASIELANI DATA SA ROBI TEST SPOJENIA; NAVYSE 3-nasobny PING TEST PREBEHOL PRED TYM
+                    TCPCommunicatorClient.writeToSocket(pQrCode,UIHandler,MainActivity.getContext());
+                    SetText("S@" + pQrCode);
+                }
+
+                catch (Exception ex)
+                {
+                    runOnUiThread(()-> {
+                        Helpers.redToast(MainActivity.getContext(),ex.getMessage());
+                        SetText("ERROR TCP SEND // "+ ex.getMessage());
+                    });
+
+                    Log.e("KEPZET Error", ex.getMessage());
+                }
+    }
+
 
     //ParseData START
     private void parseData()
     {
-
-//        if (dataRcvd == null)
-//            return;
-//        else
-//        if (dataRcvd.compareTo("") == 0)
-//            return;
-
         String pos = null;
         String pn = null;
-        String prevPal = null;
+        String firstPal = null;
         String result = null;
         String multipack = null;
         String info = null;
-
+        String prevPal = null;
         ///Toast.makeText("rcvd: " + dataRcvd, Toast.LENGTH_SHORT).show();
 
-//        if (this.InvokeRequired)
-//        {
-//            this.Invoke(new mydelegate(parseData));
-//            return;
-//        }
         try
         {
-
             //String[] arrayTempLines = dataRcvd.split("\\\n");
             //List<String> lines = Arrays.asList(arrayTempLines);
 
-
             pn = dataRcvd.get(0).trim();// 1013.0000.000.00
             pos = dataRcvd.get(1).trim();// x5 Y41 S2
-            prevPal = dataRcvd.get(2).trim();// 1234567
+            firstPal = dataRcvd.get(2).trim();// 1234567
             result = dataRcvd.get(3).trim();// "OK"/"NOK"/""
             multipack = dataRcvd.get(4).trim();//G1234|B2345|
             info = dataRcvd.get(5).trim();
 
+            int indexPP = info.indexOf("previous pallet: ");
+            int lengthPP = "previous pallet: ".length();
+            if (indexPP >=0)
+            {
+                prevPal = info.substring(indexPP + lengthPP);
+            }
+            //if (dataRcvd.size()>6)
+            //    prevPal = dataRcvd.get(6).trim();
 
+            //!!!
             if (pos.compareTo("")!=0)
-                btnAccept.setEnabled(true);
+                btnAccept.setVisibility(Settings.getSELF().ManualAccepting?View.VISIBLE:View.INVISIBLE);
 
             if (multipack.length() != 0)
             {
-                String[] temp = multipack.split("\\|");
+                String[] temp = multipack.split("|");
 
                 for (String s : temp)
                 {
                     try
                     {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            mpData.add(new multipackData(s.substring(1, 4), s.substring(0, 1) == "G" ? Color.valueOf(Color.GREEN) : Color.valueOf(Color.WHITE)));
+                            mpData.add(new multipackData(s.substring(1, 4), s.substring(0,0) == "G" ? Color.valueOf(Color.GREEN) : Color.valueOf(-1275068417)));
                         }
                     }
                     catch(Exception ex)
                     {
                         SetText ("multipack data error:" + dataRcvd);
-
+                        logStream.logData("MULTIPACK DATA ERROR: " + ex.getMessage());
                     }
                 }
             }
         }
         catch (Exception ex)
         {
-            //dataRcvd.
             Helpers.redToast(this, "received data(" + dataRcvd + ") parse error:" + ex.toString());
+            logStream.logData("RECIEVED DATA (" + dataRcvd + ") PARSE ERROR:" + ex.toString());
         }
 
         if (result.compareTo("OK") == 0)
         {
             tvNOK.setText("OK");
-            tvNOK.setTextColor(getResources().getColor(R.color.design_default_color_on_secondary));
+            tvNOK.setTextColor(getResources().getColor(R.color.text));
             tvNOK.setBackgroundColor(Color.GREEN);
-
             //NNP lampTimer.Enabled = true;
             PanelOkNokOff();
 
-            btnAccept.setEnabled(false);
+            btnAccept.setVisibility(View.INVISIBLE);
             tvBarcode.setText("");
             tvPartNumber.setText("");
             tvPosition.setText("");
             tvPrevPallet.setText("");
             tvInfo.setText("");
+            tvFirstPallet.setText("");
 
-            //OKSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
-            //OKSound.Play();
             this.playOK();
-
         }
         else if (result.compareTo("NOK") == 0)
         {
             tvNOK.setText("NOK");
+            tvNOK.setTextColor(getResources().getColor(R.color.text,null));
             tvNOK.setBackgroundColor(Color.RED);
-
-            //NNP lampTimer.Enabled = true;
             PanelOkNokOff();
-
             //NokSound.Volume = Convert.ToInt32(FS.config[FS.audioVolume]);
-            //NokSound.Play();
             this.playNOK();
         }
+        else if (result.compareTo("STOP") == 0) {
+                tvNOK.setText("STOP");
+                tvNOK.setBackgroundColor(getResources().getColor(R.color.light_orange));
+                PanelOkNokOff();
+                this.playNOK();
+                //return;
+            }
         else
         {
             tvNOK.setText("");
             tvNOK.setBackgroundColor(Color.TRANSPARENT);
         }
 
-        if (result.compareTo("STOP") == 0)
-                stop = true;
-            else
-                stop = false;
+//        if (result.compareTo("STOP") == 0)
+//                stop = true;
+//            else
+//                stop = false;
 
 
         if (info.compareTo("teamLeader logged in")==0)
@@ -1256,7 +1323,10 @@ public class MainActivity extends Activity
             cbClear.setChecked(true);
         else if (info.compareTo("clear mode reset")==0)
             cbClear.setChecked(false);
-        else if (info.endsWith("output sets reset") || info.endsWith("clear mode reset, teamLeader logged out") || info.compareTo("teamLeader logged out")==0)
+        else if (info.endsWith("output sets reset") ||
+                info.endsWith("input sets reset") ||
+                info.endsWith("clear mode reset, teamLeader logged out") ||
+                info.compareTo("teamLeader logged out")==0)
         {
             cbLeader.setChecked(false);
             cbClear.setChecked(false);
@@ -1265,39 +1335,45 @@ public class MainActivity extends Activity
 
         tvPartNumber.setText(pn);
         tvPosition.setText(pos);
-        tvPrevPallet.setText(prevPal);
+        tvFirstPallet.setText(firstPal);
         //tvMultiPackText.Text = multipack;
         tvInfo.setText(info);
+        if (prevPal != null)
+            tvPrevPallet.setText(prevPal);
 
-        if(mpData != null)
-            for(multipackData m : mpData){}
-        int i = 1;
-
-        Controls = Helpers.getChildrens(getWindow().getDecorView());
-        //NNP doplnit naplnenie Controls;
-        for (View c : this.Controls)
-        {
-            if (c instanceof TextView &&  Helpers.getId(c).indexOf("tvMP")>-1)
-            {
-                int start_index = Helpers.getId(c).indexOf("lblMP");
-                String s = Helpers.getId(c).substring(start_index+5, 2);
-                i = Integer.parseInt(s);
-                if (i < mpData.size())
-                {
-                    ((TextView)c).setText(mpData.get(i).nr);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        ((TextView)c).setTextColor(mpData.get(i).color.toArgb());
-                    }
-                }
-                else
-                {
-                    ((TextView)c).setText("");
-                    ((TextView)c).setTextColor(Color.WHITE);
-                }
-            }
-        }
-        if (mpData != null)
-            mpData.clear();
+        //JAVA START
+        //        int i = 1;
+//
+//        Controls = Helpers.getChildrens(getWindow().getDecorView());
+//        for (View c : this.Controls)
+//        {
+//            if (c instanceof TextView &&  Helpers.getId(c).indexOf("tvMP")>-1)
+//            {
+//                int start_index = Helpers.getId(c).indexOf("tvMP");
+//                String ID = Helpers.getId(c);
+//                String s = Helpers.getId(c).substring(start_index+4, start_index+6);
+//                i = Integer.parseInt(s);
+//                if (i < mpData.size())
+//                {
+//                    ((TextView)c).setText(mpData.get(i).nr);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        ((TextView)c).setTextColor(mpData.get(i).color.toArgb());
+//                    }
+//                }
+//                else
+//                {
+//                    ((TextView)c).setText("");
+//
+//                    int TextColor  = tvBarcode.getCurrentTextColor();
+//                    String TextColorHEX = IntegerToHex.integerToHex(TextColor);
+//                    ((TextView)c).setTextColor(TextColor);
+//                    //"svetlo sivy text == -1275068417"
+//                }
+//            }
+//        }
+//        if (mpData != null)
+//            mpData.clear();
+        //JAVA END
     }
     //END ParseDate
     private void show_children(View v) {
@@ -1309,43 +1385,17 @@ public class MainActivity extends Activity
         }
     }
 
-    /**
-     * @return "[package]:id/[xml-id]"
-     * where [package] is your package and [xml-id] is id of view
-     * or "no-id" if there is no id
-     */
-
-    //TIMERS START
-        //    private void lampTimerTick(object sender, EventArgs e)
-        //    {
-        //        lampTimer.Enabled = false;
-        //        lampText.Text = "";
-        //        lampText.BackColor = SystemColors.Window;
-        //
-        //    }
-        //    private void ipTimerTick(object sender, EventArgs e)
-        //    {
-        //        addresses = Dns.GetHostEntry(Dns.GetHostName()).AddressList;
-        //        ipTimerCounter++;
-        //        if (addresses[0].ToString() == "127.0.0.1" && ipTimerCounter < 10)
-        //            return;
-        //        ipTimer.Enabled = false;
-        //        ipTimer.Dispose();
-        //        startListener();
-        //    }
-    //TIMERS END
-
-    private void SetText(String s) {
+    private void SetText(String pText) {
         //this.listBox1.Items.Add(text);
         //listBox1.SelectedIndex = listBox1.Items.Count - 1;
-        FS.logData(s);
+        logStream.logData(Helpers.getNow() + ": " + pText);
     }
-    //Parse END
-
 
     public enum  ResultType{
         SUCCESS, ERROR, WARNING
     }
+
+    // NON USED pripadova studia ONLY
     class TCWriteThread extends Thread implements Runnable{
 
         //String IP_SERVER = "192.168.1.8";
@@ -1401,6 +1451,8 @@ public class MainActivity extends Activity
 
     }//WriteThread
 
+
+    // NON USED pripadova studia ONLY
     class ServerThread extends  Thread implements Runnable{
         private boolean serverIsRunning;
         private ServerSocket serverSocket;
@@ -1414,7 +1466,6 @@ public class MainActivity extends Activity
 
         @Override
         public void run() {
-
             try {
 
                 //https://stackoverflow.com/questions/60396719/socket-and-serversocket-communication-unclear
@@ -1482,10 +1533,12 @@ public class MainActivity extends Activity
 
     }
 
+    // NON USED pripadova studia ONLY
     private int serverPort = 2222;
-
+    // NON USED pripadova studia ONLY
     private ServerThread serverThread;
 
+    // NON USED pripadova studia ONLY
     public  void btnStartServer(View view){
 
         serverThread = new ServerThread();
@@ -1493,6 +1546,8 @@ public class MainActivity extends Activity
 
     } //btnStartServer
 
+
+    // NON USED pripadova studia ONLY
     public  void btnStopServer(View view){
 
         serverThread.stopSerever();
@@ -1500,6 +1555,7 @@ public class MainActivity extends Activity
 
 
     public void writeError(String pErrorText){
+
         tvLastError.setText(pErrorText);
     }
 

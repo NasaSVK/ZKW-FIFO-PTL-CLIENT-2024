@@ -19,6 +19,8 @@ import java.lang.reflect.Type;
 
 public class Settings {
 
+
+
     public static Settings getSELF()
     {
         if (SELF == null)
@@ -26,32 +28,37 @@ public class Settings {
             //SELF = new Settings(MainActivity.getContext());
             SELF = new Settings();
         }
-        //this.LoadToFile()
         return SELF;
     }
 
     private static Settings SELF;
+    private static Settings _static;
+
+    public static Settings getSTATIC(){
+        return  _static;
+    }
 
     private final static String SUBOR = "settings.txt";
 
     public String ServerIP = "192.168.1.8";
-    public int ServerPort = 12000;
+    public  int ServerPort = 2100;
 
-    public String ClientIP = "localhost";
-    public int ClientPort = 3333;
+    public  String ClientIP = "localhost";
+    public int ClientPort = 3104;
 
-    public static int Time = 1500;
+    public int Time = 4500;
 
     public int Volume = 5;
 
     public String Password = "sknasa";
+    public String DbName = "zkwPBL19";
+    public String DbUser = "sknasa";
+    public Integer DbPort = 1433;
+
+    public int MaxX =  0;
+    public int MaxY =  0;
 
     public boolean ManualAccepting = true;
-
-
-//    public Settings(Context pContext){
-//
-//    }
 
 
     //TODO: IGNORE LIST<PalNr>
@@ -122,6 +129,7 @@ public class Settings {
         Type type = Settings.class;
         //List<Device> fromJson = gson.fromJson(temp, type);
         Settings result  = gson.fromJson(temp, type);
+        _static  = gson.fromJson(temp, type);
         this.ServerIP =  result.ServerIP;
         this.ClientIP =  result.ClientIP;
         this.ServerPort =  result.ServerPort;
@@ -130,6 +138,12 @@ public class Settings {
         this.Password = result.Password;
         this.Time = result.Time;
         this.Volume = result.Volume;
+        this.DbName = result.DbName;
+        this.DbPort = result.DbPort;
+        this.DbUser = result.DbUser;
+        this.MaxX = result.MaxX;
+        this.MaxY = result.MaxY;
+
 
         //this.devices = fromJson;
         return true;

@@ -18,6 +18,7 @@ import com.symbol.kepzetclient.SQL.ConnectionToDB;
 import com.symbol.kepzetclient.SQL.FIFO;
 import com.symbol.kepzetclient.SQL.GetData;
 import com.symbol.kepzetclient.SQL.WarehouseDB;
+import com.symbol.kepzetclient.auxx.Settings;
 import com.symbol.kepzetclient.custom_components.PalletAdapter2;
 import com.symbol.kepzetclient.custom_components.RecycleViewInterface;
 
@@ -65,14 +66,22 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
 
          //HorizontalNumberPicker
          hnpR = view.findViewById(R.id.hnpR);
-         hnpR.setMin(1); hnpR.setMax(5);
+         hnpR.setMin(1);
          hnpR.setValue(1);
+
          hnpS = view.findViewById(R.id.hnpSPos);
-         hnpS.setMin(1); hnpS.setMax(50);
-         hnpS.setValue(48);
+         hnpS.setMin(1);
+         hnpS.setValue(1);
 
          hnpR.setTextColor(getResources().getColor(R.color.green,null));
          hnpS.setTextColor(getResources().getColor(R.color.green,null));
+
+         hnpR.setMax(Settings.getSELF().MaxY);
+         hnpS.setMax(Settings.getSELF().MaxX);
+
+         hnpR.setRotate(true);
+         hnpS.setRotate(true);
+
          //btnSave.setVisibility(View.VISIBLE);
 
         TextWatcher twR = new TextWatcher() {
@@ -115,6 +124,24 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
          });
 
          btnSave.setOnClickListener(new View.OnClickListener() {
+
+//             for (int i = 0; i < tbDBRowpn.Count; i++)
+//             {
+//
+//                 if (tbDBRowcb[i].Checked)
+//                 {
+//                     sqldb.updateRecordByPalletNr(gridData[i].palletNr, tbDBRowpn[i].Text, tbDBRowdt[i].Text);
+//                     FS.logData("updateRecord(" + gridData[i].palletNr + "," + tbDBRowpn[i].Text + "," + tbDBRowdt[i].Text + ")");
+//                     tbDBRowcb[i].Checked = false;
+//
+//                 }
+//             }
+//
+//             btnShow_Click(null, null);
+
+
+
+
              @Override
              public void onClick(View view) {
 
@@ -293,6 +320,20 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
     }
 
     public void onClearClicked(View view){
+
+//        for (int i = 0; i < tbDBRowpn.Count; i++)
+//        {
+//
+//            if (tbDBRowcb[i].Checked)
+//            {
+//                sqldb.clearRecord(gridData[i].palletNr);
+//                FS.logData("clearRecord(" + gridData[i].palletNr + ")");
+//                tbDBRowcb[i].Checked = false;
+//
+//            }
+//        }
+//        btnShow_Click(null, null);
+
         int deletedRecords = 0;
         this.removedPositions.sort(new Comparator<Integer>() {
             @Override
