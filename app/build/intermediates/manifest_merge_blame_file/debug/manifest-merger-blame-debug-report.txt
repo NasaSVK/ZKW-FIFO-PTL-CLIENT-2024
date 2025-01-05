@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.symbol.kepzetclient"
+3    package="com.symbol.ptlclient2024"
 4    android:versionCode="12"
 5    android:versionName="1.0.0" >
 6
@@ -26,17 +26,17 @@
 16
 17    <permission
 17-->[androidx.core:core:1.13.0] C:\Users\duracer\.gradle\caches\transforms-3\c1c1b4f844f2da99d4b95162d7d36c40\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
-18        android:name="com.symbol.kepzetclient.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+18        android:name="com.symbol.ptlclient2024.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 18-->[androidx.core:core:1.13.0] C:\Users\duracer\.gradle\caches\transforms-3\c1c1b4f844f2da99d4b95162d7d36c40\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
 19        android:protectionLevel="signature" />
 19-->[androidx.core:core:1.13.0] C:\Users\duracer\.gradle\caches\transforms-3\c1c1b4f844f2da99d4b95162d7d36c40\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
 20
-21    <uses-permission android:name="com.symbol.kepzetclient.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+21    <uses-permission android:name="com.symbol.ptlclient2024.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 21-->[androidx.core:core:1.13.0] C:\Users\duracer\.gradle\caches\transforms-3\c1c1b4f844f2da99d4b95162d7d36c40\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
 21-->[androidx.core:core:1.13.0] C:\Users\duracer\.gradle\caches\transforms-3\c1c1b4f844f2da99d4b95162d7d36c40\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
 22
 23    <application
-23-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:11:5-42:19
+23-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:11:5-35:19
 24        android:allowBackup="true"
 24-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:12:9-35
 25        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -47,128 +47,113 @@
 28-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:13:9-43
 29        android:label="PTL CLIENT 2024"
 29-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:15:9-40
-30        android:roundIcon="@mipmap/ic_launcher_round"
+30        android:roundIcon="@mipmap/ic_launcher_round" >
 30-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:14:9-54
-31        android:testOnly="true" >
-32        <activity
-32-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:16:9-20:15
-33            android:name="com.symbol.kepzetclient.custom_components.SetupActivity"
-33-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:17:13-60
-34            android:exported="false"
-34-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:18:13-37
-35            android:theme="@style/MyActivityTheme" />
-35-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:19:13-51
-36        <activity
-36-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:21:9-24:54
-37            android:name="com.symbol.kepzetclient.DbActivity"
-37-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:22:13-39
-38            android:exported="false"
-38-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:23:13-37
-39            android:theme="@style/MyActivityTheme" />
-39-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:24:13-51
-40        <activity
-40-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:25:9-33:20
-41            android:name="com.symbol.kepzetclient.MainActivity"
-41-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:26:13-41
-42            android:label="PtL Client"
-42-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:27:13-39
-43            android:theme="@style/MyActivityTheme" >
-43-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:28:13-51
-44            <intent-filter>
-44-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:29:13-32:29
-45                <action android:name="android.intent.action.MAIN" />
-45-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:30:17-69
-45-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:30:25-66
-46
-47                <category android:name="android.intent.category.LAUNCHER" />
-47-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:31:17-77
-47-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:31:27-74
-48            </intent-filter>
-49        </activity>
-50        <activity
-50-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:34:9-40:54
-51            android:name="com.symbol.kepzetclient.Preferences"
-51-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:35:13-40
-52            android:configChanges="orientation|keyboardHidden|screenSize"
-52-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:36:13-74
-53            android:exported="false"
-53-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:37:13-37
-54            android:label="@string/title_activity_preferences"
-54-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:38:13-63
-55            android:screenOrientation="portrait"
-55-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:39:13-49
-56            android:theme="@style/MyActivityTheme" />
-56-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:40:13-51
-57
-58        <uses-library android:name="com.symbol.emdk" />
-58-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:41:9-56
-58-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:41:23-53
-59
-60        <provider
-60-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-61            android:name="androidx.startup.InitializationProvider"
-61-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-62            android:authorities="com.symbol.kepzetclient.androidx-startup"
-62-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
-63            android:exported="false" >
-63-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
-64            <meta-data
-64-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-65                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-65-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
-66                android:value="androidx.startup" />
-66-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
-67            <meta-data
-67-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\duracer\.gradle\caches\transforms-3\46a1331dd75cc60284dddddb1d8da918\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
-68                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-68-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\duracer\.gradle\caches\transforms-3\46a1331dd75cc60284dddddb1d8da918\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
-69                android:value="androidx.startup" />
-69-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\duracer\.gradle\caches\transforms-3\46a1331dd75cc60284dddddb1d8da918\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
-70            <meta-data
-70-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-71                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-71-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-72                android:value="androidx.startup" />
-72-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-73        </provider>
-74
-75        <receiver
-75-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-76            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-76-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-77            android:directBootAware="false"
-77-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-78            android:enabled="true"
-78-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-79            android:exported="true"
-79-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-80            android:permission="android.permission.DUMP" >
-80-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-81            <intent-filter>
-81-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-82                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-82-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-82-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-83            </intent-filter>
-84            <intent-filter>
-84-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-85                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-85-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-85-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-86            </intent-filter>
-87            <intent-filter>
-87-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-88                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-88-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-88-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-89            </intent-filter>
-90            <intent-filter>
-90-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-91                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-92            </intent-filter>
-93        </receiver>
-94    </application>
-95
-96</manifest>
+31        <activity
+31-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:16:9-20:15
+32            android:name="com.symbol.ptlclient2024.custom_components.SetupActivity"
+32-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:17:13-60
+33            android:exported="false"
+33-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:19:13-37
+34            android:theme="@style/MyActivityTheme" />
+34-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:18:13-51
+35        <activity
+35-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:21:9-24:54
+36            android:name="com.symbol.ptlclient2024.DbActivity"
+36-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:22:13-39
+37            android:exported="false"
+37-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:23:13-37
+38            android:theme="@style/MyActivityTheme" />
+38-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:24:13-51
+39        <activity
+39-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:25:9-33:20
+40            android:name="com.symbol.ptlclient2024.MainActivity"
+40-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:26:13-41
+41            android:label="PtL Client"
+41-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:27:13-39
+42            android:theme="@style/MyActivityTheme" >
+42-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:28:13-51
+43            <intent-filter>
+43-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:29:13-32:29
+44                <action android:name="android.intent.action.MAIN" />
+44-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:30:17-69
+44-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:30:25-66
+45
+46                <category android:name="android.intent.category.LAUNCHER" />
+46-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:31:17-77
+46-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:31:27-74
+47            </intent-filter>
+48        </activity>
+49
+50        <uses-library android:name="com.symbol.emdk" />
+50-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:34:9-56
+50-->D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:34:23-53
+51
+52        <provider
+52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+53            android:name="androidx.startup.InitializationProvider"
+53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+54            android:authorities="com.symbol.ptlclient2024.androidx-startup"
+54-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+55            android:exported="false" >
+55-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+56            <meta-data
+56-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+57                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+57-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+58                android:value="androidx.startup" />
+58-->[androidx.emoji2:emoji2:1.2.0] C:\Users\duracer\.gradle\caches\transforms-3\70145bbbde0c2efc56f871bf5a5b1060\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+59            <meta-data
+59-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\duracer\.gradle\caches\transforms-3\46a1331dd75cc60284dddddb1d8da918\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+60                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+60-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\duracer\.gradle\caches\transforms-3\46a1331dd75cc60284dddddb1d8da918\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+61                android:value="androidx.startup" />
+61-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\duracer\.gradle\caches\transforms-3\46a1331dd75cc60284dddddb1d8da918\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+62            <meta-data
+62-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+63                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+63-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+64                android:value="androidx.startup" />
+64-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+65        </provider>
+66
+67        <receiver
+67-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+68            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+68-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+69            android:directBootAware="false"
+69-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+70            android:enabled="true"
+70-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+71            android:exported="true"
+71-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+72            android:permission="android.permission.DUMP" >
+72-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+73            <intent-filter>
+73-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+74                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+74-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+74-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+75            </intent-filter>
+76            <intent-filter>
+76-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+77                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+78            </intent-filter>
+79            <intent-filter>
+79-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+80                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+80-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+80-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+81            </intent-filter>
+82            <intent-filter>
+82-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+83                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\duracer\.gradle\caches\transforms-3\3d2e31f5710a8c99374271ca6891b4a1\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+84            </intent-filter>
+85        </receiver>
+86    </application>
+87
+88</manifest>

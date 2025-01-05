@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <!--android:shape="oval"-->
+        <!--https://stackoverflow.com/questions/26074784/how-to-make-a-view-in-android-with-rounded-corners-->
+        <!--"#FF3401"-->
+        <!--"@color/viewfinder_border"-->
+
+        <gradient
+            android:angle="45"
+            android:endColor="#DEF0F0F0"
+            android:centerColor="#DEF0F0F0"
+            android:startColor="#DEF0F0F0"
+            />
+
+        <corners android:radius="75dp" />
+
+<!--        <size android:width="0dp"/>-->
+
+<!--        <size android:height="0dp"/>-->
+
+        <padding
+            android:bottom="5dp"
+            android:top="5dp"
+            android:left="20dp"
+            android:right="20dp"
+            />
+    </shape>

@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context="com.symbol.kepzetclient.HorizontalNumberPicker">
+    tools:context="com.symbol.ptlclient2024.HorizontalNumberPicker">
 
     <Button
         android:id="@+id/btn_less"
@@ -19,6 +19,8 @@
     <EditText
         android:id="@+id/et_number"
         android:layout_width="wrap_content"
+        android:paddingEnd="15dp"
+        android:paddingStart="2dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"

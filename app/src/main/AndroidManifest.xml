@@ -15,8 +15,8 @@
         android:label="PTL CLIENT 2024">
         <activity
             android:name=".custom_components.SetupActivity"
-            android:exported="false"
             android:theme="@style/MyActivityTheme"
+            android:exported="false"
             />
         <activity
             android:name=".DbActivity"
@@ -31,13 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Preferences"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="false"
-            android:label="@string/title_activity_preferences"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyActivityTheme" />
         <uses-library android:name="com.symbol.emdk" />
     </application>
 

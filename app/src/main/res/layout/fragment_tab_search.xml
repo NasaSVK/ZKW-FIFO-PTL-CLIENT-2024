@@ -34,10 +34,10 @@
         android:id="@+id/tvPartNrText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="16dp"
         android:text="@string/strPartNumberText"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etxPartNumberSrch"
         app:layout_constraintStart_toStartOf="@+id/tvResultText"
         app:layout_constraintTop_toBottomOf="@+id/tvResultText" />
 
@@ -45,51 +45,55 @@
         android:id="@+id/tvChannelText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:text="@string/strChannelText"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvPartNrText"
-        app:layout_constraintEnd_toStartOf="@+id/etxChannelSrch" />
+        app:layout_constraintBottom_toBottomOf="@+id/etxChannelSrch"
+        app:layout_constraintStart_toStartOf="@+id/tvPartNrText"
+        app:layout_constraintTop_toTopOf="@+id/etxChannelSrch" />
 
     <TextView
         android:id="@+id/tvPackText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="Pack:"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/tvPartNrText"
-        app:layout_constraintTop_toBottomOf="@+id/tvPartNrText" />
+        app:layout_constraintBottom_toBottomOf="@+id/etxPackSrch"
+        app:layout_constraintEnd_toStartOf="@+id/etxPackSrch"
+        app:layout_constraintTop_toTopOf="@+id/etxPackSrch" />
 
     <EditText
         android:id="@+id/etxPackSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="00"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:enabled="false"
         android:inputType="number"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvPackText"
-        app:layout_constraintStart_toEndOf="@+id/tvPackText" />
+        app:layout_constraintTop_toBottomOf="@+id/tvResultText"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
     <TextView
         android:id="@+id/tvRTextSearch"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:text="R:"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/etxPackSrch"
-        app:layout_constraintTop_toBottomOf="@+id/tvPartNrText" />
+        app:layout_constraintBottom_toBottomOf="@+id/etxRSrch"
+        app:layout_constraintStart_toEndOf="@+id/etxChannelSrch"
+        app:layout_constraintTop_toTopOf="@+id/etxRSrch" />
 
     <EditText
         android:id="@+id/etxRSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="00"
+        android:layout_marginTop="8dp"
         android:inputType="number"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvPackText"
-        app:layout_constraintStart_toEndOf="@+id/tvRTextSearch" />
+        android:text="00"
+        app:layout_constraintStart_toEndOf="@+id/tvRTextSearch"
+        app:layout_constraintTop_toBottomOf="@+id/etxPartNumberSrch" />
 
     <TextView
         android:id="@+id/tvSText"
@@ -98,18 +102,20 @@
         android:layout_marginStart="16dp"
         android:text="S:"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvRTextSearch"
+
+        app:layout_constraintBottom_toBottomOf="@+id/etxSSrch"
         app:layout_constraintStart_toEndOf="@+id/etxRSrch"
-        app:layout_constraintTop_toTopOf="@+id/tvRTextSearch" />
+        app:layout_constraintTop_toTopOf="@+id/etxSSrch" />
 
     <EditText
         android:id="@+id/etxSSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="00"
+        android:layout_marginTop="8dp"
         android:inputType="number"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvSText"
-        app:layout_constraintStart_toEndOf="@+id/tvSText" />
+        android:text="00"
+        app:layout_constraintStart_toEndOf="@+id/tvSText"
+        app:layout_constraintTop_toBottomOf="@+id/etxPartNumberSrch" />
 
     <TextView
         android:id="@+id/tvPText"
@@ -138,32 +144,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="3008173315"
         android:inputType="number"
         app:layout_constraintEnd_toStartOf="@+id/btnSearch"
         app:layout_constraintStart_toEndOf="@+id/tvPalletNmbText"
         app:layout_constraintTop_toTopOf="parent" />
+<!--        android:text="3008173315"-->
+
+    <!--    android:text="796.04.000.001234"-->
 
     <EditText
+        android:id="@+id/etxPartNumberSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="796.04.000.001234"
-        android:id="@+id/etxPartNumberSrch"
-        app:layout_constraintBottom_toBottomOf="@+id/tvPartNrText"
-        app:layout_constraintEnd_toStartOf="@+id/tvChannelText"
+        android:text="0000-000-0000-00"
+        app:layout_constraintEnd_toStartOf="@+id/tvPackText"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etxPalletNumberSrch"
-        app:layout_constraintTop_toTopOf="@+id/tvPartNrText" />
+        app:layout_constraintTop_toBottomOf="@+id/tvResultText" />
 
     <EditText
         android:id="@+id/etxChannelSrch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="00"
+        android:layout_marginTop="8dp"
+        android:enabled="false"
         android:inputType="number"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvChannelText"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="00"
+        app:layout_constraintStart_toEndOf="@+id/tvChannelText"
+        app:layout_constraintTop_toBottomOf="@+id/etxPartNumberSrch" />
 
     <Button
         android:id="@+id/btnSearch"
@@ -179,7 +189,7 @@
         app:layout_constraintTop_toTopOf="@+id/etxPalletNumberSrch" />
 
     <Button
-        android:id="@+id/btnClose"
+        android:id="@+id/btnCloseSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -190,12 +200,13 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnSaveSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:text="SAVE"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

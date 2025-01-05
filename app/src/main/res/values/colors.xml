@@ -12,7 +12,6 @@
     <color name="black_overlay">#66000000</color>
     <color name="error_light_red"> #FF3C00</color>
     <color name="text_white">#FFFFFF</color>
-    <color name="ic_launcher_background">#FFFFFF</color>
     <color name="light_orange">#ff991c</color>
 
 <!--    <color name="error_light_red"> #FF5F1F</color>-->

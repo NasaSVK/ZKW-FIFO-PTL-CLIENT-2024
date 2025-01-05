@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdk 34
     defaultConfig {
-        applicationId "com.symbol.kepzetclient"
+        applicationId "com.symbol.ptlclient2024"
         minSdkVersion 26
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 29
@@ -17,7 +17,7 @@ android {
         }
     }
     //namespace 'com.symbol.kepzetclient'
-    namespace 'com.symbol.kepzetclient'
+    namespace 'com.symbol.ptlclient2024'
     buildFeatures {
         viewBinding true
     }

@@ -142,10 +142,11 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSaveAge" />
 
     <Button
-        android:id="@+id/btnCheckAge"
+        android:id="@+id/btnUpdateAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CHECK"
+        android:enabled="false"
+        android:text="UPDATE C"
         app:layout_constraintBottom_toBottomOf="@+id/btnSaveAge"
         app:layout_constraintStart_toStartOf="@+id/btnStartAge"
         app:layout_constraintTop_toTopOf="@+id/btnSaveAge" />
@@ -157,11 +158,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="38dp"
         android:text="save"
-        app:layout_constraintStart_toEndOf="@+id/btnCheckAge"
+        app:layout_constraintStart_toEndOf="@+id/btnUpdateAge"
         app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
 
     <Button
-        android:id="@+id/btnClose"
+        android:id="@+id/btnCloseSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"

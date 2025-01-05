@@ -1,158 +1,158 @@
 [
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_fragment_tab_search.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\fragment_tab_search.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\raw_alarm.wav.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\raw\\alarm.wav"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_fragment_tab_db_access.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\fragment_tab_db_access.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_activity_setup.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\activity_setup.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_fragment_fullscreen.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\fragment_fullscreen.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\raw_alarm2.wav.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\raw\\alarm2.wav"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_numberpicker_horizontal.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\numberpicker_horizontal.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_db.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\db.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\drawable_ic_launcher.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\drawable\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_fragment_fullscreen.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\fragment_fullscreen.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_pallet_recycle_row.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\pallet_recycle_row.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\raw_alarm.wav.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\raw\\alarm.wav"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_numberpicker_horizontal.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\numberpicker_horizontal.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\raw_alarm2.wav.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\raw\\alarm2.wav"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-hdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_fragment_tab_search.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\fragment_tab_search.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_fragment_tab_position.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\fragment_tab_position.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\xml_preferences.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\xml\\preferences.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_fragment_age.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\fragment_age.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_fragment_tab_position.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\fragment_tab_position.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\drawable_ic_launcher.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\drawable\\ic_launcher.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\drawable_ic_launcher_background2.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\drawable\\ic_launcher_background2.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_fragment_password.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\fragment_password.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-hdpi\\ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\raw_test.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\raw\\test"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-mdpi\\ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\drawable_grey_toast_style.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\drawable\\grey_toast_style.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\menu_main.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\menu\\main.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_pallet_recycle_row.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\pallet_recycle_row.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\drawable_red_toast_style.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\drawable\\red_toast_style.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\raw_test.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\raw\\test"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "com.symbol.ptlclient2024.app-merged_res-34:/layout_activity_main.xml.flat",
+        "source": "com.symbol.ptlclient2024.app-main-36:/layout/activity_main.xml"
     },
     {
-        "merged": "com.symbol.kepzetclient.app-merged_res-34:/layout_activity_main.xml.flat",
-        "source": "com.symbol.kepzetclient.app-main-36:/layout/activity_main.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_fragment_age.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\fragment_age.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_fragment_password.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\fragment_password.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\drawable\\ic_launcher_background.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\menu_main.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\menu\\main.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_db.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\db.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\drawable_ic_launcher_background2.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\drawable\\ic_launcher_background2.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-mdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_about_dlg.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\about_dlg.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\drawable_red_toast_style.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\drawable\\red_toast_style.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\layout_activity_setup.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\activity_setup.xml"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_about_dlg.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\about_dlg.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\layout_fragment_tab_db_access.xml.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\layout\\fragment_tab_db_access.xml"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-merged_res-34:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.kepzetclient.app-main-36:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     }
 ]

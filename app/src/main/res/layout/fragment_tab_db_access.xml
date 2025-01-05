@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hnpR" />
 
-    <com.symbol.kepzetclient.HorizontalNumberPicker
+    <com.symbol.ptlclient2024.HorizontalNumberPicker
         android:id="@+id/hnpR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/tvRDbAText"
         app:layout_constraintStart_toEndOf="@+id/hnpR" />
 
-    <com.symbol.kepzetclient.HorizontalNumberPicker
+    <com.symbol.ptlclient2024.HorizontalNumberPicker
         android:id="@+id/hnpSPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,6 +108,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:text="Save"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnClearDB" />
 
@@ -118,6 +119,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="onClearClicked"
         android:text="Clear"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

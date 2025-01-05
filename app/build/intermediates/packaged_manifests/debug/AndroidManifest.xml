@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.symbol.kepzetclient"
+    package="com.symbol.ptlclient2024"
     android:versionCode="12"
     android:versionName="1.0.0" >
 
@@ -15,10 +15,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <permission
-        android:name="com.symbol.kepzetclient.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.symbol.ptlclient2024.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.symbol.kepzetclient.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.symbol.ptlclient2024.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:allowBackup="true"
@@ -27,18 +27,17 @@
         android:extractNativeLibs="false"
         android:icon="@mipmap/ic_launcher"
         android:label="PTL CLIENT 2024"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:testOnly="true" >
+        android:roundIcon="@mipmap/ic_launcher_round" >
         <activity
-            android:name="com.symbol.kepzetclient.custom_components.SetupActivity"
+            android:name="com.symbol.ptlclient2024.custom_components.SetupActivity"
             android:exported="false"
             android:theme="@style/MyActivityTheme" />
         <activity
-            android:name="com.symbol.kepzetclient.DbActivity"
+            android:name="com.symbol.ptlclient2024.DbActivity"
             android:exported="false"
             android:theme="@style/MyActivityTheme" />
         <activity
-            android:name="com.symbol.kepzetclient.MainActivity"
+            android:name="com.symbol.ptlclient2024.MainActivity"
             android:label="PtL Client"
             android:theme="@style/MyActivityTheme" >
             <intent-filter>
@@ -47,19 +46,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.symbol.kepzetclient.Preferences"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="false"
-            android:label="@string/title_activity_preferences"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyActivityTheme" />
 
         <uses-library android:name="com.symbol.emdk" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.symbol.kepzetclient.androidx-startup"
+            android:authorities="com.symbol.ptlclient2024.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

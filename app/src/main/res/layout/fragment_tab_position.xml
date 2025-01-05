@@ -24,7 +24,7 @@
         tools:layout_conversion_absoluteHeight="24dp"
         tools:layout_conversion_absoluteWidth="15dp" />
 
-    <com.symbol.kepzetclient.HorizontalNumberPicker
+    <com.symbol.ptlclient2024.HorizontalNumberPicker
         android:id="@+id/hnpRPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         android:id="@+id/tvSDbAText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="2dp"
         android:text="S:"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvRDbAText"
@@ -46,7 +46,7 @@
         tools:layout_conversion_absoluteWidth="15dp"
         />
 
-    <com.symbol.kepzetclient.HorizontalNumberPicker
+    <com.symbol.ptlclient2024.HorizontalNumberPicker
         android:id="@+id/hnpSPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,12 +80,11 @@
         android:id="@+id/tvChannelText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="@string/strChannelText"
-
+        android:layout_marginStart="8dp"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/etxChannelPos"
-        app:layout_constraintStart_toEndOf="@+id/etxPartNumberPos"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/etxChannelPos" />
 
 
@@ -94,20 +93,25 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="796.04.000.001234"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvPackPos"
         app:layout_constraintStart_toEndOf="@+id/tvPartNrText"
         app:layout_constraintTop_toBottomOf="@+id/hnpSPos" />
+        <!--android:text="796.04.000.001234"        -->
 
 
     <EditText
         android:id="@+id/etxChannelPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00"
-        android:inputType="number"
+        android:layout_marginEnd="0dp"
         android:ems="2"
-        app:layout_constraintStart_toEndOf="@+id/tvChannelText"
-        app:layout_constraintTop_toBottomOf="@+id/btnShowPos" />
+        android:enabled="false"
+        android:inputType="number"
+        android:text="00"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/tvChannelText"
+        app:layout_constraintTop_toBottomOf="@+id/etxPartNumberPos" />
 
     <TextView
         android:id="@+id/tvPackPos"
@@ -116,7 +120,7 @@
         android:text="pack:"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/etxPackPos"
-        app:layout_constraintStart_toStartOf="@+id/tvPartNrText"
+        app:layout_constraintEnd_toStartOf="@+id/etxPackPos"
         app:layout_constraintTop_toTopOf="@+id/etxPackPos" />
 
     <EditText
@@ -127,18 +131,19 @@
         android:ems="2"
         android:inputType="number"
         android:text="00"
-        app:layout_constraintStart_toEndOf="@+id/tvPackPos"
-        app:layout_constraintTop_toBottomOf="@+id/etxPartNumberPos" />
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnShowPos" />
 
     <TextView
         android:id="@+id/tvCountPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="count"
+        android:text="max count"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/etxCountPos"
-        app:layout_constraintStart_toEndOf="@+id/etxPackPos"
+        app:layout_constraintStart_toEndOf="@+id/etxChannelPos"
         app:layout_constraintTop_toTopOf="@+id/etxCountPos" />
 
     <EditText
@@ -156,15 +161,16 @@
         android:id="@+id/btnSavePos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="@+id/btnClose"
-        app:layout_constraintEnd_toStartOf="@+id/btnClose"
-        app:layout_constraintTop_toTopOf="@+id/btnClose" />
+        android:text="@string/TabPositionBtnSave"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        />
 
     <Button
-        android:id="@+id/btnClose"
+        android:id="@+id/btnCloseSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Close"
