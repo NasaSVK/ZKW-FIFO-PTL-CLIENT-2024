@@ -9,12 +9,9 @@ import com.symbol.ptlclient2024.MainActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class LogStream {
 
@@ -97,27 +94,27 @@ public class LogStream {
 
     public void logData(String pData)
     {
-        checkIfLogExists();
-        try {
-            FileWriter writer = new FileWriter(logFileName);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                //https://jenkov.com/tutorials/java-internationalization/simpledateformat.html
-                String CurrentDateTime  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-                writer.append( CurrentDateTime + " : " + pData + "\n");
-            }
-            writer.flush();
-            writer.close();
-        }
-        catch (IOException e) {
-            //throw new RuntimeException(e);
-            Log.e("KEPZET EXCEPTION", String.join(", ", e.toString()));
-            Helpers.redToast(_context,"IOExcepton at LogStream.logData(String pData)");
-            MainActivity.getInstance().logStream.logData("IOEXCEPTION: at LogStream.logData(String pData)");
-        }
-        catch (Exception e) {
-            Log.e("KEPZET EXCEPTION", String.join(", ", e.toString()));
-            Helpers.redToast(_context,"Exception at LogStream.logData(String pData)");
-            MainActivity.getInstance().logStream.logData("EXCEPTION: at LogStream.logData(String pData)");
-        }
+//        checkIfLogExists();
+//        try {
+//            FileWriter writer = new FileWriter(logFileName);
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                //https://jenkov.com/tutorials/java-internationalization/simpledateformat.html
+//                String CurrentDateTime  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+//                writer.append( CurrentDateTime + " : " + pData + "\n");
+//            }
+//            writer.flush();
+//            writer.close();
+//        }
+//        catch (IOException e) {
+//            //throw new RuntimeException(e);
+//            Log.e("KEPZET EXCEPTION", String.join(", ", e.toString()));
+//            Helpers.redToast(_context,"IOExcepton at LogStream.logData(String pData)");
+//            MainActivity.getInstance().logStream.logData("IOEXCEPTION: at LogStream.logData(String pData)");
+//        }
+//        catch (Exception e) {
+//            Log.e("KEPZET EXCEPTION", String.join(", ", e.toString()));
+//            Helpers.redToast(_context,"Exception at LogStream.logData(String pData)");
+//            MainActivity.getInstance().logStream.logData("EXCEPTION: at LogStream.logData(String pData)");
+//        }
     }
 }

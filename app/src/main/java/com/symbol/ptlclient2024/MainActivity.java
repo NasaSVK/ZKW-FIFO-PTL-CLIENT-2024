@@ -321,7 +321,7 @@ public class MainActivity extends Activity
         if ((result.compareTo("OK") == 0)||
                 ((result.compareTo("NOK") == 0)&&((info.compareTo("EMPTY STRING RECIEVED")==0)||(info.compareTo("")==0))))
         {
-            //ak mi prisiel PRVY PRAZDNY STRING OD SPUSTENIA APLIKACIE, ZRUSIM ODPOCITAVANIE DO ZOBRAZENIA HLASKY O NENAVIAZANI SPOJENIA SO SERVEROM
+            //ak mi prisiel PRVY PRAZDNY STRING PEZPROSTREDNE PO SPUSTENI APLIKACIE, ZRUSIM ODPOCITAVANIE DO ZOBRAZENIA HLASKY O NENADVIAZANI SPOJENIA SO SERVEROM
             if (SPUSTENIE){
                 setStartAppResponsed(true);
                 info = "SCANNER CONNECTED TO SERVER";
@@ -432,7 +432,8 @@ public class MainActivity extends Activity
 //
 //        return isResponsed;
 //    }
-
+    //pri odoslani poziadavky na server => pResponse == false
+    //po prijati poziadavky zo servera => pResponse == true
     public void setResponsed(boolean pResponsed) {
 
         //ak dosla odpoved na danu poziadavku zo servera VCAS (2800 ms)
@@ -461,7 +462,7 @@ public class MainActivity extends Activity
 
             responseThread =
             Helpers.setTimeout(()->{
-                //sk edzicasom neprisla reakcia zo serveru hlasim chybu
+                //ak medzicasom neprisla reakcia zo serveru hlasim chybu
                     UIHandler.post(()->{
                             Helpers.redToast(_mainActivity ,"response from server not recieved");
                             _mainActivity.writeError("RESPONSE FROM SERVER NOT RECIEVED");
@@ -474,6 +475,7 @@ public class MainActivity extends Activity
                 //}
 
             },RESPONSE_INTERVAL);
+            //Ak dojde odpoved do intervalu RESPONSE_INTERVAL, potom sa vlakno pochopitelne ukonci (hread.interrupt()) a chybova hlaska nezobrazi T
         }
     }
 
@@ -725,6 +727,7 @@ public class MainActivity extends Activity
         //tvInfo.setText("");
         //tvTitle.setText("Warehouse PBL® Client 2024 v."+ Helpers.getAppTimeStamp2(_mainActivity));
 
+        btnScan.setEnabled(false);
         btnScan.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
