@@ -29,7 +29,8 @@ public class About {
         SpannableString aboutText = new SpannableString("Version " + VersionName(callingActivity)+ "\n"
                 + callingActivity.getString(R.string.about));*/
         //String aboutText = new String("Ver." + VersionName(callingActivity) + " ("+ Helpers.getAppTimeStamp(callingActivity)+")");
-        String aboutText = new String(Helpers.getAppTimeStamp2(callingActivity))+ " ("+ Helpers.getAppTimeStamp(callingActivity)+")";
+        //String aboutText = new String(Helpers.getAppTimeStamp2(callingActivity))+ " ("+ Helpers.getAppTimeStamp(callingActivity)+")";
+        String aboutText = new String(Helpers.getAppTimeStampVer(callingActivity));
 
         //Generate views to pass to AlertDialog.Builder and to set the text
 

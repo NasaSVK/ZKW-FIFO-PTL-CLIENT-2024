@@ -17,7 +17,6 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -136,8 +135,6 @@ public class MainActivity extends Activity
 
     private TextView tvBarcode = null;
     private TextView tvPrevPallet = null;
-
-    private Button btnDbAccess = null;
     private TextView tvNOK = null;
     private TextView tvPartNumber = null;
     private TextView tvPosition = null;
@@ -178,7 +175,9 @@ public class MainActivity extends Activity
     private List<multipackData> mpData = new ArrayList<multipackData>();;
     private CheckBox cbLeader;
 
-    private Button btnAccept;
+    private Button btnAccept = null;
+    private Button btnDbAccess = null;
+
     private TextView tvLastError;
     private int OkNokThreadsCount;
     private int OkNokTime;
@@ -489,16 +488,23 @@ public class MainActivity extends Activity
 
         if (cbLeader.isChecked()){
             btnAccept.setEnabled(false);
+            btnDbAccess.setEnabled(true);
 
-            if(tvPosition.getText().toString().compareTo("")!=0)
+            if(tvPosition.getText().toString().compareTo("")!=0) {
                 btnAccept.setEnabled(true);
+                //btnDbAccess.setEnabled(false);
+            }
 
             btnAccept.setVisibility(View.VISIBLE);
+            btnDbAccess.setVisibility(View.VISIBLE);
         }
         else
         {
             btnAccept.setEnabled(false);
             btnAccept.setVisibility(View.INVISIBLE);
+
+            btnDbAccess.setEnabled(false);
+            btnDbAccess.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -619,6 +625,8 @@ public class MainActivity extends Activity
     }
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -685,8 +693,10 @@ public class MainActivity extends Activity
         textViewData = findViewById(R.id.textViewData);
         tvBarcode = findViewById(R.id.tvBarcode);
         textViewStatus = findViewById(R.id.textViewStatus);
-        btnDbAccess = findViewById(R.id.btnDbAccess);
+
+        btnDbAccess = findViewById(R.id.btnDbAccesss);
         btnAccept = findViewById(R.id.btnAccept);
+
         tvNOK = findViewById(R.id.tvNOK);
         tvPartNumber = (TextView)findViewById(R.id.tvPartNunber);
         tvPosition = (TextView)findViewById(R.id.tvPosition);
@@ -724,8 +734,9 @@ public class MainActivity extends Activity
         tvPartNumber.setText("");
         tvPosition.setText("");
         tvPrevPallet.setText("");
-        //tvInfo.setText("");
+
         //tvTitle.setText("Warehouse PBL® Client 2024 v."+ Helpers.getAppTimeStamp2(_mainActivity));
+        tvTitle.setText(getResources().getString(R.string.appLabel) + Helpers.getAppTimeStampVer(_mainActivity));
 
         btnScan.setEnabled(false);
         btnScan.setOnTouchListener(new View.OnTouchListener() {
@@ -746,8 +757,6 @@ public class MainActivity extends Activity
         });
 
         if (SPUSTENIE) this.setStartAppResponsed(false);
-
-
     }
 
     void playNOK() {
@@ -1274,7 +1283,7 @@ public class MainActivity extends Activity
         return true;
     }
 
-    public void DbAccess_Click(View view) {
+    public void btnDbAccess_Click(View view) {
         Intent dbActivity = new Intent(this, DbActivity.class);
         startActivity(dbActivity);
     }
@@ -1283,25 +1292,6 @@ public class MainActivity extends Activity
         Intent SetupActivity = new Intent(this, SetupActivity.class);
         startActivity(SetupActivity);
     }
-
-    //ON EXPERIMENTAL USE ONLY
-    public void btnAccept_Click(View view) {
-        //tcpSecnd.send ("Accept");
-        TCWriteThread tcw = new TCWriteThread("TAccept");
-        tcw.SendContent();
-        try {
-            tcw.join();
-            updateList(tcw._resultText, ResultType.SUCCESS);
-        }
-        catch (InterruptedException e) {
-            updateList("TCP thread ERROR!", ResultType.ERROR);
-            return;
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            //SetText("S@" + LocalDateTime.now().toString() + ": accept");
-        }
-    }
-
 
     public void btnConToServer_onClick(View view) {
 
@@ -1368,6 +1358,18 @@ public class MainActivity extends Activity
         logStream.logData("btnAccept_Click: BUTTON ACCEPT CLICK");
     }
     //ButtonAccept END
+
+    //ButtonDbAccess START
+    public void btnDbAccessClick(View view) {
+        Intent dbACCESS = new Intent(MainActivity.getContext(), DbActivity.class);
+        Bundle pBundle = new Bundle();
+        pBundle.putInt("OpenTabIndex",1);
+        dbACCESS.putExtras(pBundle);
+        //Passing a Bundle on startActivity()?
+        //https://stackoverflow.com/questions/768969/passing-a-bundle-on-startactivity
+        startActivity(dbACCESS);
+    }
+    //ButtonDbAccess END
 
 
     //vypise info o spusteni listenera do HISTORIE

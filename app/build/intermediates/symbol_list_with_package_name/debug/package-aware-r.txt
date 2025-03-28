@@ -3226,6 +3226,7 @@ id btnCloseDB
 id btnCloseSearch
 id btnConToServer
 id btnDbAccess
+id btnDbAccesss
 id btnPswdCancel
 id btnPswdOk
 id btnQuit
@@ -4008,6 +4009,7 @@ string action_settings
 string age
 string age_fragment
 string androidx_startup
+string appLabel
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior

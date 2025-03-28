@@ -100,7 +100,8 @@ public class SetupActivity extends AppCompatActivity {
 //        }
         View view = getLayoutInflater().inflate(R.layout.fragment_password,null);
         pswDialog = new Dialog(this, android.R.style.Theme_DeviceDefault_NoActionBar_Fullscreen);
-        pswDialog.setCancelable(true);
+        pswDialog.setCancelable(false);
+        //pswDialog.setCancelable(true);
         pswDialog.setContentView(view);
         btnPswdCancel = view.findViewById(R.id.btnPswdCancel);
         btnPswdCancel.setOnClickListener(new View.OnClickListener() {

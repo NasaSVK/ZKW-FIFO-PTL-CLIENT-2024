@@ -3225,6 +3225,7 @@ int id btnCloseDB 0x7f08006b
 int id btnCloseSearch 0x7f08006c
 int id btnConToServer 0x7f08006d
 int id btnDbAccess 0x7f08006e
+int id btnDbAccesss 0x7f080287
 int id btnPswdCancel 0x7f08006f
 int id btnPswdOk 0x7f080070
 int id btnQuit 0x7f080071
@@ -4007,6 +4008,7 @@ int string action_settings 0x7f11001d
 int string age 0x7f11001e
 int string age_fragment 0x7f11001f
 int string androidx_startup 0x7f110020
+int string appLabel 0x7f1100bc
 int string app_name 0x7f110021
 int string appbar_scrolling_view_behavior 0x7f110022
 int string bottom_sheet_behavior 0x7f110023

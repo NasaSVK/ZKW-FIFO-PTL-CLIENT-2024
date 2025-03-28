@@ -215,4 +215,26 @@ public class Helpers {
 
         return timeStamp;
     }
+
+    public static String getAppTimeStampVer(Context context) {
+
+        String timeStamp = null;
+        try
+        {
+            ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), 0);
+            String appFile = appInfo.sourceDir;
+            long time = new File(appFile).lastModified();
+
+            //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyyMMdd");
+            timeStamp = formatter.format(time);
+        }
+        catch (Exception e) {
+            Helpers.redToast(context, "getAppTimeStamp2: " + e.getMessage());
+        }
+
+        return timeStamp;
+    }
+
+
 }

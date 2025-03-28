@@ -451,17 +451,31 @@
                     />
 
                 <Button
-                    android:id="@+id/btnAccept"
+                    android:id="@+id/btnDbAccesss"
                     android:layout_width="match_parent"
                     android:layout_height="50sp"
                     android:width="100dp"
-                    android:text="ACCEPT"
+                    android:text="DBACCESS"
                     android:textSize="16sp"
                     android:layout_span="1"
                     android:enabled="true"
                     android:visibility="invisible"
-                    android:onClick="btnAcceptClick"
-                    />
+                    android:onClick="btnDbAccessClick"
+                />
+
+<!--
+                    <Button-->
+<!--                    android:id="@+id/btnAccept"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50sp"-->
+<!--                    android:width="100dp"-->
+<!--                    android:text="ACCEPT"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:layout_span="1"-->
+<!--                    android:enabled="true"-->
+<!--                    android:visibility="invisible"-->
+<!--                    android:onClick="btnAcceptClick"-->
+<!--                    />-->
 
             </TableRow>
             <TableRow
@@ -544,6 +558,18 @@
         android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/llLastError"
         android:id="@+id/btnScan"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MANUAL ACCEPT"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/llLastError"
+        android:id="@+id/btnAccept"
+        android:visibility="invisible"
+        android:onClick="btnAcceptClick"
         />
 
 

@@ -24,4 +24,5 @@
     <string name="main_text_padding_start">6dp</string>
     <string name="TabPositionBtnSaveText">Save</string>
     <string name="TabPositionBtnSave">Save</string>
+    <string name="appLabel">ZKW PTL Client 2024 v.</string>
 </resources>
