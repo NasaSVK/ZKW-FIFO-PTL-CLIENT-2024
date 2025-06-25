@@ -25,6 +25,8 @@ import java.util.Date;
 
 public class Helpers {
 
+    public enum eHALA { DVOJKA, TROJKA };
+
     public static final int INTERVAL = 4000;
 
     private static ArrayList<View> Childrens;
@@ -96,6 +98,29 @@ public class Helpers {
 //            throw new RuntimeException(e);
 //        }
     }
+
+    public static eHALA getHALLfromIP(){
+        String localIP = getLocalIP();
+        int pocet = 0;
+        int index = 0;
+        while (pocet < 3 ) {
+            if (localIP.charAt(index) == '.')
+                pocet++;
+            index++;
+        }
+       String result =  localIP.substring(index, localIP.length());
+        Integer resultInt =  Integer.parseInt(result);
+
+        Integer[] hala2IP = {241, 242, 243, 40};
+
+        for (int cislo: hala2IP) {
+            if(cislo == resultInt) return eHALA.DVOJKA;
+        }
+
+        return eHALA.TROJKA;
+    }
+
+
 
 
     public static String getId(View view) {

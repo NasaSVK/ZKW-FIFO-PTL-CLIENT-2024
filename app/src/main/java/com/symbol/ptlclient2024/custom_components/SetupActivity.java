@@ -253,10 +253,17 @@ public class SetupActivity extends AppCompatActivity {
 
                 SetupActivity.this.SaveTheValues();
 
-                Settings.getSELF().SaveToFile(SetupActivity.this);
+                if (!Settings.getSELF().SaveToFile(SetupActivity.this)){
+                    Helpers.redToast(_context, "Saving of settings FAILED!");
+                    return;
+                }
 
-                //po kliknuti na SAVE aktualizujem instaciu s nastataveniami
-                Settings.getSELF().LoadFromFile(SetupActivity.this);
+                //po kliknuti na SAVE a uspesnom ulozeni sucasne aktualizujem instanciu s nastaveniami
+                if (!Settings.getSELF().LoadFromFile(SetupActivity.this)){
+                    Helpers.redToast(_context, "Loading of settings FAILED!");
+                    return;
+                }
+
 
                 if (clientPortChanged()){
 

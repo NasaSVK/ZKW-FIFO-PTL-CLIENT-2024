@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.os.StrictMode;
 import android.util.Log;
 
+import com.symbol.ptlclient2024.Helpers;
 import com.symbol.ptlclient2024.auxx.Settings;
 
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,7 +22,8 @@ public class ConnectionToDB {
 
     private boolean result = false;
     String classes = "net.sourceforge.jtds.jdbc.Driver";
-//    protected static String ip = "192.168.1.8";
+
+    //    protected static String ip = "192.168.1.8";
 //    protected static String port = "1433";
 //    protected static String db = "zkwPBL19";
 //    protected  static String user_id = "root";
@@ -62,13 +65,21 @@ public class ConnectionToDB {
         //Connection conn = null;
         //ExecutorService executorService = Executors.newSingleThreadExecutor();
         //executorService.execute(() -> {
-
-        db = Settings.getSELF().DbName;
-        port = Integer.toString(Settings.getSELF().DbPort);
-        user_id = Settings.getSELF().DbUser;
-        ip = Settings.getSELF().ServerIP;
-
         try {
+
+                db = Settings.getSELF().DbName;
+
+                if(Helpers.getHALLfromIP() == Helpers.eHALA.DVOJKA)
+                    db = "zkwPBL";
+                else
+                    db = "zkwPBL19";
+
+                port = Integer.toString(Settings.getSELF().DbPort);
+                user_id = Settings.getSELF().DbUser;
+                ip = Settings.getSELF().ServerIP;
+
+                if (db.compareTo("zkwPBL") != 0 && db.compareTo("zkwPBL19") != 0)
+                    throw new UnknownHostException("database name UNKNOWN");
 
                 if (connection != null && !connection.isClosed()) return true;
 
@@ -84,7 +95,6 @@ public class ConnectionToDB {
                 ConnectionResult = "Connection with DB server successful";
 
                 result  = true;
-                //return true;
 
             } catch (SQLException e) {
                 ConnectionResult = String.format("!!" + System.lineSeparator() + "Runtime EXCEPTION here: %s", e.getMessage() + System.lineSeparator() + "!!");
@@ -95,7 +105,13 @@ public class ConnectionToDB {
                 ConnectionResult = String.format("!!" + System.lineSeparator() + "ClassNotFound EXCEPTION: here: %s", e.getMessage() + System.lineSeparator() + "!!");
                 Log.e("KEPZET EXCEPTION", "ClassNotFound EXCEPTION: " + ConnectionResult);
                 result = false;
-            } catch (Exception e) {
+            }
+            catch (UnknownHostException e) {
+                ConnectionResult = String.format("UnknownHostException (ConnectionToDB.java): %s", e.getMessage());
+                Log.e("EXCEPTION", ConnectionResult);
+                result = false;
+            }
+            catch (Exception e) {
                 ConnectionResult = String.format("!!" + System.lineSeparator() + "UNKNOWN ERROR here: %s", e.getMessage() + System.lineSeparator() + "!!");
                 Log.e("KEPZET EXCEPTION", "EXCEPTION: " + ConnectionResult);
                 result = false;

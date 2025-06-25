@@ -637,7 +637,8 @@ public class MainActivity extends Activity
         logStream = new LogStream(_mainActivity);
 
         //PO SPUSTENI APLKACIE NALOADUJEM INSTANCIU S NASTAVENIAMI
-        Settings.getSELF().LoadFromFile(MainActivity.getContext());
+        if (!Settings.getSELF().LoadFromFile(MainActivity.getContext()))
+            Helpers.redToast(MainActivity.getContext(),"ERROR: CONFIGURATION FILE WAS NOT LOADED");
 
         //BEGIN SOUND
             AudioAttributes audioAttributes = new AudioAttributes

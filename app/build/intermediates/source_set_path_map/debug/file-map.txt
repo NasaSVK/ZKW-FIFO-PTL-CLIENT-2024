@@ -28,10 +28,10 @@ com.symbol.ptlclient2024.app-annotation-experimental-1.4.0-26 C:\Users\duracer\.
 com.symbol.ptlclient2024.app-recyclerview-1.1.0-27 C:\Users\duracer\.gradle\caches\transforms-3\e3eef4b78bf0d50dbb2eee57d07da5bb\transformed\recyclerview-1.1.0\res
 com.symbol.ptlclient2024.app-savedstate-1.2.1-28 C:\Users\duracer\.gradle\caches\transforms-3\e5f02973c17037b0afe8170a4ee09dd5\transformed\savedstate-1.2.1\res
 com.symbol.ptlclient2024.app-core-ktx-1.13.0-29 C:\Users\duracer\.gradle\caches\transforms-3\fb91900f512a5eec89010b5ebc462d87\transformed\core-ktx-1.13.0\res
-com.symbol.ptlclient2024.app-pngs-30 D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\generated\res\pngs\debug
-com.symbol.ptlclient2024.app-resValues-31 D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\generated\res\resValues\debug
-com.symbol.ptlclient2024.app-mergeDebugResources-32 D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
-com.symbol.ptlclient2024.app-mergeDebugResources-33 D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-com.symbol.ptlclient2024.app-merged_res-34 D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\intermediates\merged_res\debug
-com.symbol.ptlclient2024.app-debug-35 D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\debug\res
-com.symbol.ptlclient2024.app-main-36 D:\duracer\Desktop\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\res
+com.symbol.ptlclient2024.app-pngs-30 D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\generated\res\pngs\debug
+com.symbol.ptlclient2024.app-resValues-31 D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\generated\res\resValues\debug
+com.symbol.ptlclient2024.app-mergeDebugResources-32 D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.symbol.ptlclient2024.app-mergeDebugResources-33 D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.symbol.ptlclient2024.app-merged_res-34 D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\build\intermediates\merged_res\debug
+com.symbol.ptlclient2024.app-debug-35 D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\debug\res
+com.symbol.ptlclient2024.app-main-36 D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\res
