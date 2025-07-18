@@ -2,11 +2,12 @@
 <!--    https://www.youtube.com/watch?v=LXl7D57fgOQ&t=42s-->
 <LinearLayout
              xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:orientation="vertical"
-             tools:context=".DbActivity">
+             tools:context="DbActivity">
 <!--                  <com.google.android.material.tabs.TabLayout>-->
 <!--                  </com.google.android.material.tabs.TabLayout>-->
 <!--                <android.support.design.widget.TabLayout-->

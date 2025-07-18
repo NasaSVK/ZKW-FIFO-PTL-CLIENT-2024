@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.symbol.ptlclient2024.Helpers;
@@ -78,7 +79,7 @@ public class Settings {
             fOut.write(json.getBytes());
             fOut.close();
             //Toast.makeText(ctx, "Settings saved", Toast.LENGTH_SHORT).show();
-            Helpers.greyToast(ctx,"Settings saved");
+            Helpers.greyToast(ctx,"Settings saved", Toast.LENGTH_SHORT);
             return true;
         } catch (FileNotFoundException e) {
             //Helpers.redToast(ctx, "Setting File not Found!!");

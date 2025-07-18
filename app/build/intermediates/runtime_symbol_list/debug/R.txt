@@ -3877,10 +3877,10 @@ int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout about_dlg 0x7f0b001c
+int layout activity_db 0x7f0b0077
 int layout activity_main 0x7f0b001d
 int layout activity_setup 0x7f0b001e
 int layout custom_dialog 0x7f0b001f
-int layout db 0x7f0b0020
 int layout design_bottom_navigation_item 0x7f0b0021
 int layout design_bottom_sheet_dialog 0x7f0b0022
 int layout design_layout_snackbar 0x7f0b0023

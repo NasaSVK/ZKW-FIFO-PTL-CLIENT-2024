@@ -54,6 +54,7 @@ public class GetData {
         try {
             stmt = DB.getStatement();
             dr = stmt.executeUpdate(query);
+            if(dr ==  1) dr = delPallNrs.size();
             stmt.close();
             DB.connection.close();
         }
@@ -229,6 +230,7 @@ public class GetData {
         try {
             stmt = DB.getStatement();
             dr = stmt.executeUpdate(query);
+            if (dr == 1) dr = updPallNrs.size();
             stmt.close();
             DB.connection.close();
         }

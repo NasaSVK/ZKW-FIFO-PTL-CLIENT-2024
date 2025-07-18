@@ -25,7 +25,7 @@ import java.util.Date;
 
 public class Helpers {
 
-    public enum eHALA { DVOJKA, TROJKA };
+    public enum eHALA { DVOJKA, TROJKA, JEDNOTKA };
 
     public static final int INTERVAL = 4000;
 
@@ -59,13 +59,13 @@ public class Helpers {
         toast.show();
     }
 
-    public static void greyToast(Context pContext, String pText){
+    public static void greyToast(Context pContext, String pText, int ToastLength){
 
-        Toast toast = Toast.makeText(pContext, pText, Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(pContext, pText, ToastLength);
         View view = toast.getView();
         view.setBackgroundResource(R.drawable.grey_toast_style);
         TextView v = (TextView)view.findViewById(android.R.id.message);
-        v.setTextColor(ContextCompat.getColor(pContext, R.color.text)); //https://stackoverflow.com/questions/5271387/get-color-int-from-color-resource
+        v.setTextColor(ContextCompat.getColor(pContext, R.color.back)); //https://stackoverflow.com/questions/5271387/get-color-int-from-color-resource
         //view.setBackgroundColor(Color.BLACK);
         //TextView text = (TextView) view.findViewById(android.R.id.message);
         /*Here you can do anything with above textview like text.setTextColor(Color.parseColor("#000000"));*/
@@ -112,12 +112,17 @@ public class Helpers {
         Integer resultInt =  Integer.parseInt(result);
 
         Integer[] hala2IP = {241, 242, 243, 40};
+        Integer[] hala3IP = {244, 245, 148, 77};
 
         for (int cislo: hala2IP) {
             if(cislo == resultInt) return eHALA.DVOJKA;
         }
 
-        return eHALA.TROJKA;
+        for (int cislo: hala3IP) {
+            if(cislo == resultInt) return eHALA.TROJKA;
+        }
+
+        return eHALA.JEDNOTKA;
     }
 
 

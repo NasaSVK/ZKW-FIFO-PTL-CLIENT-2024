@@ -239,7 +239,8 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
                     }
                     if (isDBConnected)
                         //Toast.makeText(this.getContext(), str, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(pActivity,str,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(pActivity,str,Toast.LENGTH_LONG).show();
+                        Helpers.greyToast(pActivity,str,Toast.LENGTH_LONG);
                             else
                                 Helpers.redToast(pActivity, str);
             });
@@ -379,7 +380,8 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
 
                 int recordsCount = GetData.deletePallets(_ParentActivity, deletedPallets);
                 if (recordsCount != 0) {
-                    Toast.makeText(this._ParentActivity, "Successfully deleted records: " + recordsCount, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MainActivity.getContext(), "Successfully deleted records: " + recordsCount, Toast.LENGTH_LONG).show();
+                    Helpers.greyToast(this._ParentActivity, "Successfully deleted records: " + recordsCount,Toast.LENGTH_LONG);
                     this.buttonsEnable(false);
                 }
             }
@@ -441,7 +443,8 @@ public class tabDbAccess extends Fragment implements RecycleViewInterface {
                 //int recordsCount = GetData.deletePallets(_ParentActivity, deletedPallets);
                 int recordsCount = GetData.updatePallets(_ParentActivity, updatedPallets, hnpR.getValue(),hnpS.getValue());
                 if (recordsCount != 0) {
-                    Toast.makeText(this._ParentActivity, "Successfully UPDATED records: " + recordsCount, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this._ParentActivity, "Successfully UPDATED records: " + recordsCount, Toast.LENGTH_LONG).show();
+                    Helpers.greyToast(this._ParentActivity, "Successfully UPDATED records: " + recordsCount, Toast.LENGTH_LONG);
                     this.buttonsEnable(false);
                 }
             }

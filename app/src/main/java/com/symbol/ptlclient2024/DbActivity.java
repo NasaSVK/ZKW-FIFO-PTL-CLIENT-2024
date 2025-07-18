@@ -25,7 +25,7 @@ public class DbActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.db);
+        setContentView(R.layout.activity_db);
         tabLayout = findViewById(R.id.tabLayout);
         viewPager2 = findViewById(R.id.viewPager);
         viewPageAdapter = new ViewPageAdapter(this);

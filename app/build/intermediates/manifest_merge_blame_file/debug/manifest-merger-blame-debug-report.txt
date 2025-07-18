@@ -58,13 +58,13 @@
 34            android:theme="@style/MyActivityTheme" />
 34-->D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:18:13-51
 35        <activity
-35-->D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:21:9-24:54
+35-->D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:21:9-24:39
 36            android:name="com.symbol.ptlclient2024.DbActivity"
 36-->D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:22:13-39
 37            android:exported="false"
-37-->D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:23:13-37
+37-->D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:24:13-37
 38            android:theme="@style/MyActivityTheme" />
-38-->D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:24:13-51
+38-->D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:23:13-51
 39        <activity
 39-->D:\duracer\Desktop\aktualne projekty\SynologyDrive\#ZKW_REGALY\CODE\ZEBRA_SAMPLES\EMDK-Android-Samples-master\KEPZET-ANDROID-CLIENT\app\src\main\AndroidManifest.xml:25:9-33:20
 40            android:name="com.symbol.ptlclient2024.MainActivity"

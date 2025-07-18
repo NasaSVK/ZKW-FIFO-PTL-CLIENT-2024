@@ -169,7 +169,8 @@ public class tabPosition extends Fragment  {
 
                         result = GetData.updatePosByPos(getContext(),newFIFO);
                         if (result){
-                            Toast.makeText(_ParentActivity,"Selected FIFO updated successfully!", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(_ParentActivity,"Selected FIFO updated successfully!", Toast.LENGTH_SHORT).show();
+                            Helpers.greyToast(_ParentActivity,"Selected FIFO updated successfully!", Toast.LENGTH_SHORT);
                             btnSave.setEnabled(false);
                         }
                         else {

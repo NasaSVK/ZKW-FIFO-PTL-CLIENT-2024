@@ -69,16 +69,19 @@ public class ConnectionToDB {
 
                 db = Settings.getSELF().DbName;
 
-                if(Helpers.getHALLfromIP() == Helpers.eHALA.DVOJKA)
+                if (Helpers.getHALLfromIP() == Helpers.eHALA.DVOJKA)
                     db = "zkwPBL";
                 else
+                if (Helpers.getHALLfromIP() == Helpers.eHALA.TROJKA)
                     db = "zkwPBL19";
+                else
+                    db = "zkwPBL25";
 
                 port = Integer.toString(Settings.getSELF().DbPort);
                 user_id = Settings.getSELF().DbUser;
                 ip = Settings.getSELF().ServerIP;
 
-                if (db.compareTo("zkwPBL") != 0 && db.compareTo("zkwPBL19") != 0)
+                if (db.compareTo("zkwPBL") != 0 && db.compareTo("zkwPBL19") != 0 && db.compareTo("zkwPBL25") != 0)
                     throw new UnknownHostException("database name UNKNOWN");
 
                 if (connection != null && !connection.isClosed()) return true;
