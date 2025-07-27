@@ -3354,7 +3354,6 @@ id et_number
 id etxChannelPos
 id etxChannelSrch
 id etxCountPos
-id etxPackPos
 id etxPackSrch
 id etxPalletNumberSrch
 id etxPartNumberPos

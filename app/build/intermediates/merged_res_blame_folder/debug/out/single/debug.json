@@ -4,10 +4,6 @@
         "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\layout\\fragment_tab_search.xml"
     },
     {
-        "merged": "com.symbol.ptlclient2024.app-merged_res-34:/layout_fragment_tab_db_access.xml.flat",
-        "source": "com.symbol.ptlclient2024.app-main-36:/layout/fragment_tab_db_access.xml"
-    },
-    {
         "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\raw_alarm.wav.flat",
         "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\raw\\alarm.wav"
     },
@@ -94,6 +90,10 @@
     {
         "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\drawable_grey_toast_style.xml.flat",
         "source": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-main-36:\\drawable\\grey_toast_style.xml"
+    },
+    {
+        "merged": "com.symbol.ptlclient2024.app-merged_res-34:/layout_fragment_tab_position.xml.flat",
+        "source": "com.symbol.ptlclient2024.app-main-36:/layout/fragment_tab_position.xml"
     },
     {
         "merged": "C:\\Users\\duracer\\.gradle\\daemon\\8.2\\com.symbol.ptlclient2024.app-merged_res-34:\\mipmap-mdpi_ic_launcher_round.webp.flat",

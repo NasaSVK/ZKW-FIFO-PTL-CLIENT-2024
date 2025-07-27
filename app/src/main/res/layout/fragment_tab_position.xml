@@ -114,28 +114,6 @@
         app:layout_constraintTop_toBottomOf="@+id/etxPartNumberPos" />
 
     <TextView
-        android:id="@+id/tvPackPos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="pack:"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etxPackPos"
-        app:layout_constraintEnd_toStartOf="@+id/etxPackPos"
-        app:layout_constraintTop_toTopOf="@+id/etxPackPos" />
-
-    <EditText
-        android:id="@+id/etxPackPos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:ems="2"
-        android:inputType="number"
-        android:text="00"
-        android:enabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnShowPos" />
-
-    <TextView
         android:id="@+id/tvCountPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

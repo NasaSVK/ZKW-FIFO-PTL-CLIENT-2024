@@ -38,7 +38,9 @@ public class tabPosition extends Fragment  {
     Button btnSave = null;
     EditText etxPartNr = null;
     HorizontalNumberPicker hnpRPos,hnpSPos= null;
-    EditText etxChnl = null, etxPack = null, etxCount = null;
+    EditText etxChnl = null, etxCount = null;
+
+    String LastShownPN = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -103,9 +105,7 @@ public class tabPosition extends Fragment  {
 
 
         etxChnl = (EditText) view.findViewById(R.id.etxChannelPos);
-        etxPack = (EditText) view.findViewById(R.id.etxPackPos);
         etxCount = (EditText) view.findViewById(R.id.etxCountPos);
-
         etxPartNr = (EditText) view.findViewById(R.id.etxPartNumberPos);
 
 
@@ -113,7 +113,9 @@ public class tabPosition extends Fragment  {
             @Override
             public void onClick(View view) {
 
-                Integer x = hnpRPos.getValue(), y = hnpSPos.getValue(), p = 0, count = 0;
+                Integer x = hnpRPos.getValue(), y = hnpSPos.getValue(),  max_count = 0;
+                LastShownPN = etxPartNr.getText().toString();
+
                 FIFO fifo = GetData.getPosFIFO(_ParentActivity, x, y);
 
                 if (fifo == null || fifo.getPartNr() == null)
@@ -124,21 +126,19 @@ public class tabPosition extends Fragment  {
                 }
                 etxPartNr.setText(fifo.getPartNr());
                 etxChnl.setText(String.valueOf(fifo.getChannel()));
-                etxPack.setText(String.valueOf(fifo.getPack()));
 
                 try
                 {
-                    p = Integer.parseInt(etxPack.getText().toString());
-                    count = fifo.getMaxCount();
+                    //p = Integer.parseInt(etxPack.getText().toString());
+                    max_count = fifo.getMaxCount();
                 }
 
                 catch(NumberFormatException  ex)
                 {
-                    p = 1; count = 6;
+                    max_count = 1;
                 }
-                if (p == 0) p = 1;
 
-                etxCount.setText(String.valueOf(count / p));
+                etxCount.setText(String.valueOf(max_count));
                 //hnpRPos.setForeground(new ColorDrawable(getResources().getColor(R.color.green,null)));
                 //hnpSPos.setForeground(new ColorDrawable(getResources().getColor(R.color.primary,null)));
                 hnpSPos.setTextColor(getResources().getColor(R.color.green,null));
@@ -146,6 +146,7 @@ public class tabPosition extends Fragment  {
                 btnSave.setEnabled(true);
             }
         });
+
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,14 +159,25 @@ public class tabPosition extends Fragment  {
                 {
                     try
                     {
-                        int p = Integer.parseInt(etxPack.getText().toString());
-                        int count = Integer.parseInt(etxCount.getText().toString());
+                        //int p = Integer.parseInt(etxPack.getText().toString());
+                        int max_count = Integer.parseInt(etxCount.getText().toString());
                         newFIFO.setPosX(hnpRPos.getValue());
                         newFIFO.setPosY(hnpSPos.getValue());
                         newFIFO.setPartNr(etxPartNr.getText().toString());
-                        newFIFO.setChannel(Integer.parseInt(etxChnl.getText().toString()));
-                        newFIFO.setPack(Integer.parseInt(etxPack.getText().toString()));
-                        newFIFO.setMaxCount(count*p);
+
+
+                        //################################################################################################
+                        //channel da necita, channel sa generuje
+                        //newFIFO.setChannel(Integer.parseInt(etxChnl.getText().toString()));
+                        //channel_number sa meni len ked sa meni aj P/N-ko
+                        if (etxPartNr.getText().toString().compareTo(LastShownPN) != 0){
+                            int channel_number = GetData.getNumbeOfNewChannel(_ParentActivity,etxPartNr.getText().toString());
+                            newFIFO.setChannel(channel_number);
+                        }
+                        //################################################################################################
+
+                        //newFIFO.setPack(Integer.parseInt(etxPack.getText().toString()));  
+                        newFIFO.setMaxCount(max_count);
 
                         result = GetData.updatePosByPos(getContext(),newFIFO);
                         if (result){

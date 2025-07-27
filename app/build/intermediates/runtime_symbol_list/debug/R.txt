@@ -3353,7 +3353,6 @@ int id et_number 0x7f0800eb
 int id etxChannelPos 0x7f0800ec
 int id etxChannelSrch 0x7f0800ed
 int id etxCountPos 0x7f0800ee
-int id etxPackPos 0x7f0800ef
 int id etxPackSrch 0x7f0800f0
 int id etxPalletNumberSrch 0x7f0800f1
 int id etxPartNumberPos 0x7f0800f2

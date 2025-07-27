@@ -81,6 +81,47 @@ public class GetData {
     }
 
 
+    //vrati cislo potencionalneho noveho kanalu pre dane PN-ko
+    public static int getNumbeOfNewChannel(Context pContext,String pPartNumber){
+
+        String query = Query.INSTANCE.getAllChannelNumbers(pPartNumber);
+        String query2 = Query.INSTANCE.getAllChannelCount(pPartNumber);
+        int MaxNumberOfChannels = 0, CountOfChannels = 0;
+        if (GetData.DB.CONN()) {
+            try {
+                //stmt = DB.connection.createStatement(); //nemozno vytvorit Statement na conection, ktore uz ma Statement vytvoreny
+                stmt = DB.getStatement();
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()) {
+                    int channel = rs.getInt("channel");
+                    if (channel > MaxNumberOfChannels)
+                        MaxNumberOfChannels = channel;
+                }
+
+                ResultSet rs2 = stmt.executeQuery(query2);
+                rs2.next();
+                CountOfChannels = rs2.getInt("count");
+
+                stmt.close();
+                DB.connection.close();
+            } catch (SQLException e) {
+
+                Helpers.redToast(pContext, "GetData.getNumbeOfNewChannel(): SQL Exception caught");
+                return MaxNumberOfChannels;
+            }
+
+
+            return CountOfChannels < MaxNumberOfChannels ? MaxNumberOfChannels+1 : CountOfChannels+1;
+        }
+        else
+        {
+            Helpers.redToast(pContext, "GetData.getNumbeOfNewChannel(): Connection to DB FAILED!");
+            return MaxNumberOfChannels;
+        }
+    }
+
+
     ///<summary>
     ///returns object array of values for selected position of selected type
     ///</summary>

@@ -32,8 +32,8 @@ public class ConnectionToDB {
     protected static String ip = "10.16.0.141";
     protected static String port = "53563";
     protected static String db = "zkwPBL";
-    protected  static String user_id = "sknasa";
-    protected  static String password = "sknasa";
+    protected  static String user_id = "root";
+    protected  static String password = "root";
 
     public String  ConnectionResult = "";
     final static public int TIME_OUT = 10;
@@ -75,7 +75,7 @@ public class ConnectionToDB {
                 if (Helpers.getHALLfromIP() == Helpers.eHALA.TROJKA)
                     db = "zkwPBL19";
                 else
-                    db = "zkwPBL25";
+                    db = "zkwPBL19";
 
                 port = Integer.toString(Settings.getSELF().DbPort);
                 user_id = Settings.getSELF().DbUser;

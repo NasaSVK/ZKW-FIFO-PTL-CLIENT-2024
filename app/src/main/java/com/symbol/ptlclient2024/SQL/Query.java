@@ -128,4 +128,18 @@ public enum Query {
     }
 
 
+    public String getChannelCount(String pPartNumber) {
+        String  query = "SELECT COUNT(*) AS pocet FROM [dbo].[layout] WHERE [partNr] = '" + pPartNumber+"'";
+        return query;
+    }
+
+    public String getAllChannelNumbers(String pPartNumber) {
+        String  query = "SELECT [channel] FROM [dbo].[layout] WHERE [partNr] = '" + pPartNumber+"'";
+        return query;
+    }
+
+    public String getAllChannelCount(String pPartNumber) {
+        String  query = "SELECT COUNT(*) AS count FROM [dbo].[layout] WHERE [partNr] = '" + pPartNumber+"'";
+        return query;
+    }
 }
